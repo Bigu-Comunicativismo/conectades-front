@@ -17,7 +17,7 @@ A aplicação é dividida em módulos separados por responsabilidades: front-end
 * **UntitleUI**: Pacote de componentes que utiliza **Tailwind CSS** para a maioria de suas estilizações. Apesar de ter componentes pagos, seguindo a premissa de ser software livre, usamos componentes disponíveis em sua versão free.
 * **Swiper**: Pacote de componentes free focado em slider.
 
-### Métricas
+### Métricas Front-end
 Usaremos a ferramenta open-souce do Google Lighthouse para fazer as avaliações gerais da página front, buscando equilibrio e boa pontuação nos indicadores abaixo. Esta ferramenta está disponível nos navegadores (browsers) baseados em Chromium, como o próprio Chrome, o Edge, o Opera. 
 * **Performance**: >= 80pts
 * **Acessibilidade**: >= 80pts
