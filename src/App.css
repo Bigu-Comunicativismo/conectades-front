@@ -1,42 +1,66 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
+:root {
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
+  --text-sm: 1.4rem;
+  --text-md: 1.6rem;
+  --text-lg: 1.8rem;
+  --h1: 4.8rem;
+  --h2: 4rem;
+  --h3: 3.2rem;
+  --h4: 2.4rem;
+  --h5: 2rem;
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+  --sm-line: 2rem;
+  --md-line: 2.4rem;
+  --lg-line: 2.8rem;
+  --h1-line: 6rem;
+  --h2-line: 4.8rem;
+  --h3-line: 4rem;
+  --h4-line: 3.2rem;
+  --h5-line: 3rem;
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
+  --regular: 400;
+  --medium: 500;
+  --semibold: 600;
+  --bold: 700;
 
-.card {
-  padding: 2em;
-}
+  --white: #fff;
 
-.read-the-docs {
-  color: #888;
+  --gray-25: #fdfdfd;
+  --gray-50: #fafafa;
+  --gray-100: #f5f5f5;
+  --gray-200: #e9eaeb;
+  --gray-300: #e6e6e6;
+  --gray-400: #ccc;
+  --gray-500: #999;
+  --gray-600: #666;
+  --gray-700: #4d4d4d;
+  --gray-800: #333;
+  --gray-900: #000;
+
+  --brand-purple-25: #fcfaff;
+  --brand-purple-50: #f5eefa;
+  --brand-purple-100: #ebdef6;
+  --brand-purple-200: #d7bded;
+  --brand-purple-300: #c49be3;
+  --brand-purple-400: #b07ada;
+  --brand-purple-500: #9c59d1;
+  --brand-purple-600: #7d47a8;
+  --brand-purple-700: #5e357e;
+  --brand-purple-800: #3f2455;
+  --brand-purple-900: #20122b;
+
+  --brand-yellow-50: #fffee5;
+  --brand-yellow-100: #fffccc;
+  --brand-yellow-200: #fffa99;
+  --brand-yellow-300: #fff766;
+  --brand-yellow-400: #fff533;
+  --brand-yellow-500: #fff530;
+  --brand-yellow-600: #ccc200;
+  --brand-yellow-700: #999100;
+  --brand-yellow-800: #666100;
+  --brand-yellow-900: #333000;
+  --brand-yellow-950: #1a1800;
+
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
 }
