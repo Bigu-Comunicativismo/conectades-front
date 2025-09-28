@@ -19,7 +19,7 @@ jobs:
       - name: setup do node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20.12.2
+          node-version: 20.19.0
       - name: instalação das dependências
         run: |
           npm install
