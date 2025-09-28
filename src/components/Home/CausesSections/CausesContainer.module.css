@@ -1,0 +1,11 @@
+.causesContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 3.2rem;
+}
+
+.causesTitleContainer {
+    margin-bottom: 1.6rem;
+    max-width: 70%;
+}

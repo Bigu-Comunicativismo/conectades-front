@@ -1,5 +1,6 @@
 :root {
 
+  --text-xs: 1.2rem;
   --text-sm: 1.4rem;
   --text-md: 1.6rem;
   --text-lg: 1.8rem;
@@ -9,6 +10,7 @@
   --h4: 2.4rem;
   --h5: 2rem;
 
+  --xs-line: 1.8rem;
   --sm-line: 2rem;
   --md-line: 2.4rem;
   --lg-line: 2.8rem;

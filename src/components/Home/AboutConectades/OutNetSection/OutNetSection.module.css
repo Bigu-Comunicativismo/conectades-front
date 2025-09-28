@@ -1,0 +1,10 @@
+.aboutConectadesContainer {
+    margin-top: 4rem;
+    padding: 0 1.6rem;
+}
+
+.image {
+  -webkit-mask-image: linear-gradient(black, black 50%,transparent 95%);
+  mask-image: linear-gradient(black, black 50%, transparent 95%);
+  margin-bottom: 0.8rem;
+}
