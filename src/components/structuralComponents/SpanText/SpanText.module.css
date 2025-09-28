@@ -1,0 +1,4 @@
+.spanText {
+    font-size: var(--text-lg);
+    font-weight: var(--medium);
+}
