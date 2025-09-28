@@ -1,0 +1,31 @@
+name: Verificação de Lint e Build
+on: 
+    push:
+        branches:
+        - main
+        - develop
+        - feature/**
+        - hotfix/**
+    pull_request:
+        branches:
+        - develop
+        - main
+jobs:
+  lint_e_build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout do repositório
+        uses: actions/checkout@v4
+      - name: setup do node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.12.2
+      - name: instalação das dependências
+        run: |
+          npm install
+      - name: roda Eslint com fix para verificar conformidade do padrão do código
+        run: |
+          npm run lint
+      - name: builda o projeto para garantir que não há erros de build
+        run: |
+          npm run build
