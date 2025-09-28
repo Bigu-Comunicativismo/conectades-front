@@ -1,0 +1,17 @@
+.cardContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 8px;
+    border-radius: 10px;
+    overflow: hidden;
+    overflow-x: scroll;
+}
+
+.cardItem {
+    width: 24.2rem;
+    height: max-content;
+    border-width: 0.1rem;
+    border-style: solid;
+    border-color: var(--brand-purple-200);
+}

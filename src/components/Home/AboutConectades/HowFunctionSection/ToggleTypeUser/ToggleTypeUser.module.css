@@ -1,0 +1,27 @@
+.toggleTypeUserContainer {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 1.6rem;
+    border-width: 0.1rem;
+    border-style: solid;
+    border-color: var(--brand-purple-200);
+    display: flex;
+}
+
+.toggleTypeUserItem {
+    flex: 1;
+    text-align: center;
+    padding: 0.8rem 2rem 0.8rem 0.8rem;
+    border-radius: 0.8rem;
+    font-size: var(--text-sm);
+    font-weight: var(--regular);
+    color: var(--white);
+    cursor: pointer;
+    text-align: left;    
+    background-color: var(--brand-purple-600);
+}
+
+.toggleTypeUserItemVariant {
+    background-color: transparent;
+    color: var(--gray-900);
+}

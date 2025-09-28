@@ -1,0 +1,12 @@
+.seeAllLink {
+    font-size: var(--text-sm);
+    font-weight: var(--semibold);
+    line-height: var(--h5-line);
+    color: var(--brand-purple-700);
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    align-self: flex-start;
+}

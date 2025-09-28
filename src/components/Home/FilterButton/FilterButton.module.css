@@ -1,0 +1,45 @@
+.filterButtonContainer {
+    display: flex;
+    gap: 1.6rem;
+    justify-content: start;
+    align-items: center;
+    overflow-x: scroll;
+    margin-top: 1.6rem;
+}
+
+.filterButton {
+    font-size: var(--text-sm);
+    line-height: var(--sm-line);
+    font-weight: var(--medium);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    border-radius: 16px;
+    padding: 8px 12px;
+    background-color: var(--brand-purple-200);
+    width: max-content;
+    cursor: grabbing;
+    flex-shrink: 0;
+    scrollbar-width: none;
+    
+}
+
+/* .filterButton::-webkit-scrollbar {
+  width: 0;
+  height: 0; 
+  display: none; 
+} */
+
+/* .filterButtonActive {
+
+} */
+
+/* .filterLabel {
+    display: block;
+}
+
+.filterButtonIcon {
+
+} */
