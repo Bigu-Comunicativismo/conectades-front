@@ -1,0 +1,29 @@
+
+
+.navigationList {
+    display: flex;
+    flex-direction: row;
+    overflow: scroll;
+    border-bottom: 0.1rem;
+    border-style: solid;
+    border-color: var(--gray-400);
+}
+
+.navigationListItem {
+    width: 10.6rem;
+    font-size: var(--text-md);
+    line-height: var(--md-line);
+    font-weight: var(--regular);
+    color: var(--gray-600);
+    cursor: pointer;
+    text-align: center;
+    padding: 1.6rem 0;
+    flex-shrink: 0;
+}
+
+.navigationListItemActive {
+    border-bottom: 0.4rem;
+    border-style: solid;
+    border-color: var(--brand-purple-600);
+    color: var(--gray-900);
+}
