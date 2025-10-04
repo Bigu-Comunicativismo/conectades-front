@@ -1,0 +1,36 @@
+.campaignSection {
+    padding: 0;
+    background-color: var(--backgroud);
+}
+
+.campaignContainer {
+    margin-top: 1.2rem;
+    padding: 0 1.6rem;
+    padding-bottom: 4rem;
+    background-color: inherit;
+}
+
+.campaignImg {
+    height: 100vw;
+    width: 100vw;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 0 0 1.6rem 1.6rem;
+}
+
+.campaignBadge {
+    padding: 0.4rem 1.2rem;
+    background-color: var(--brand-purple-50);
+    color: var(--brand-purple-700);
+    box-shadow: none;
+    font-size: var(--text-sm);
+    line-height: var(--sm-line);
+    font-weight: var(--medium);
+}
+
+.title {
+    font-size: var(--h4);
+    line-height: var(--h4-line);
+    font-weight: var(--semibold);
+    color: var(--gray-900);
+}
