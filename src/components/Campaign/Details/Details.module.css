@@ -1,0 +1,50 @@
+.cardContainer {
+    border-width: 0.1rem;
+    border-style: solid;
+    border-color: var(--brand-purple-200);
+    width: 100%;
+}
+
+.campaingDeadline {
+    font-size: var(--text-sm);
+    line-height: var(--sm-line);
+    font-weight: var(--medium);
+    padding: 0.2rem 1rem;
+    box-shadow: none;
+}
+
+.campaingDeadlineValue {
+    font-size: var(--text-sm);
+    line-height: var(--sm-line);
+    font-weight: var(--medium);
+}
+
+.campaingDeadlineIcon {
+    color: orange;
+    font-size: 1.4rem;
+    margin-right: 0.4rem;
+}
+
+.solicitedItemsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.solicitedItemCompleted {
+    opacity: 0.5;
+    text-decoration: line-through;
+}
+
+.solicitedItemQuantitys {
+    display: flex;
+    align-items: center;
+    color: var(--brand-purple-600);
+    font-size: var(--text-sm);
+    font-weight: var(--medium);
+}
+
+.solicitedItems{
+    color: inherit;
+    font-weight: inherit;
+}

@@ -1,8 +1,8 @@
 import styles from './Main.module.css';
 
-export function Main({children}: {children: React.ReactNode}) {
+export function Main({classCss,children}: {classCss?: string; children: React.ReactNode}) {
     return (
-        <main className={styles.main}>
+        <main className={`${styles.main} ${classCss}`}>
             {children}
         </main>
     )

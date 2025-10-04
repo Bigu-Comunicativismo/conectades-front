@@ -1,0 +1,30 @@
+.button-group-floating {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    gap: 0.8rem;
+    z-index: 999;
+    background-color: var(--background);
+    width: 100vw;
+    padding: 1.6rem;
+}
+
+.btn{
+    font-size: var(--text-md);
+    font-weight: var(--semibold);
+    padding: 10px 4.5px;
+    width: 15.5rem;
+    height: 44px;
+    border-radius: 8px;
+    background-color: var(--brand-purple-600);
+}
+
+.outline{
+    width: 12.5rem;
+    border-width: 1px;
+    border-color: var(--brand-purple-500);
+    color: var(--brand-purple-700);
+    background-color: var(--brand-purple-50);
+}

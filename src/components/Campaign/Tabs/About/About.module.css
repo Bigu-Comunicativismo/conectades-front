@@ -1,0 +1,34 @@
+.paragraph {
+    padding: 0 1.6rem;
+    margin-bottom: 1.6rem;
+    height: 26.4rem;
+    font-size: var(--text-md);
+    line-height: var(--md-line);
+    font-weight: var(--regular);
+    color: var(--gray-900);
+    overflow: hidden;
+}
+
+.expanded {
+    height: max-content;
+}
+
+.btn {
+    flex-grow: 0;
+    width: max-content;
+    margin-bottom: 2.4rem;
+    margin-right: 1.6rem;
+    padding: 0;
+    color: var(--brand-purple-700);
+    background-color: transparent;
+    box-shadow: none;
+    align-self: flex-end;
+}
+
+.campaignImage {
+    height: 21rem;
+    width: 28.8rem;
+    object-fit: cover;
+    object-position: top;
+    align-self: center;
+}
