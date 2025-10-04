@@ -1,0 +1,25 @@
+.messageContainer {
+    margin-top: 2.4rem;
+    padding: 0 1.6rem;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+
+
+.avatar {
+    width: 4rem;
+    height: 4rem;
+    background-color: var(--brand-purple-50);
+    outline: none;
+    margin-right: 1.6rem;
+}
+
+.avatar svg {
+    color: var(--brand-purple-600);
+    width: 2.4rem;
+    height: 2.4rem;
+}
+
+.message {
+    padding-right: 1.8rem;
+}

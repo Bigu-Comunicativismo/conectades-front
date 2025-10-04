@@ -1,0 +1,56 @@
+.profileContainer {
+    margin-top: 2.4rem;
+    padding: 0 1.6rem;
+    display: grid;
+    grid-template-columns: 1fr 3fr 2fr;
+}
+
+
+.avatar {
+    width: 4rem;
+    height: 4rem;
+    background-color: var(--brand-purple-50);
+    outline: none;
+    margin-right: 1.6rem;
+}
+
+.avatar svg {
+    color: var(--brand-purple-600);
+    width: 2.4rem;
+    height: 2.4rem;
+}
+
+.profileInfoContainer {
+    font-size: var(--text-md);
+    line-height: var(--md-line);
+    font-weight: var(--regular);
+    color: var(--gray-900);
+}
+
+.profileDetails {
+    word-wrap: normal;
+    padding-right: 3.15rem;
+    margin-bottom: 0.4rem;
+}
+
+.btn {
+    background-color: transparent;
+    font-size: var(--text-sm);
+    line-height: var(--sm-line);
+    font-weight: var(--regular);
+    color: var(--gray-600);
+    box-shadow: none;
+    align-self: center;
+}
+
+.btn span {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.contact {
+    font-weight: var(--semibold);
+    color: var(--brand-purple-700);
+    margin-top: .8rem;
+}
