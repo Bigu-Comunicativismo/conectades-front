@@ -1,5 +1,5 @@
 .main{
     width: 100%;
-    background-color: #efeef3;
+    background-color: var(--background);
     overflow-x: hidden;
 }
