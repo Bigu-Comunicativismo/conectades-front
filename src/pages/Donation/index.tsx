@@ -117,7 +117,7 @@ export function Donation() {
                 <Paragraph text="Coque, Recife" size="lg" variant="secondary"/>
             </Card.IconTextContainer>
         </Container>
-        <TabNav />
+        <TabNav tabList={[{ id:1, name:'Sobre' }, { id:2, name:'Organização'}]} />
         <Container classCss={styles.campaignContainer}>
             {activeItem === 'Sobre' ? <About campaign={donation}/> : activeItem === 'Organização' ? <Organization organizator={causeOneOrganization}/> : activeItem === 'Apoios' ? <Supports supports={causeOneSupports}/> : <Updates updates={updatePosts}/>}
         </Container>
