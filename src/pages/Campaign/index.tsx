@@ -120,7 +120,7 @@ export function Campaign() {
         <Container classCss={styles.campaignContainer}>
             <CampaignDetails deadline={{daysRemaining: 10}} solicitedItems={[{id: 1, name: 'Formas e Assadeiras', quantitySolicited: "10", quantityContributed: "1"}, {id: 2, name: 'Espátulas', quantitySolicited: "10", quantityContributed: "5"}, {id: 3, name: 'Kit Bicos de Confeitaria', quantitySolicited: "1", quantityContributed: "1"}]} contributions={7}/>
         </Container>
-        <TabNav />
+        <TabNav tabList={[{ id:1, name:'Sobre' }, { id:2, name:'Organização'}, { id:3, name:'Apoios'}, { id:4, name:'Atualizações'}]}/>
         <Container classCss={styles.campaignContainer}>
             {activeItem === 'Sobre' ? <About campaign={campaign}/> : activeItem === 'Organização' ? <Organization organizator={causeOneOrganization}/> : activeItem === 'Apoios' ? <Supports supports={causeOneSupports}/> : <Updates updates={updatePosts}/>}
         </Container>
