@@ -88,6 +88,7 @@ const updatePosts: updatePost[] = [
 ]
 
 export function Donation() {
+  
   const {activeItem} = useTabContext();
   const [isOnFocus, setIsOnFocus] = useState(true);
   const activeSection = useRef<HTMLDivElement>(null);
@@ -104,6 +105,7 @@ export function Donation() {
     observer.observe(activeSection.current!);
 
   }, [activeSection]);
+
   return (
       <Section classCss={styles.campaignSection} ref={activeSection}>
         {isOnFocus && <ButtonGroupFloating />}
