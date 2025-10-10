@@ -1,0 +1,21 @@
+.container{
+    padding: 4rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6rem;
+}
+
+.image{
+    object-fit: cover;
+}
+
+.title{
+    font-size: var(--h4);
+    line-height: var(--h4-line);
+    font-weight: var(--semibold);
+}
+
+.paragraph{
+    text-align: center;
+}
