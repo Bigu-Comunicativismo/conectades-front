@@ -1,0 +1,11 @@
+.container {
+    margin: 4rem 1.6rem;
+}
+
+.title {
+    font-size: var(--h4);
+    line-height: var(--h4-line);
+    font-weight: var(--semibold);
+    color: var(--gray-900);
+    margin-bottom: 0.8rem;
+}
