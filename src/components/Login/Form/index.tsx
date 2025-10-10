@@ -2,7 +2,7 @@ import { Input } from "@/components/base/input/input";
 import { Container } from "@/components/structuralComponents/Container";
 import { Button } from "@/components/base/buttons/button";
 import styles from './Input.module.css';
-import { Mail01, Passcode,Eye, EyeOff } from "@untitledui/icons";
+import { Mail01, Passcode, Eye, EyeOff } from "@untitledui/icons";
 import { useState, type FormEvent } from "react";
 
 interface LoginInputProps {
@@ -12,7 +12,7 @@ interface LoginInputProps {
 
 export function LoginForm({isValidEmail, setIsValidEmail}: LoginInputProps) {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        const [inputValue, setInputValue] = useState('');
+    const [inputValue, setInputValue] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [hasEmail, setHasEmail] = useState(false);
