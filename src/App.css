@@ -69,3 +69,8 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 10px;
 }
+
+#text-placeholder {
+    color: var(--gray-500);
+    font-weight: var(--regular);
+}
