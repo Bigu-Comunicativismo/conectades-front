@@ -13,6 +13,7 @@ type passwordValidations = {
 type Validations = {
     email: (email: string) => boolean;
     password: (password: string) => passwordValidations;
+    confirmPassword: (password: string, confirmPassword: string) => boolean;
     cpf: (cpf: string) => boolean;
 };
 
@@ -25,4 +26,5 @@ export const validations: Validations = {
         return {passwordHasUpperandLower, passwordHasNumber,  passwordHasMinChar};
     },
     cpf: (cpf: string): boolean => cpfRegex.test(cpf),
+    confirmPassword: (password: string, confirmPassword: string): boolean => password === confirmPassword
 };
