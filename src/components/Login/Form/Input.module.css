@@ -1,0 +1,53 @@
+.input {
+    margin-top: 3.2rem;
+    margin-bottom: 2.4rem;
+}
+
+.input div {
+    border-radius: 1.2rem;
+    padding: 1rem 1.4rem;
+}
+
+.input svg {
+    width: 2rem;
+    height: 2rem;
+}
+
+.input label {
+    font-size: var(--text-sm);
+    line-height: var(--sm-line);
+    font-weight: var(--medium);
+    color: var(--gray-700);
+}
+
+.input span {
+    color: #f04438;
+    font-size: var(--text-sm);
+    line-height: var(--sm-line);
+    font-weight: var(--regular);
+}
+
+.btn {
+    width: 100%;
+    border-radius: 1.2rem;
+    padding: 1rem 1.8rem;
+    font-size: var(--text-md);
+    line-height: var(--md-line);
+    font-weight: var(--semibold);
+    color: var(--white);
+}
+
+.btnDesactive {
+    background-color: var(--brand-purple-200);
+}
+
+.eyeOffIcon {
+    position:absolute;
+    top: 63%;
+    right: 1.6rem;
+    transform: translateY(-50%);
+}
+
+.eyeIcon {
+    top: 47%;
+}
