@@ -13,11 +13,6 @@
     padding: 1rem 1.4rem;
 }
 
-.input svg {
-    width: 2rem;
-    height: 2rem;
-}
-
 .input label {
     font-size: var(--text-sm);
     line-height: var(--sm-line);
