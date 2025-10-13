@@ -8,7 +8,7 @@ import { Label } from "@/components/base/input/label";
 import { Image } from "@/components/structuralComponents/Image";
 import { Paragraph } from "@/components/structuralComponents/Paragraph";
 import { SpanText } from "@/components/structuralComponents/SpanText";
-import { convertToMB } from "@/utils/valueMasks";
+import { valueMasks } from "@/utils/valueMasks";
 import styles from "./PersonalForm.module.css";
 import cloudUpload from "@/assets/Assets Visuais/envato-labs-image-edit (3).png";
 import type { LocationFormProps } from "../LocationForm";
@@ -96,7 +96,7 @@ export function PersonalForm({nextStep}: LocationFormProps) {
                     <Container classCss={styles.changeFileContainer}>
                         <SpanText text={profileImage?.name || ""} 
                         classCss={styles.previewText}/>
-                        <SpanText text={convertToMB(profileImage?.size || 0)} 
+                        <SpanText text={valueMasks.convertToMB(profileImage?.size || 0)} 
                         classCss={`${styles.previewText} ${styles.previewSize}`}/>
                     </Container>
                     <Button type="button" 
