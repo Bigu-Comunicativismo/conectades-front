@@ -8,6 +8,13 @@
     margin-top: 1.6rem;
 }
 
+.selectInput span {
+    font-size: var(--text-sm);
+    line-height: var(--sm-line);
+    font-weight: var(--medium);
+    color: var(--gray-700);
+}
+
 .selectInput button{
     padding: 1rem 1.4rem;
     border-radius: 1.2rem;
