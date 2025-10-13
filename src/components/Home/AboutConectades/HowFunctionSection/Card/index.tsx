@@ -5,6 +5,7 @@ import { ImageIcon } from "@/components/structuralComponents/ImageIcon";
 import { Container } from "@/components/structuralComponents/Container";
 import { mockApiReturn } from "@/utils/mockapireturn";
 import styles from './Card.module.css';
+import type { UserType } from "@/components/SignUp/UserTypeForm";
 
 interface ICard {
     id: number;
@@ -13,13 +14,13 @@ interface ICard {
     iconUrl: string;
 }
 
-export function HowItWorksCard() {
+export function HowItWorksCard({userType}: {userType: UserType}) {
     const [cardList, setCardList] = useState<ICard[]>([]);
 
     useEffect(() => {
         const cardsData: ICard[] = [];
 
-        mockApiReturn.data.sobreConecates.forEach((card) => {
+        mockApiReturn.data.sobreConectades[userType].forEach((card) => {
             const newCard: ICard = {
                 id: card.id,
                 title: card.title,
@@ -29,7 +30,7 @@ export function HowItWorksCard() {
             cardsData.push(newCard);
         })
         setCardList(cardsData);
-    }, []);
+    }, [userType]);
     return (
         <Container classCss={`${styles.cardContainer}`}>
             {cardList.map((card) => (

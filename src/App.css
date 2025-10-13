@@ -27,6 +27,8 @@
 
   --white: #fff;
   --background: #efeef3;
+  --success: #027a48;
+  --error: #f04438;
 
   --gray-25: #fdfdfd;
   --gray-50: #fafafa;
@@ -66,4 +68,9 @@
 
   font-family: 'Montserrat', sans-serif;
   font-size: 10px;
+}
+
+#text-placeholder {
+    color: var(--gray-500);
+    font-weight: var(--regular);
 }

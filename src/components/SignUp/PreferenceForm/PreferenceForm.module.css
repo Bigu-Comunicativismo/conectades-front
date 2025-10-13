@@ -1,0 +1,88 @@
+.filtersLabel {
+    color: var(--gray-700);
+}
+
+.filtersContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 0.6rem;
+}
+
+.unselectedFilterBtn {
+    background-color: var(--gray-100);
+    color: var(--gray-900);
+    padding: 1.2rem;
+    border-radius: 1.6rem;
+    font-size: var(--text-sm);
+    line-height: var(--sm-line);
+    font-weight: var(--medium);
+}
+
+.selectedFilterBtn {
+    background-color: var(--brand-purple-50);
+    color: var(--brand-purple-600);
+    border: 0.1rem solid var(--brand-purple-500);
+}
+
+.selectedFilterBtn span {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.selectedFilterBtn svg {
+    width: 2rem;
+    height: 2rem;
+}
+
+.multiselectContainer div{
+    font-size: var(--text-sm);
+    line-height: var(--sm-line);
+    font-weight: var(--medium);
+    color: var(--gray-700);
+    margin-left: 0.5rem;
+    margin-top: 0.3rem;
+}
+
+.selectContainer svg {
+    height: 2rem;
+    width: 2rem;   
+}
+
+.selectContainer label {
+    font-size: var(--text-sm);
+    line-height: var(--sm-line);
+    font-weight: var(--medium);
+    color: var(--gray-700);
+}
+
+.selectContainer div[data-avatar=true] {
+    display: none;
+}
+
+.selectContainer div[role=group] {
+    border-radius: 1.6rem;
+    padding: 1.2rem;
+}
+
+.selectContainer span[class*=ring-inset] {
+    padding: 0.4rem 1rem;
+    border-radius: 1rem;
+    background-color: var(--gray-100);
+}
+
+.btn {
+    width: 100%;
+    border-radius: 1.2rem;
+    padding: 1rem 1.8rem;
+    font-size: var(--text-md);
+    line-height: var(--md-line);
+    font-weight: var(--semibold);
+    color: var(--white);
+    margin-top: 2.4rem;
+    margin-bottom: 2.4rem;
+}
+
+.btnDesactive {
+    background-color: var(--brand-purple-200);
+}

@@ -10,6 +10,7 @@
 
 .cardItem {
     width: 24.2rem;
+    min-height: 26.6rem;
     height: max-content;
     border-width: 0.1rem;
     border-style: solid;

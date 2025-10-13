@@ -1,0 +1,71 @@
+.selectInput{
+    margin-top: 1.6rem;
+}
+
+.selectInput span {
+    font-size: var(--text-sm);
+    line-height: var(--sm-line);
+    font-weight: var(--medium);
+    color: var(--gray-700);
+}
+
+.selectInput button{
+    padding: 1rem 1.4rem;
+    border-radius: 1.2rem;
+}
+
+.selectInput p {
+        font-size: var(--text-md);
+        line-height: var(--md-line);
+        font-weight: var(--medium);
+        color: var(--gray-900);
+}
+
+.selectOption{
+    font-size: var(--text-sm);
+    line-height: var(--sm-line);
+    font-weight: var(--medium);
+    color: var(--gray-700);
+    margin-top: 0.5rem;
+    padding: 0 0.5rem;
+}
+
+.input {
+    margin-top: 3.2rem;
+    margin-bottom: 0.6rem;
+}
+
+.input div {
+    border-radius: 1.2rem;
+    padding: 1rem 1.4rem;
+}
+
+.input label {
+    font-size: var(--text-sm);
+    line-height: var(--sm-line);
+    font-weight: var(--medium);
+    color: var(--gray-700);
+}
+
+.input span {
+    color: var(--error);
+    font-size: var(--text-sm);
+    line-height: var(--sm-line);
+    font-weight: var(--regular);
+}
+
+.btn {
+    width: 100%;
+    border-radius: 1.2rem;
+    padding: 1rem 1.8rem;
+    font-size: var(--text-md);
+    line-height: var(--md-line);
+    font-weight: var(--semibold);
+    color: var(--white);
+    margin-top: 2.4rem;
+    margin-bottom: 2.4rem;
+}
+
+.btnDesactive {
+    background-color: var(--brand-purple-200);
+}
