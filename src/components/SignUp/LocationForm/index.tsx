@@ -5,7 +5,7 @@ import { Button } from "@/components/base/buttons/button";
 import styles from './LocationForm.module.css';
 import { Container } from "@/components/structuralComponents/Container";
 
-interface LocationFormProps {
+export interface LocationFormProps {
     nextStep: React.Dispatch<React.SetStateAction<number>>;
 }
 
