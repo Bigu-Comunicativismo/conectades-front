@@ -103,8 +103,9 @@ export const mockApiReturn = {
                 updatedAt: "2023-10-01T10:00:00Z",
             },
         ],
-        sobreConecates:[
-            {
+        sobreConectades:{
+            beneficiaria: [
+                {
                 id: 1,
                 title: "Para quem é?",
                 description: "Destinado à mulheres cis, mulheres e homens trans, pessoas não-binarias e travestis com renda de até dois salários mínimos",
@@ -116,7 +117,22 @@ export const mockApiReturn = {
                 description: "Você enquanto pessoa beneficiária pode criar campanhas, construir um currículo e se candidatar para vagas afirmativas",
                 imageUrl: "src/assets/Assets Visuais/envato-graphic-7e70999d-24f8-4ea0-b4ac-e0913e964091.png"
             },
-        ]
+            ],
+            doadora: [
+                {
+                id: 1,
+                title: "Para quem é?",
+                description: "Mulheres e homens cis, que possuam renda a partir de três salários mínimos",
+                imageUrl: "src/assets/Assets Visuais/envato-graphic-7b470398-0cbb-4186-ae3a-1c959bb70162.png"
+            },
+            {
+                id: 2,
+                title: "O que você pode fazer?",
+                description: "Você pode oferecer serviços ou fazer doações",
+                imageUrl: "src/assets/Assets Visuais/envato-graphic-7e70999d-24f8-4ea0-b4ac-e0913e964091.png"
+            },
+            ]
+        }
     }
 }
 
