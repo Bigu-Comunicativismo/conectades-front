@@ -10,6 +10,7 @@ import { Paragraph } from "@/components/structuralComponents/Paragraph";
 import { SpanText } from "@/components/structuralComponents/SpanText";
 import { valueMasks } from "@/utils/valueMasks";
 import styles from "./PersonalForm.module.css";
+import inputStyles from "@/components/base/input/Input.module.css";
 import cloudUpload from "@/assets/Assets Visuais/envato-labs-image-edit (3).png";
 import type { LocationFormProps } from "../LocationForm";
 import { useUserContext } from "@/contexts/userContext";
@@ -58,7 +59,7 @@ export function PersonalForm({nextStep}: LocationFormProps) {
             placeholder="Nome de exibição"
             value={displayName}
             onChange={(displayName) => setDisplayName(displayName)}
-            className={`${styles.input}`}
+            className={`${inputStyles.input}`}
           />
         </Container>
 
@@ -72,7 +73,7 @@ export function PersonalForm({nextStep}: LocationFormProps) {
             isInvalid={bio.length >= 600}
             hint={`${bio.length}/600 caracteres`}
             onChange={(bio) => setBio(bio)}
-            className={`${styles.input} ${styles.textarea}`}
+            className={`${inputStyles.input} ${bio.length < 600 && styles.inputError} ${styles.textarea}`}
           />
         </Container>
 

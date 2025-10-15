@@ -7,6 +7,7 @@ import { Button } from "@/components/base/buttons/button";
 import { validations } from "@/utils/validations";
 import { valueMasks } from "@/utils/valueMasks";
 import styles from "./BiographyForm.module.css";
+import inputStyles from "@/components/base/input/Input.module.css";
 import type { LocationFormProps as BiographyFomrProps } from "../LocationForm";
 import { useUserContext, type UserGender } from "@/contexts/userContext";
 
@@ -48,7 +49,7 @@ export function BiographyForm({nextStep}: BiographyFomrProps) {
                 placeholder="Insira seu nome aqui"
                 value={fullname}
                 onChange={(fullname) => setFullname(fullname)}
-                className={`${styles.input}`}/>
+                className={`${inputStyles.input}`}/>
                 <Input id="CPF"
                 type="text"
                 label="CPF"
@@ -64,7 +65,7 @@ export function BiographyForm({nextStep}: BiographyFomrProps) {
                     setCPFError(false)
                     setCPF(CPF)}
                     return}}
-                className={`${styles.input}`}/>
+                className={`${inputStyles.input}`}/>
                 <Input id="Telefone"
                 type="tel"
                 label="Telefone"
@@ -73,7 +74,7 @@ export function BiographyForm({nextStep}: BiographyFomrProps) {
                 onChange={(phone) => {
                     const maskedPhone = valueMasks.phoneMask(phone);
                     setPhone(maskedPhone)}}
-                className={`${styles.input}`}/>
+                className={`${inputStyles.input}`}/>
                 <Input id="E-mail"
                 type="email"
                 label="E-mail"
@@ -90,7 +91,7 @@ export function BiographyForm({nextStep}: BiographyFomrProps) {
                         setEmailError(true)
                     }
                     return }}
-                className={`${styles.input}`}/>
+                className={`${inputStyles.input}`}/>
                 <Select label="Gênero" 
                     placeholder="Selecione seu gênero"
                     isRequired
