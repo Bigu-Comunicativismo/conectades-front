@@ -4,13 +4,17 @@ import { SpanText } from "@/components/structuralComponents/SpanText";
 import styles from "./PasswordForm.module.css";
 import { Container } from "@/components/structuralComponents/Container";
 import { validations } from "@/utils/validations";
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import { FormDescription } from "../FormDescription";
+import { useUserContext } from "@/contexts/userContext";
 
 export function PasswordForm() {
     const [inputPasswordValue, setInputPasswordValue] = useState('');
     const [inputConfirmPasswordValue, setInputConfirmPasswordValue] = useState('');
-    const {passwordHasUpperandLower, passwordHasNumber,  passwordHasMinChar}: {passwordHasUpperandLower: boolean, passwordHasNumber: boolean,  passwordHasMinChar: boolean} = validations.password(inputPasswordValue)
+    const {passwordHasUpperandLower, passwordHasNumber,  passwordHasMinChar}: {passwordHasUpperandLower: boolean, passwordHasNumber: boolean,  passwordHasMinChar: boolean} = validations.password(inputPasswordValue);
+
+    const {user, setUser} = useUserContext();
+
     return (
         <form >
             <FormDescription titleText="Crie uma senha" paragraphText="Estamos terminando! Por último, crie sua senha, ela será utilizada para você acessar seu perfil"/>
@@ -31,7 +35,14 @@ export function PasswordForm() {
                 </Container>
             </Container>
                 <Button className={`${styles.btn} ${((!passwordHasUpperandLower && !passwordHasNumber && !passwordHasMinChar) || (inputPasswordValue !== inputConfirmPasswordValue)) && styles.btnDesactive}`} type="submit"
-                isDisabled={(!passwordHasUpperandLower && !passwordHasNumber && !passwordHasMinChar) || (inputPasswordValue !== inputConfirmPasswordValue)}>Criar conta</Button>
+                isDisabled={(!passwordHasUpperandLower && !passwordHasNumber && !passwordHasMinChar) || (inputPasswordValue !== inputConfirmPasswordValue)}
+                onClick={(event: FormEvent) => {
+                    event.preventDefault()
+                    const newUser = user;
+                    newUser.password = inputPasswordValue;
+                    setUser(newUser);
+                    console.log(user);
+                }}>Criar conta</Button>
         </form>
     )
 }

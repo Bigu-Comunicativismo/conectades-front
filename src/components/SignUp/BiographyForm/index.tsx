@@ -8,11 +8,7 @@ import { validations } from "@/utils/validations";
 import { valueMasks } from "@/utils/valueMasks";
 import styles from "./BiographyForm.module.css";
 import type { LocationFormProps as BiographyFomrProps } from "../LocationForm";
-
-type Gender = {
-    id: string;
-    label: string;
-}
+import { useUserContext, type UserGender } from "@/contexts/userContext";
 
 
 
@@ -21,12 +17,14 @@ export function BiographyForm({nextStep}: BiographyFomrProps) {
     const [CPF, setCPF] = useState("");
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
-    const [gender, setGender] = useState("");
-    const [genderList, setGenderList] = useState<Gender[] | never>([]);
+    const [gender, setGender] = useState<UserGender | string>("");
+    const [genderList, setGenderList] = useState<UserGender[] | never>([]);
     const [emailError, setEmailError] = useState(false);
     const [CPFError, setCPFError] = useState(false);
 
-    const MockedGenderList = [
+    const { user, setUser } = useUserContext();
+
+    const MockedGenderList: UserGender[] = [
         { id: "Homem Cis", label: "Homem Cis" },
         { id: "Mulher Cis", label: "Mulher Cis" },
         { id: "Homem Trans", label: "Homem Trans" }, 
@@ -65,7 +63,6 @@ export function BiographyForm({nextStep}: BiographyFomrProps) {
                     }else{
                     setCPFError(false)
                     setCPF(CPF)}
-                    console.log(validations.cpf(CPF));
                     return}}
                 className={`${styles.input}`}/>
                 <Input id="Telefone"
@@ -101,7 +98,7 @@ export function BiographyForm({nextStep}: BiographyFomrProps) {
                     name="Gênero"
                     onSelectionChange={(key) => {
                         if(gender !== key) {
-                            setGender(key as string)}
+                            setGender( key as string)}
                         return;
                     }}
                     className={styles.selectInput}>
@@ -118,13 +115,13 @@ export function BiographyForm({nextStep}: BiographyFomrProps) {
                 isDisabled={fullname === '' || CPFError || phone === '' || emailError || gender === ''} 
                 onClick={
                     () => {
-                        console.log({
-                            Nome_Completo: fullname,
-                            CPF,
-                            Telefone: phone,
-                            Email: email,
-                            Genero: gender
-                        });
+                        const newUser = user;
+                        newUser.fullname = fullname;
+                        newUser.cpf = CPF;
+                        newUser.phone = phone;
+                        newUser.email = email;
+                        newUser.gender = genderList.find(previousGender => previousGender.id === gender) || { id: "Outro", label: "Outro" };
+                        setUser(newUser);
                         nextStep((previous: number) => previous + 1)
                     }
                 }>Continuar</Button>

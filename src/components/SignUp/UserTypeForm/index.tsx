@@ -8,12 +8,21 @@ import manWithBook from '@/assets/Assets Visuais/envato-graphic-9486d54a-4fc7-49
 import oldMan from '@/assets/Assets Visuais/envato-graphic-50c6ef61-8964-455b-8b7d-5b91e4276c82.png'
 import { Image } from "@/components/structuralComponents/Image";
 import { useState } from "react";
+import { useUserContext } from "@/contexts/userContext";
 
 export type UserType = "beneficiaria" | "doadora";
 
 export function UserTypeForm({nextStep}: {nextStep: React.Dispatch<React.SetStateAction<number>>}) {
     const [userType, setUserType] = useState<UserType>("beneficiaria");
-    
+    const {user ,setUser} = useUserContext();
+
+    const handleNextStep = (newUserType: UserType) => {
+        setUserType(newUserType)
+        const newUser = user;
+        newUser.userType = newUserType;
+        setUser(newUser)
+        nextStep((previous: number) => previous + 1)
+    }
 
     return (
         <Container classCss="">
@@ -29,15 +38,9 @@ export function UserTypeForm({nextStep}: {nextStep: React.Dispatch<React.SetStat
             </Container>
             <Container classCss={styles.buttonContainer}>
                 <Button className={styles.btn} 
-                onClick={() => {
-                    setUserType("beneficiaria")
-                    nextStep((previous: number) => previous + 1)
-                }}>Sou pessoa beneficiária</Button>
+                onClick={() => handleNextStep("beneficiaria")}>Sou pessoa beneficiária</Button>
                 <Button className={styles.btn} 
-                onClick={() => {
-                    setUserType("doadora")
-                    nextStep((previous: number) => previous + 1)
-                }}>Sou pessoa doadora</Button>
+                onClick={() => handleNextStep("doadora")}>Sou pessoa doadora</Button>
             </Container>
         </Container>
     );

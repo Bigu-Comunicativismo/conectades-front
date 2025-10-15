@@ -4,6 +4,7 @@ import { Select } from "@/components/base/select/select";
 import { Button } from "@/components/base/buttons/button";
 import styles from './LocationForm.module.css';
 import { Container } from "@/components/structuralComponents/Container";
+import { useUserContext } from "@/contexts/userContext";
 
 export interface LocationFormProps {
     nextStep: React.Dispatch<React.SetStateAction<number>>;
@@ -14,32 +15,31 @@ export function LocationForm({nextStep}: LocationFormProps) {
     type Neighborhood = {
         label: string;
         id: string;
-        supportingText: string;
     }
-
+    const { user, setUser } = useUserContext();
     const [city, setCity] = useState<string>("");
     const [neighborhood, setNeighborhood] = useState<string>("");
     const [neighborhoods, setNeighborhoods] = useState<Neighborhood[] | []>([]);
 
-        const Recife = { label: "Recife", 
-            id: "Recife", 
-            supportingText: "Recife", 
+        const Recife = { 
+            label: "Recife", 
+            id: "Recife",  
             neighborhoods: [
-                { label: "Centro", id: "Centro", supportingText: "Centro" },
-                { label: "Boa Viagem", id: "Boa Viagem", supportingText: "Boa Viagem" },
-                { label: "Coque", id: "Coque", supportingText: "Coque" },
-                { label: "Ibura", id: "Ibura", supportingText: "Ibura" },
-                { label: "Várzea", id: "Várzea", supportingText: "Várzea" },
+                { label: "Centro", id: "Centro" },
+                { label: "Boa Viagem", id: "Boa Viagem" },
+                { label: "Coque", id: "Coque" },
+                { label: "Ibura", id: "Ibura" },
+                { label: "Várzea", id: "Várzea" },
         ] }
-        const Olinda = { label: "Olinda", 
+        const Olinda = { 
+            label: "Olinda", 
             id: "Olinda", 
-            supportingText: "Olinda", 
             neighborhoods: [
-                { label: "Bairro Novo", id: "Bairro Novo", supportingText: "Bairro Novo" },
-                { label: "Peixinhos", id: "Peixinhos", supportingText: "Peixinhos" },
+                { label: "Bairro Novo", id: "Bairro Novo" },
+                { label: "Peixinhos", id: "Peixinhos" },
                 { label: "V8", id: "V8", supportingText: "V8" },
-                { label: "Fragoso", id: "Fragoso", supportingText: "Fragoso" },
-                { label: "Ouro Preto", id: "Ouro Preto", supportingText: "Ouro Preto" },
+                { label: "Fragoso", id: "Fragoso" },
+                { label: "Ouro Preto", id: "Ouro Preto" },
         ] }
 
     const cities = [
@@ -87,7 +87,12 @@ export function LocationForm({nextStep}: LocationFormProps) {
                 </Select>
                 <Button className={`${styles.btn} ${(!city || !neighborhood) ? styles.btnDesactive : ''}`}
                 isDisabled={!city || !neighborhood}
-                onClick={() => nextStep((previous: number) => previous + 1)}>Continuar</Button>
+                onClick={() => {
+                    const newUser = user;
+                    newUser.location.city = city;
+                    newUser.location.neighborhood = neighborhoods.find((previousNeighborhood) => previousNeighborhood.id === neighborhood) || {id: "", label: ""};
+                    setUser(newUser);
+                    nextStep((previous: number) => previous + 1)}}>Continuar</Button>
             </form>
         </Container>
     )
