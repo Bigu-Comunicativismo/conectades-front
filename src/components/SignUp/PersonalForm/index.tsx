@@ -12,6 +12,7 @@ import { valueMasks } from "@/utils/valueMasks";
 import styles from "./PersonalForm.module.css";
 import cloudUpload from "@/assets/Assets Visuais/envato-labs-image-edit (3).png";
 import type { LocationFormProps } from "../LocationForm";
+import { useUserContext } from "@/contexts/userContext";
 
 
 export function PersonalForm({nextStep}: LocationFormProps) {
@@ -19,6 +20,7 @@ export function PersonalForm({nextStep}: LocationFormProps) {
   const [bio, setBio] = useState("");
   const [profileImage, setProfileImage] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string>("");
+  const { user, setUser } = useUserContext();
 
   const handleClearFile = () => {
     const fileInput = document.getElementById("profileImage") as HTMLInputElement;
@@ -139,6 +141,11 @@ export function PersonalForm({nextStep}: LocationFormProps) {
           isDisabled={displayName === "" || bio === "" || profileImage === null}
           onClick={(event: FormEvent) => {
             event.preventDefault();
+            const newUser = user;
+            newUser.socialName = displayName;
+            newUser.miniBio = bio;
+            newUser.avatar = profileImage;
+            setUser(newUser);
             nextStep((previous: number) => previous + 1)         
           }}
         >
