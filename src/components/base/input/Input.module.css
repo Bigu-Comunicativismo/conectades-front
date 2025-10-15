@@ -1,0 +1,29 @@
+.input {
+    margin-top: 3.2rem;
+    margin-bottom: 0.6rem;
+}
+
+.input div {
+    border-radius: 1.2rem;
+    padding: 1rem 1.4rem;
+}
+
+.input svg {
+    width: 2rem;
+    height: 2rem;
+}
+
+.input label {
+    font-size: var(--text-sm);
+    line-height: var(--sm-line);
+    font-weight: var(--medium);
+    color: var(--gray-700);
+}
+
+
+.input span {
+    color: var(--error);
+    font-size: var(--text-sm);
+    line-height: var(--sm-line);
+    font-weight: var(--regular);
+}
