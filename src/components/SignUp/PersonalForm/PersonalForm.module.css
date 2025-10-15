@@ -3,29 +3,19 @@
     height: 10.4rem;
 }
 
-.input {
-    margin-top: 3.2rem;
-    margin-bottom: 0.6rem;
-}
-
-.input div {
-    border-radius: 1.2rem;
-    padding: 1rem 1.4rem;
-}
-
-.input label {
-    font-size: var(--text-sm);
-    line-height: var(--sm-line);
-    font-weight: var(--medium);
-    color: var(--gray-700);
-}
-
 .label {
     font-size: var(--text-sm);
     line-height: var(--sm-line);
     font-weight: var(--medium);
     color: var(--gray-700);
     margin-bottom: 1.6rem;
+}
+
+.inputError span {
+    color: var(--gray-600);
+    font-size: var(--text-sm);
+    line-height: var(--sm-line);
+    font-weight: var(--regular);
 }
 
 .textarea {
