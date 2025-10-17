@@ -24,9 +24,9 @@ interface CardProps {
   cardContribution: cardContribution;
 }
 
-export function NewCampaignCard({cardList}: {cardList: CardProps[]}) {
+export function NewCampaignCard({cardList, classCss = ''}: {cardList: CardProps[], classCss?: string}) {
     return (
-        <div className={styles.cardContainer}>
+        <div className={`${styles.cardContainer} ${classCss}`}>
           {cardList.map(card => (
             
         <Card.Root key={card.cardId}>
