@@ -19,9 +19,9 @@ interface CardProps {
   cardTag: string;
 }
 
-export function CausesCard({cardList, cardType}: {cardList: CardProps[], cardType: 'donation' | 'opportunity'}) {
+export function CausesCard({cardList, cardType, classCss = ''}: {cardList: CardProps[], cardType: 'donation' | 'opportunity', classCss?: string}) {
     return (
-        <div  className={styles.cardContainer}>
+        <div  className={`${styles.cardContainer} ${classCss}`}>
           {cardList.map(card => (
             <Card.Root key={card.cardId}>
           <Card.InforContainer cardGap='gap16'>
