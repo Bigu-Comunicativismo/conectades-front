@@ -35,7 +35,7 @@ export function NewCampaignCard({cardList}: {cardList: CardProps[]}) {
             <Card.InforContainer>
               <Badge className={styles.badge} color="purple">{card.cardTag}</Badge>
               <Card.InforContainer cardGap='gap4'>
-                <SpanText text={card.cardName}  />
+                <SpanText text={card.cardName} classCss={styles.cardTitle} />
                 <Card.IconTextContainer>
                   <Avatar size='xs' src={card.cardAuthor.authorImage} alt={`Avatar do usuário ${card.cardAuthor.authorName}`} className={styles.avatar} />
                   <Card.Author name={card.cardAuthor.authorName} />
