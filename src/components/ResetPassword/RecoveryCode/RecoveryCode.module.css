@@ -1,0 +1,41 @@
+.container {
+    margin-top: 3.2rem;
+    padding-bottom: 3.2rem;
+    margin-bottom: 4rem;
+    display: flex;
+    justify-content: center;
+}
+
+.pinSlot {
+    font-size: var(--h1);
+    line-height: var(--h1-line);
+    font-weight: var(--medium);
+    
+}
+
+.spanText {
+    font-size: var(--text-sm);
+    line-height: var(--sm-line);
+    font-weight: var(--regular);
+    color: var(--gray-600);
+}
+
+.spanLink {
+    font-weight: var(--semibold);
+    color: var(--brand-purple-700);
+}
+
+.textContainer {
+    margin-top: 0.8rem;
+}
+
+.btn {
+    width: 100%;
+    border-radius: 1.2rem;
+    padding: 1rem 1.8rem;
+    font-size: var(--text-md);
+    line-height: var(--md-line);
+    font-weight: var(--semibold);
+    color: var(--white);
+    margin-bottom: 4rem;
+}

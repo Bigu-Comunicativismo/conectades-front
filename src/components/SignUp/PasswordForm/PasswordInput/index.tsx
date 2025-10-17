@@ -2,7 +2,8 @@ import { Input } from "@/components/base/input/input"
 import { Container } from "../../../structuralComponents/Container"
 import { useState } from "react"
 import { Eye, EyeOff, Passcode } from "@untitledui/icons";
-import styles from "./PasswordInput.module.css"
+import styles from "./PasswordInput.module.css";
+import inputStyles from "@/components/base/input/Input.module.css";
 
 interface PasswordInputProps {
     inputLabel: string;
@@ -28,7 +29,7 @@ export function PasswordInput ({inputLabel, inputPlaceholder, inputValue, setInp
                     onChange={(inputValue) => {
                        setInputValue(inputValue);
                        }} 
-                    className={styles.input}
+                    className={inputStyles.input}
                     />
                     {isShowPassword ? 
                     <div className={`${styles.eyeIcon}`} 

@@ -15,7 +15,7 @@ type Neighborhood = { id: string, label: string };
 
 type Category = string;
 
-interface User {
+export interface User {
     fullname: string;
     cpf: string;
     phone: string;

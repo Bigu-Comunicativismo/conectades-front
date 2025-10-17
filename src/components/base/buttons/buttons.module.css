@@ -1,7 +1,3 @@
-.input {
-    margin-bottom: 2.4rem;
-}
-
 .btn {
     width: 100%;
     border-radius: 1.2rem;
@@ -10,19 +6,10 @@
     line-height: var(--md-line);
     font-weight: var(--semibold);
     color: var(--white);
+    margin-top: 2.4rem;
+    margin-bottom: 2.4rem;
 }
 
 .btnDesactive {
     background-color: var(--brand-purple-200);
-}
-
-.eyeOffIcon {
-    position:absolute;
-    top: 63%;
-    right: 1.6rem;
-    transform: translateY(-50%);
-}
-
-.eyeIcon {
-    top: 47%;
 }

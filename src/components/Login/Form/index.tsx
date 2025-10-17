@@ -2,6 +2,7 @@ import { Input } from "@/components/base/input/input";
 import { Container } from "@/components/structuralComponents/Container";
 import { Button } from "@/components/base/buttons/button";
 import styles from './Input.module.css';
+import inputStyles from "@/components/base/input/Input.module.css";
 import { Mail01, Passcode, Eye, EyeOff } from "@untitledui/icons";
 import { useState, type FormEvent } from "react";
 
@@ -48,7 +49,7 @@ export function LoginForm({isValidEmail, setIsValidEmail}: LoginInputProps) {
                         }
                         return 
                         }} 
-                    className={styles.input}
+                    className={`${inputStyles.input} ${styles.input}`}
                     hint={(hasEmailError && password === '') ? "Este e-mail não é válido" : passwordInvalid ? "Senha incorreta. Tente novamente ou redefina a senha." : null}
                     isInvalid={(hasEmailError && password === '') || passwordInvalid}
                     />
