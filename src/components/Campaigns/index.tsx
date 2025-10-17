@@ -44,7 +44,7 @@ export function Campaigns() {
 
     return (
         <Container classCss={styles.container}>
-            <Title.Level1 text="Doações" 
+            <Title.Level1 text="Campanhas" 
             classCss={styles.title}/>
             <Input type="text" 
             placeholder="Pesquisar" 
