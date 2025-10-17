@@ -17,10 +17,8 @@ export function BiographyForm({nextStep}: BiographyFomrProps) {
     const [fullname, setFullname] = useState("");
     const [CPF, setCPF] = useState("");
     const [phone, setPhone] = useState("");
-    const [email, setEmail] = useState("");
     const [gender, setGender] = useState<UserGender | string>("");
     const [genderList, setGenderList] = useState<UserGender[] | never>([]);
-    const [emailError, setEmailError] = useState(false);
     const [CPFError, setCPFError] = useState(false);
 
     const { user, setUser } = useUserContext();
@@ -75,23 +73,6 @@ export function BiographyForm({nextStep}: BiographyFomrProps) {
                     const maskedPhone = valueMasks.phoneMask(phone);
                     setPhone(maskedPhone)}}
                 className={`${inputStyles.input}`}/>
-                <Input id="E-mail"
-                type="email"
-                label="E-mail"
-                placeholder="Insira seu e-mail"
-                isInvalid={emailError}
-                hint={emailError ? "Insira um e-mail valido" : null}
-                value={email}
-                onChange={(email) => {
-                    if(validations.email(email)){
-                        setEmail(email)
-                        setEmailError(false)
-                    }else{
-                        setEmail(email)
-                        setEmailError(true)
-                    }
-                    return }}
-                className={`${inputStyles.input}`}/>
                 <Select label="Gênero" 
                     placeholder="Selecione seu gênero"
                     isRequired
@@ -112,15 +93,14 @@ export function BiographyForm({nextStep}: BiographyFomrProps) {
                         ))}
                 </Select>
                 <Button type="submit" 
-                className={`${styles.btn} ${(fullname === '' || CPFError || phone === '' || emailError || gender === '') && styles.btnDesactive}`}
-                isDisabled={fullname === '' || CPFError || phone === '' || emailError || gender === ''} 
+                className={`${styles.btn} ${(fullname === '' || CPFError || phone === '' || gender === '') && styles.btnDesactive}`}
+                isDisabled={fullname === '' || CPFError || phone === '' || gender === ''} 
                 onClick={
                     () => {
                         const newUser = user;
                         newUser.fullname = fullname;
                         newUser.cpf = CPF;
                         newUser.phone = phone;
-                        newUser.email = email;
                         newUser.gender = genderList.find(previousGender => previousGender.id === gender) || { id: "Outro", label: "Outro" };
                         setUser(newUser);
                         nextStep((previous: number) => previous + 1)
