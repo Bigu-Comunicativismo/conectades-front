@@ -1,0 +1,20 @@
+.title {
+    font-size: var(--h4);
+    line-height: var(--h4-line);
+    font-weight: var(--semibold);
+}
+
+.spanText {
+    font-size: var(--text-sm);
+    line-height: var(--sm-line);
+    font-weight: var(--regular);
+    color: var(--gray-600);
+
+}
+
+.spanLink {
+    font-size: var(--text-sm);
+    line-height: var(--sm-line);
+    color: var(--brand-purple-700);
+    font-weight: var(--semibold);
+}
