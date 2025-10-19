@@ -3,8 +3,6 @@
     flex-direction: row;
     gap: 0.8rem;
     overflow-x: scroll;
-    margin-left: 1.6rem;;
-    padding-right: 1.6rem;
 }
 
 .btn {
