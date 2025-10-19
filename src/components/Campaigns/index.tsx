@@ -4,6 +4,7 @@ import { Title } from "../structuralComponents/Title";
 import { Input } from "../base/input/input";
 import { SearchSm } from "@untitledui/icons";
 import { NewCampaignCard } from "../Home/Card/NewCampaign";
+import { ListFilter } from "../structuralComponents/ListFilter";
 import { type CampaignData } from "../Home/CausesSections/CampaignSection";
 import inputStyles from "../base/input/Input.module.css";
 import styles from "./Campaigns.module.css";
@@ -52,6 +53,7 @@ export function Campaigns() {
             className={`${inputStyles.input} ${styles.inputMargin}`} 
             value={searchTerm} 
             onChange={handleSearch}/>
+            <ListFilter />
             <NewCampaignCard cardList={campaignList} 
             classCss={styles.donationsContainer} />
         </Container>
