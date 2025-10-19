@@ -1,0 +1,92 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 0.8rem;
+    overflow-x: scroll;
+    margin-left: 1.6rem;;
+    padding-right: 1.6rem;
+}
+
+.btn {
+    background-color: var(--gray-100);
+    border-radius: 1.6rem;
+    padding: 0.4rem 1.2rem;
+    gap: 0.8rem;
+    font-size: var(--text-sm);
+    line-height: var(--sm-line);
+    font-weight: var(--medium);
+    color: var(--gray-900);
+    flex-shrink: 0;
+}
+
+.filterImage {
+    height: 3.2rem;
+}
+
+.filterChevron {
+    width: 2rem;
+    height: 2rem;
+}
+
+.modalBack {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.modal {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    height: fit-content;
+    background-color: var(--background);
+    border-radius: 1.6rem;
+    padding: 0 1.6rem;
+    padding-top: 4rem;
+    padding-bottom: 2.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap: 3.7rem;
+}
+
+.modalLocation [data-rac] {
+    width: 100%;
+}
+
+.modalLocation div[role=group] span p {
+    flex-shrink: 0;
+}
+
+.btnContainer {
+    width: 100%;
+    gap: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnOnlyText {
+    background-color: transparent;
+    box-shadow: none;
+    font-size: var(--text-md);
+    line-height: var(--md-line);
+    font-weight: var(--semibold);
+    color: var(--brand-purple-700);
+    border: none;
+    padding: 0;
+    margin: 0;
+}
