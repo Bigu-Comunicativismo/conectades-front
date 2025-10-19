@@ -13,7 +13,7 @@ export function ListFilter() {
     const [selectedItems, setSelectedItems] = useState<Category[] | never[]>([]);
     const [selectedLocations, setSelectedLocations] = useState<[] | never[]>([]);
     const [showLocationModal, setShowLocationModal] = useState(false);
-      const [showActionModal, setShowActionModal] = useState(false);
+    const [showActionModal, setShowActionModal] = useState(false);
       useEffect(() => {
         console.log(selectedItems, selectedLocations);
       }, [selectedItems, selectedLocations]);
