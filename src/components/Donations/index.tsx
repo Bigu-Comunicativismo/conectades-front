@@ -4,6 +4,7 @@ import { Title } from "../structuralComponents/Title";
 import { Input } from "../base/input/input";
 import { SearchSm } from "@untitledui/icons";
 import { CausesCard } from "../Home/Card/DonationAndOportunity";
+import { ListFilter } from "../structuralComponents/ListFilter";
 import type { DonationData } from "../Home/CausesSections/DonationSection";
 import inputStyles from "../base/input/Input.module.css";
 import styles from "./Donations.module.css";
@@ -52,6 +53,7 @@ export function Donations() {
             className={`${inputStyles.input} ${styles.inputMargin}`} 
             value={searchTerm} 
             onChange={handleSearch}/>
+            <ListFilter />
             <CausesCard cardList={DonationList} 
             classCss={styles.donationsContainer}
             cardType="donation" />
