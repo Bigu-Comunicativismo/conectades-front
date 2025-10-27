@@ -5,6 +5,7 @@ import { validations } from "@/utils/validations";
 import { useState, type FormEvent } from "react";
 import { FormDescription } from "../FormDescription";
 import { useUserContext } from "@/contexts/userContext";
+import { signUpUsers } from "@/utils/formSignUp";
 
 export function PasswordForm() {
     const [inputPasswordValue, setInputPasswordValue] = useState('');
@@ -24,7 +25,7 @@ export function PasswordForm() {
                     const newUser = user;
                     newUser.password = inputPasswordValue;
                     setUser(newUser);
-                    console.log(user);
+                    console.log(signUpUsers(user));
                 }}>Criar conta</Button>
         </form>
     )
