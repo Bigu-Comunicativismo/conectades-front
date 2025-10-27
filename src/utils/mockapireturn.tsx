@@ -22,13 +22,13 @@ export const mockApiReturn = {
                 title: "Equipamentos para confeitaria",
                 description: "Oi, eu sou a Luana e desde pequena sempre gostei de estar na cozinha. Aprendi a fazer bolo com a minha avó, que dizia que cozinhar era uma forma de demonstrar carinho. De lá pra cá, a confeitaria virou a minha paixão. Comecei fazendo doces para aniversários da família, depois para os amigos e, aos poucos, passei a receber encomendas pequenas do bairro. Sempre sonhei em transformar essa paixão no meu trabalho, mas a realidade financeira nunca permitiu investir como eu gostaria. Hoje, trabalho de forma improvisada, usando utensílios emprestados ou adaptados, e isso limita muito a quantidade e a qualidade da produção. Apesar disso, cada vez que entrego um bolo ou um doce e vejo o sorriso de quem recebe, tenho certeza de que é isso que quero fazer da minha vida. Agora decidi dar um passo importante: abrir a minha própria confeitaria. Quero criar um espaço onde possa trabalhar de forma profissional, produzir com mais qualidade e, quem sabe, no futuro gerar renda para minha família e até oferecer oportunidades a outras pessoas. Mas para isso, eu preciso de apoio. Não estou pedindo dinheiro, e sim ajuda para conseguir montar minha cozinha com alguns itens básicos.",
                 imageUrl: "src/assets/Assets Visuais/Frame 489.png",
-                location: "Coque, Recife",
+                location: "V8, Olinda",
                 author: {
                     id: 1,
                     name: "Luana Cruz",
                     avatarUrl: "src/assets/Assets Visuais/userwoman.png"
                 },
-                tag: "Trabalho",
+                tag: "Necessidades Básicas",
                 apoios: 7,
                 createdAt: "2023-10-01T10:00:00Z",
                 updatedAt: "2023-10-01T10:00:00Z",
