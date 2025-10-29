@@ -11,7 +11,7 @@
 import { Route as rootRouteImport } from './pages/__root'
 import { Route as TermosdeusoIndexRouteImport } from './pages/termosdeuso/index'
 import { Route as SignupIndexRouteImport } from './pages/signup/index'
-import { Route as ResetPasswordIndexRouteImport } from './pages/resetpassword/index'
+import { Route as ResetpasswordIndexRouteImport } from './pages/resetpassword/index'
 import { Route as PoliticadeprivacidadeIndexRouteImport } from './pages/politicadeprivacidade/index'
 import { Route as OpportunitiesIndexRouteImport } from './pages/opportunities/index'
 import { Route as LoginIndexRouteImport } from './pages/login/index'
@@ -33,9 +33,9 @@ const SignupIndexRoute = SignupIndexRouteImport.update({
   path: '/signup/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ResetPasswordIndexRoute = ResetPasswordIndexRouteImport.update({
-  id: '/resetPassword/',
-  path: '/resetPassword/',
+const ResetpasswordIndexRoute = ResetpasswordIndexRouteImport.update({
+  id: '/resetpassword/',
+  path: '/resetpassword/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PoliticadeprivacidadeIndexRoute =
@@ -99,7 +99,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginIndexRoute
   '/opportunities': typeof OpportunitiesIndexRoute
   '/politicadeprivacidade': typeof PoliticadeprivacidadeIndexRoute
-  '/resetPassword': typeof ResetPasswordIndexRoute
+  '/resetpassword': typeof ResetpasswordIndexRoute
   '/signup': typeof SignupIndexRoute
   '/termosdeuso': typeof TermosdeusoIndexRoute
   '/campaigns/$id': typeof CampaignsCampaignIdRoute
@@ -114,7 +114,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginIndexRoute
   '/opportunities': typeof OpportunitiesIndexRoute
   '/politicadeprivacidade': typeof PoliticadeprivacidadeIndexRoute
-  '/resetPassword': typeof ResetPasswordIndexRoute
+  '/resetpassword': typeof ResetpasswordIndexRoute
   '/signup': typeof SignupIndexRoute
   '/termosdeuso': typeof TermosdeusoIndexRoute
   '/campaigns/$id': typeof CampaignsCampaignIdRoute
@@ -130,7 +130,7 @@ export interface FileRoutesById {
   '/login/': typeof LoginIndexRoute
   '/opportunities/': typeof OpportunitiesIndexRoute
   '/politicadeprivacidade/': typeof PoliticadeprivacidadeIndexRoute
-  '/resetPassword/': typeof ResetPasswordIndexRoute
+  '/resetpassword/': typeof ResetpasswordIndexRoute
   '/signup/': typeof SignupIndexRoute
   '/termosdeuso/': typeof TermosdeusoIndexRoute
   '/campaigns/_Campaign/$id': typeof CampaignsCampaignIdRoute
@@ -147,7 +147,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/opportunities'
     | '/politicadeprivacidade'
-    | '/resetPassword'
+    | '/resetpassword'
     | '/signup'
     | '/termosdeuso'
     | '/campaigns/$id'
@@ -162,7 +162,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/opportunities'
     | '/politicadeprivacidade'
-    | '/resetPassword'
+    | '/resetpassword'
     | '/signup'
     | '/termosdeuso'
     | '/campaigns/$id'
@@ -177,7 +177,7 @@ export interface FileRouteTypes {
     | '/login/'
     | '/opportunities/'
     | '/politicadeprivacidade/'
-    | '/resetPassword/'
+    | '/resetpassword/'
     | '/signup/'
     | '/termosdeuso/'
     | '/campaigns/_Campaign/$id'
@@ -193,7 +193,7 @@ export interface RootRouteChildren {
   LoginIndexRoute: typeof LoginIndexRoute
   OpportunitiesIndexRoute: typeof OpportunitiesIndexRoute
   PoliticadeprivacidadeIndexRoute: typeof PoliticadeprivacidadeIndexRoute
-  ResetPasswordIndexRoute: typeof ResetPasswordIndexRoute
+  ResetpasswordIndexRoute: typeof ResetpasswordIndexRoute
   SignupIndexRoute: typeof SignupIndexRoute
   TermosdeusoIndexRoute: typeof TermosdeusoIndexRoute
   CampaignsCampaignIdRoute: typeof CampaignsCampaignIdRoute
@@ -217,11 +217,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SignupIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/resetPassword/': {
-      id: '/resetPassword/'
-      path: '/resetPassword'
-      fullPath: '/resetPassword'
-      preLoaderRoute: typeof ResetPasswordIndexRouteImport
+    '/resetpassword/': {
+      id: '/resetpassword/'
+      path: '/resetpassword'
+      fullPath: '/resetpassword'
+      preLoaderRoute: typeof ResetpasswordIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/politicadeprivacidade/': {
@@ -305,7 +305,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoginIndexRoute: LoginIndexRoute,
   OpportunitiesIndexRoute: OpportunitiesIndexRoute,
   PoliticadeprivacidadeIndexRoute: PoliticadeprivacidadeIndexRoute,
-  ResetPasswordIndexRoute: ResetPasswordIndexRoute,
+  ResetpasswordIndexRoute: ResetpasswordIndexRoute,
   SignupIndexRoute: SignupIndexRoute,
   TermosdeusoIndexRoute: TermosdeusoIndexRoute,
   CampaignsCampaignIdRoute: CampaignsCampaignIdRoute,
