@@ -22,6 +22,12 @@ import type { updatePost } from "@/components/Campaign/Tabs/Updates/UpdatePost";
 import { ButtonGroupFloating } from "@/components/structuralComponents/ButtonGroupFloating";
 import { useEffect, useRef, useState } from "react";
 
+import { createFileRoute } from "@tanstack/react-router";
+
+export const Route = createFileRoute('/campaigns/_Campaign/$id')({
+    component: Campaign,
+});
+
 
    const campaign = {
     id: mockApiReturn.data.campanhas[0].id,
@@ -34,7 +40,7 @@ import { useEffect, useRef, useState } from "react";
   const causeOneOrganization: User[] = [
     {
     name: "Luana Cruz",
-    avatar:"src/assets/Assets Visuais/user.png",
+    avatar:"../src/assets/Assets Visuais/user.png",
     url: "https://google.com",
     location: "Coque, Recife",
     type: "Pessoa organizadora",
@@ -56,7 +62,7 @@ const causeOneSupports: Contribuition[] = [
     message: "Todo sucesso na sua trajetória, Luana!",
     user: {
       name: "Fernanda A.",
-      avatar:"src/assets/Assets Visuais/user.png",
+      avatar:"../src/assets/Assets Visuais/user.png",
       url: "https://google.com",
       location: "Coque, Recife",
       type: "Pessoa organizadora",
@@ -75,7 +81,7 @@ const updatePosts: updatePost[] = [
     id: 1,
     date: "27/08/2025",
     image: {
-      url: "src/assets/Assets Visuais/bolo2.png",
+      url: "../src/assets/Assets Visuais/bolo2.png",
       alternateText: "Bolo de aniversário"
     },
     text: "Consegui fazer o meu primeiro bolo, graças ao apoio de vocês!"

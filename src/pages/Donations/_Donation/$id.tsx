@@ -7,7 +7,7 @@ import { Title } from "@/components/structuralComponents/Title";
 import { Card } from "@/components/structuralComponents/Card";
 import { Paragraph } from "@/components/structuralComponents/Paragraph";
 import { MarkerPin01 } from "@untitledui/icons";
-import styles from "../Campaign/Campaign.module.css";
+import styles from "@/pages/campaigns/_Campaign/Campaign.module.css";
 import dStyles from "./Donation.module.css";
 import boleira from "@/assets/Assets Visuais/Frame 489.png"
 import { TabNav } from "@/components/Campaign/TabNav";
@@ -22,6 +22,12 @@ import type { updatePost } from "@/components/Campaign/Tabs/Updates/UpdatePost";
 import { ButtonGroupFloating } from "@/components/structuralComponents/ButtonGroupFloating";
 import { useEffect, useRef, useState } from "react";
 
+import { createFileRoute } from "@tanstack/react-router";
+
+export const Route = createFileRoute('/donations/_Donation/$id')({
+    component: Donation,
+});
+
 
    const donation = {
     id: mockApiReturn.data.doacoes[0].id,
@@ -34,7 +40,7 @@ import { useEffect, useRef, useState } from "react";
   const causeOneOrganization: User[] = [
     {
     name: "Luana Cruz",
-    avatar:"src/assets/Assets Visuais/user.png",
+    avatar:"../src/assets/Assets Visuais/user.png",
     url: "https://google.com",
     location: "Coque, Recife",
     type: "Pessoa organizadora",
@@ -56,7 +62,7 @@ const causeOneSupports: Contribuition[] = [
     message: "Todo sucesso na sua trajetória, Luana!",
     user: {
       name: "Fernanda A.",
-      avatar:"src/assets/Assets Visuais/user.png",
+      avatar:"../src/assets/Assets Visuais/user.png",
       url: "https://google.com",
       location: "Coque, Recife",
       type: "Pessoa organizadora",
@@ -75,7 +81,7 @@ const updatePosts: updatePost[] = [
     id: 1,
     date: "27/08/2025",
     image: {
-      url: "src/assets/Assets Visuais/bolo2.png",
+      url: "../src/assets/Assets Visuais/bolo2.png",
       alternateText: "Bolo de aniversário"
     },
     text: "Consegui fazer o meu primeiro bolo, graças ao apoio de vocês!"
@@ -88,7 +94,6 @@ const updatePosts: updatePost[] = [
 ]
 
 export function Donation() {
-  
   const {activeItem} = useTabContext();
   const [isOnFocus, setIsOnFocus] = useState(true);
   const activeSection = useRef<HTMLDivElement>(null);

@@ -13,7 +13,11 @@ import { Route as SignupIndexRouteImport } from './pages/signup/index'
 import { Route as ResetPasswordIndexRouteImport } from './pages/resetPassword/index'
 import { Route as LoginIndexRouteImport } from './pages/login/index'
 import { Route as ErrorIndexRouteImport } from './pages/error/index'
+import { Route as DonationsIndexRouteImport } from './pages/donations/index'
+import { Route as CampaignsIndexRouteImport } from './pages/campaigns/index'
 import { Route as HomeIndexRouteImport } from './pages/_Home/index'
+import { Route as DonationsDonationIdRouteImport } from './pages/donations/_Donation/$id'
+import { Route as CampaignsCampaignIdRouteImport } from './pages/campaigns/_Campaign/$id'
 
 const SignupIndexRoute = SignupIndexRouteImport.update({
   id: '/signup/',
@@ -35,54 +39,112 @@ const ErrorIndexRoute = ErrorIndexRouteImport.update({
   path: '/error/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DonationsIndexRoute = DonationsIndexRouteImport.update({
+  id: '/donations/',
+  path: '/donations/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CampaignsIndexRoute = CampaignsIndexRouteImport.update({
+  id: '/campaigns/',
+  path: '/campaigns/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HomeIndexRoute = HomeIndexRouteImport.update({
   id: '/_Home/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DonationsDonationIdRoute = DonationsDonationIdRouteImport.update({
+  id: '/donations/_Donation/$id',
+  path: '/donations/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CampaignsCampaignIdRoute = CampaignsCampaignIdRouteImport.update({
+  id: '/campaigns/_Campaign/$id',
+  path: '/campaigns/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof HomeIndexRoute
+  '/campaigns': typeof CampaignsIndexRoute
+  '/donations': typeof DonationsIndexRoute
   '/error': typeof ErrorIndexRoute
   '/login': typeof LoginIndexRoute
   '/resetPassword': typeof ResetPasswordIndexRoute
   '/signup': typeof SignupIndexRoute
+  '/campaigns/$id': typeof CampaignsCampaignIdRoute
+  '/donations/$id': typeof DonationsDonationIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof HomeIndexRoute
+  '/campaigns': typeof CampaignsIndexRoute
+  '/donations': typeof DonationsIndexRoute
   '/error': typeof ErrorIndexRoute
   '/login': typeof LoginIndexRoute
   '/resetPassword': typeof ResetPasswordIndexRoute
   '/signup': typeof SignupIndexRoute
+  '/campaigns/$id': typeof CampaignsCampaignIdRoute
+  '/donations/$id': typeof DonationsDonationIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_Home/': typeof HomeIndexRoute
+  '/campaigns/': typeof CampaignsIndexRoute
+  '/donations/': typeof DonationsIndexRoute
   '/error/': typeof ErrorIndexRoute
   '/login/': typeof LoginIndexRoute
   '/resetPassword/': typeof ResetPasswordIndexRoute
   '/signup/': typeof SignupIndexRoute
+  '/campaigns/_Campaign/$id': typeof CampaignsCampaignIdRoute
+  '/donations/_Donation/$id': typeof DonationsDonationIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/error' | '/login' | '/resetPassword' | '/signup'
+  fullPaths:
+    | '/'
+    | '/campaigns'
+    | '/donations'
+    | '/error'
+    | '/login'
+    | '/resetPassword'
+    | '/signup'
+    | '/campaigns/$id'
+    | '/donations/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/error' | '/login' | '/resetPassword' | '/signup'
+  to:
+    | '/'
+    | '/campaigns'
+    | '/donations'
+    | '/error'
+    | '/login'
+    | '/resetPassword'
+    | '/signup'
+    | '/campaigns/$id'
+    | '/donations/$id'
   id:
     | '__root__'
     | '/_Home/'
+    | '/campaigns/'
+    | '/donations/'
     | '/error/'
     | '/login/'
     | '/resetPassword/'
     | '/signup/'
+    | '/campaigns/_Campaign/$id'
+    | '/donations/_Donation/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   HomeIndexRoute: typeof HomeIndexRoute
+  CampaignsIndexRoute: typeof CampaignsIndexRoute
+  DonationsIndexRoute: typeof DonationsIndexRoute
   ErrorIndexRoute: typeof ErrorIndexRoute
   LoginIndexRoute: typeof LoginIndexRoute
   ResetPasswordIndexRoute: typeof ResetPasswordIndexRoute
   SignupIndexRoute: typeof SignupIndexRoute
+  CampaignsCampaignIdRoute: typeof CampaignsCampaignIdRoute
+  DonationsDonationIdRoute: typeof DonationsDonationIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -115,6 +177,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ErrorIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/donations/': {
+      id: '/donations/'
+      path: '/donations'
+      fullPath: '/donations'
+      preLoaderRoute: typeof DonationsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/campaigns/': {
+      id: '/campaigns/'
+      path: '/campaigns'
+      fullPath: '/campaigns'
+      preLoaderRoute: typeof CampaignsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_Home/': {
       id: '/_Home/'
       path: '/'
@@ -122,15 +198,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/donations/_Donation/$id': {
+      id: '/donations/_Donation/$id'
+      path: '/donations/$id'
+      fullPath: '/donations/$id'
+      preLoaderRoute: typeof DonationsDonationIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/campaigns/_Campaign/$id': {
+      id: '/campaigns/_Campaign/$id'
+      path: '/campaigns/$id'
+      fullPath: '/campaigns/$id'
+      preLoaderRoute: typeof CampaignsCampaignIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   HomeIndexRoute: HomeIndexRoute,
+  CampaignsIndexRoute: CampaignsIndexRoute,
+  DonationsIndexRoute: DonationsIndexRoute,
   ErrorIndexRoute: ErrorIndexRoute,
   LoginIndexRoute: LoginIndexRoute,
   ResetPasswordIndexRoute: ResetPasswordIndexRoute,
   SignupIndexRoute: SignupIndexRoute,
+  CampaignsCampaignIdRoute: CampaignsCampaignIdRoute,
+  DonationsDonationIdRoute: DonationsDonationIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -56,7 +56,7 @@ export function Donations() {
             <ListFilter />
             <CausesCard cardList={DonationList} 
             classCss={styles.donationsContainer}
-            cardType="donation" />
+            cardType="donations" />
         </Container>
     );
 }

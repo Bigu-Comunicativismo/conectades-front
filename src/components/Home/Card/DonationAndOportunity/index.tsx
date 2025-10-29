@@ -20,7 +20,7 @@ interface CardProps {
   cardTag: string;
 }
 
-export function CausesCard({cardList, cardType}: {cardList: CardProps[], cardType: 'donations' | 'opportunities'}) {
+export function CausesCard({cardList, cardType, classCss = ''}: {cardList: CardProps[], cardType: 'donations' | 'opportunities', classCss?: string}) {
     return (
         <div  className={`${styles.cardContainer} ${classCss}`}>
           {cardList.map(card => (

@@ -5,8 +5,8 @@ import { Title } from "@/components/structuralComponents/Title";
 import styles from "./Login.module.css";
 import spanStyles from "@/components/SignUp/EmailCheck/EmailCheck.module.css";
 import { LoginForm } from "@/components/Login/Form";
-import { createFileRoute, Link } from "@tanstack/react-router";
 import { SpanText } from "@/components/structuralComponents/SpanText";
+import { Link, createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute('/login/')({
   component: Login,
