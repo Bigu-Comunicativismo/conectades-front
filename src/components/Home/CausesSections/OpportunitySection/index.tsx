@@ -48,8 +48,8 @@ export function OpportunitySection() {
     }, []);
 
     return (
-        <CausesSectionsContainer causeContainerAriaName="Oportunidades" causeTitle="Oportunidades" causeCallMessage="Veja as oportunidades disponíveis na Conectades" causeUrl="/oportunidades">
-            <CausesCard cardList={OpportunityList} cardType='opportunity' />
+        <CausesSectionsContainer causeContainerAriaName="Oportunidades" causeTitle="Oportunidades" causeCallMessage="Veja as oportunidades disponíveis na Conectades" causeUrl="/opportunities">
+            <CausesCard cardList={OpportunityList} cardType='opportunities' />
         </CausesSectionsContainer>
     )
 };

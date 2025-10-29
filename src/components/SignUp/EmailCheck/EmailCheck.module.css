@@ -1,3 +1,7 @@
+.container {
+    padding: 4rem 0;
+}
+
 .title {
     font-size: var(--h4);
     line-height: var(--h4-line);

@@ -2,6 +2,7 @@ import styles from './Footer.module.css';
 import { FooterLarge01 as UntitledFooter } from '../marketing/footers/footer-large-01';
 import { Logo } from '../structuralComponents/Logo';
 import { Button } from '../base/buttons/button';
+import { Link } from '@tanstack/react-router';
 
 const footerNavList = [
     {
@@ -9,19 +10,19 @@ const footerNavList = [
         items: [
             {
                 label: "Sobre a Bigu",
-                href: "#",
+                href: "/quemsomos#sobreabigu",
             },
             {
                 label: "Sobre a Plataforma",
-                href: "#",
+                href: "/quemsomos#sobreaplataforma",
             },
             {
                 label: "Como Funciona",
-                href: "#",
+                href: "/quemsomos#como-funciona",
             },
             {
                 label: "Contato",
-                href: "#",
+                href: "/quemsomos#contato",
             },
         ],
     },
@@ -88,31 +89,6 @@ const footerNavList = [
             },
         ],
     },
-    {
-        label: "Informe-se",
-        items: [
-            {
-                label: "PCD+",
-                href: "#",
-            },
-            {
-                label: "Débitos e Orientações",
-                href: "#",
-            },
-            {
-                label: "Gênero",
-                href: "#",
-            },
-            {
-                label: "POP LGBTQIA+",
-                href: "#",
-            },
-            {
-                label: "FAQ",
-                href: "#",
-            },
-        ],
-    },
 ];
 
 export function Footer() {
@@ -123,8 +99,8 @@ export function Footer() {
                     <Logo />
                 </div>
                 <div className={styles.privacyLinksContainer}>
-                    <Button color="link-gray" size="lg" className={`gap-1 ${styles.privacyLinks}`} href="politicadeprivacidade">Política de privacidade</Button>
-                    <Button color="link-gray" size="lg" className={`gap-1 ${styles.privacyLinks}`} href="/termosdeuso">Termos de uso</Button>
+                    <Link to='/termosdeuso' ><Button color="link-gray" size="lg" className={`gap-1 ${styles.privacyLinks}`} >Termos de uso</Button></Link>
+                    <Link to='/politicadeprivacidade' ><Button color="link-gray" size="lg" className={`gap-1 ${styles.privacyLinks}`} >Política de privacidade</Button></Link>
                 </div>
             </UntitledFooter>
         </>

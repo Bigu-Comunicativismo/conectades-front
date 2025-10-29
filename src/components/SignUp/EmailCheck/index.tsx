@@ -11,6 +11,7 @@ import { type LocationFormProps as EmailCheckFormProps } from "../LocationForm";
 import inputStyles from "@/components/base/input/Input.module.css";
 import buttonStyles from "@/components/base/buttons/buttons.module.css";
 import styles from "./EmailCheck.module.css";
+import { Link } from "@tanstack/react-router";
 
 
 export function EmailCheck({nextStep}: EmailCheckFormProps) {
@@ -35,11 +36,11 @@ export function EmailCheck({nextStep}: EmailCheckFormProps) {
     }
 
     return (
-        <Container classCss="">
+        <Container classCss={styles.container}>
             <Title.Level1 text="Insira um e-mail para começar o cadastro!" classCss={styles.title}/>
             <Container classCss="">
                 <SpanText text="Já tem uma conta? " classCss={styles.spanText}/>
-                <SpanText text="Entrar" classCss={styles.spanLink}/>
+                <Link to="/login"><SpanText text="Entrar" classCss={styles.spanLink}/></Link>
             </Container>
             <Input id="E-mail"
                 type="email"

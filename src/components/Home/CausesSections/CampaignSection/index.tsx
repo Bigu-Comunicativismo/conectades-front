@@ -47,7 +47,7 @@ export function CampaignSection() {
     }, []);
 
     return (
-        <CausesSectionsContainer causeContainerAriaName="Novas campanhas" causeTitle="Novas campanhas" causeCallMessage="Confira as últimas campanhas criadas" causeUrl="/campanhas">
+        <CausesSectionsContainer causeContainerAriaName="Novas campanhas" causeTitle="Novas campanhas" causeCallMessage="Confira as últimas campanhas criadas" causeUrl="/campaigns">
             <NewCampaignCard cardList={CampaignList} />
         </CausesSectionsContainer>
     )

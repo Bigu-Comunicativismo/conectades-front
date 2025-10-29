@@ -12,7 +12,7 @@ export function JoinUs() {
       <Paragraph text="Entre na rede de apoio e solidariedade que é a Conectades." size="lg" weight="regular"/>
       <form className={`flex flex-row w-full ${styles.form}`}>
           <Input type="email" placeholder="E-mail" size="md" className={styles.input}/>
-          <Button type="submit" color="primary" className={styles.btn}>Criar conta</Button>
+          <Button type="button" color="primary" className={styles.btn}>Criar conta</Button>
       </form>
     </Container>
   );

@@ -47,8 +47,8 @@ export function DonationSection() {
     }, []);
 
     return (
-        <CausesSectionsContainer causeContainerAriaName="Novas doações" causeTitle="Novas doações" causeCallMessage="Veja as novas doações criadas" causeUrl="/doacoes">
-            <CausesCard cardList={DonationList} cardType='donation' />
+        <CausesSectionsContainer causeContainerAriaName="Novas doações" causeTitle="Novas doações" causeCallMessage="Veja as novas doações criadas" causeUrl="/donations">
+            <CausesCard cardList={DonationList} cardType='donations' />
         </CausesSectionsContainer>
     )
 };
