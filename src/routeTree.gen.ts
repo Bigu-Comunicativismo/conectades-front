@@ -9,16 +9,25 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './pages/__root'
+import { Route as TermosdeusoIndexRouteImport } from './pages/termosdeuso/index'
 import { Route as SignupIndexRouteImport } from './pages/signup/index'
 import { Route as ResetPasswordIndexRouteImport } from './pages/resetPassword/index'
+import { Route as PoliticadeprivacidadeIndexRouteImport } from './pages/politicadeprivacidade/index'
+import { Route as OpportunitiesIndexRouteImport } from './pages/opportunities/index'
 import { Route as LoginIndexRouteImport } from './pages/login/index'
 import { Route as ErrorIndexRouteImport } from './pages/error/index'
 import { Route as DonationsIndexRouteImport } from './pages/donations/index'
 import { Route as CampaignsIndexRouteImport } from './pages/campaigns/index'
 import { Route as HomeIndexRouteImport } from './pages/_Home/index'
+import { Route as OpportunitiesOpportunityIdRouteImport } from './pages/opportunities/_Opportunity/$id'
 import { Route as DonationsDonationIdRouteImport } from './pages/donations/_Donation/$id'
 import { Route as CampaignsCampaignIdRouteImport } from './pages/campaigns/_Campaign/$id'
 
+const TermosdeusoIndexRoute = TermosdeusoIndexRouteImport.update({
+  id: '/termosdeuso/',
+  path: '/termosdeuso/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SignupIndexRoute = SignupIndexRouteImport.update({
   id: '/signup/',
   path: '/signup/',
@@ -27,6 +36,17 @@ const SignupIndexRoute = SignupIndexRouteImport.update({
 const ResetPasswordIndexRoute = ResetPasswordIndexRouteImport.update({
   id: '/resetPassword/',
   path: '/resetPassword/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoliticadeprivacidadeIndexRoute =
+  PoliticadeprivacidadeIndexRouteImport.update({
+    id: '/politicadeprivacidade/',
+    path: '/politicadeprivacidade/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const OpportunitiesIndexRoute = OpportunitiesIndexRouteImport.update({
+  id: '/opportunities/',
+  path: '/opportunities/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginIndexRoute = LoginIndexRouteImport.update({
@@ -54,6 +74,12 @@ const HomeIndexRoute = HomeIndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OpportunitiesOpportunityIdRoute =
+  OpportunitiesOpportunityIdRouteImport.update({
+    id: '/opportunities/_Opportunity/$id',
+    path: '/opportunities/$id',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const DonationsDonationIdRoute = DonationsDonationIdRouteImport.update({
   id: '/donations/_Donation/$id',
   path: '/donations/$id',
@@ -71,10 +97,14 @@ export interface FileRoutesByFullPath {
   '/donations': typeof DonationsIndexRoute
   '/error': typeof ErrorIndexRoute
   '/login': typeof LoginIndexRoute
+  '/opportunities': typeof OpportunitiesIndexRoute
+  '/politicadeprivacidade': typeof PoliticadeprivacidadeIndexRoute
   '/resetPassword': typeof ResetPasswordIndexRoute
   '/signup': typeof SignupIndexRoute
+  '/termosdeuso': typeof TermosdeusoIndexRoute
   '/campaigns/$id': typeof CampaignsCampaignIdRoute
   '/donations/$id': typeof DonationsDonationIdRoute
+  '/opportunities/$id': typeof OpportunitiesOpportunityIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof HomeIndexRoute
@@ -82,10 +112,14 @@ export interface FileRoutesByTo {
   '/donations': typeof DonationsIndexRoute
   '/error': typeof ErrorIndexRoute
   '/login': typeof LoginIndexRoute
+  '/opportunities': typeof OpportunitiesIndexRoute
+  '/politicadeprivacidade': typeof PoliticadeprivacidadeIndexRoute
   '/resetPassword': typeof ResetPasswordIndexRoute
   '/signup': typeof SignupIndexRoute
+  '/termosdeuso': typeof TermosdeusoIndexRoute
   '/campaigns/$id': typeof CampaignsCampaignIdRoute
   '/donations/$id': typeof DonationsDonationIdRoute
+  '/opportunities/$id': typeof OpportunitiesOpportunityIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -94,10 +128,14 @@ export interface FileRoutesById {
   '/donations/': typeof DonationsIndexRoute
   '/error/': typeof ErrorIndexRoute
   '/login/': typeof LoginIndexRoute
+  '/opportunities/': typeof OpportunitiesIndexRoute
+  '/politicadeprivacidade/': typeof PoliticadeprivacidadeIndexRoute
   '/resetPassword/': typeof ResetPasswordIndexRoute
   '/signup/': typeof SignupIndexRoute
+  '/termosdeuso/': typeof TermosdeusoIndexRoute
   '/campaigns/_Campaign/$id': typeof CampaignsCampaignIdRoute
   '/donations/_Donation/$id': typeof DonationsDonationIdRoute
+  '/opportunities/_Opportunity/$id': typeof OpportunitiesOpportunityIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -107,10 +145,14 @@ export interface FileRouteTypes {
     | '/donations'
     | '/error'
     | '/login'
+    | '/opportunities'
+    | '/politicadeprivacidade'
     | '/resetPassword'
     | '/signup'
+    | '/termosdeuso'
     | '/campaigns/$id'
     | '/donations/$id'
+    | '/opportunities/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -118,10 +160,14 @@ export interface FileRouteTypes {
     | '/donations'
     | '/error'
     | '/login'
+    | '/opportunities'
+    | '/politicadeprivacidade'
     | '/resetPassword'
     | '/signup'
+    | '/termosdeuso'
     | '/campaigns/$id'
     | '/donations/$id'
+    | '/opportunities/$id'
   id:
     | '__root__'
     | '/_Home/'
@@ -129,10 +175,14 @@ export interface FileRouteTypes {
     | '/donations/'
     | '/error/'
     | '/login/'
+    | '/opportunities/'
+    | '/politicadeprivacidade/'
     | '/resetPassword/'
     | '/signup/'
+    | '/termosdeuso/'
     | '/campaigns/_Campaign/$id'
     | '/donations/_Donation/$id'
+    | '/opportunities/_Opportunity/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -141,14 +191,25 @@ export interface RootRouteChildren {
   DonationsIndexRoute: typeof DonationsIndexRoute
   ErrorIndexRoute: typeof ErrorIndexRoute
   LoginIndexRoute: typeof LoginIndexRoute
+  OpportunitiesIndexRoute: typeof OpportunitiesIndexRoute
+  PoliticadeprivacidadeIndexRoute: typeof PoliticadeprivacidadeIndexRoute
   ResetPasswordIndexRoute: typeof ResetPasswordIndexRoute
   SignupIndexRoute: typeof SignupIndexRoute
+  TermosdeusoIndexRoute: typeof TermosdeusoIndexRoute
   CampaignsCampaignIdRoute: typeof CampaignsCampaignIdRoute
   DonationsDonationIdRoute: typeof DonationsDonationIdRoute
+  OpportunitiesOpportunityIdRoute: typeof OpportunitiesOpportunityIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/termosdeuso/': {
+      id: '/termosdeuso/'
+      path: '/termosdeuso'
+      fullPath: '/termosdeuso'
+      preLoaderRoute: typeof TermosdeusoIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/signup/': {
       id: '/signup/'
       path: '/signup'
@@ -161,6 +222,20 @@ declare module '@tanstack/react-router' {
       path: '/resetPassword'
       fullPath: '/resetPassword'
       preLoaderRoute: typeof ResetPasswordIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/politicadeprivacidade/': {
+      id: '/politicadeprivacidade/'
+      path: '/politicadeprivacidade'
+      fullPath: '/politicadeprivacidade'
+      preLoaderRoute: typeof PoliticadeprivacidadeIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/opportunities/': {
+      id: '/opportunities/'
+      path: '/opportunities'
+      fullPath: '/opportunities'
+      preLoaderRoute: typeof OpportunitiesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login/': {
@@ -198,6 +273,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/opportunities/_Opportunity/$id': {
+      id: '/opportunities/_Opportunity/$id'
+      path: '/opportunities/$id'
+      fullPath: '/opportunities/$id'
+      preLoaderRoute: typeof OpportunitiesOpportunityIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/donations/_Donation/$id': {
       id: '/donations/_Donation/$id'
       path: '/donations/$id'
@@ -221,10 +303,14 @@ const rootRouteChildren: RootRouteChildren = {
   DonationsIndexRoute: DonationsIndexRoute,
   ErrorIndexRoute: ErrorIndexRoute,
   LoginIndexRoute: LoginIndexRoute,
+  OpportunitiesIndexRoute: OpportunitiesIndexRoute,
+  PoliticadeprivacidadeIndexRoute: PoliticadeprivacidadeIndexRoute,
   ResetPasswordIndexRoute: ResetPasswordIndexRoute,
   SignupIndexRoute: SignupIndexRoute,
+  TermosdeusoIndexRoute: TermosdeusoIndexRoute,
   CampaignsCampaignIdRoute: CampaignsCampaignIdRoute,
   DonationsDonationIdRoute: DonationsDonationIdRoute,
+  OpportunitiesOpportunityIdRoute: OpportunitiesOpportunityIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
