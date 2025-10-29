@@ -10,19 +10,19 @@ const footerNavList = [
         items: [
             {
                 label: "Sobre a Bigu",
-                href: "/quemsomos#sobreabigu",
+                href: "/aboutus#sobreabigu",
             },
             {
                 label: "Sobre a Plataforma",
-                href: "/quemsomos#sobreaplataforma",
+                href: "/aboutus#sobreaplataforma",
             },
             {
                 label: "Como Funciona",
-                href: "/quemsomos#como-funciona",
+                href: "/aboutus#como-funciona",
             },
             {
                 label: "Contato",
-                href: "/quemsomos#contato",
+                href: "/aboutus#contato",
             },
         ],
     },
@@ -31,19 +31,19 @@ const footerNavList = [
         items: [
             {
                 label: "Saúde e Bem-estar",
-                href: "#",
+                href: "/donations",
             },
             {
                 label: "Jurídico e Direitos",
-                href: "#",
+                href: "/donations",
             },
             {
                 label: "Educação e Capacitação",
-                href: "#",
+                href: "/donations",
             },
             {
                 label: "Outros",
-                href: "#",
+                href: "/donations",
             },
         ],
     },
@@ -52,27 +52,27 @@ const footerNavList = [
         items: [
             {
                 label: "Saúde e Bem-estar",
-                href: "#",
+                href: "/campaigns",
             },
             {
                 label: "Gênero e Sexualidade",
-                href: "#",
+                href: "/campaigns",
             },
             {
                 label: "Cultura e Comunidade",
-                href: "#",
+                href: "/campaigns",
             },
             {
                 label: "Necessidades Básicas",
-                href: "#",
+                href: "/campaigns",
             },
             {
                 label: "Trabalho",
-                href: "#",
+                href: "/campaigns",
             },
             {
                 label: "Outros",
-                href: "#",
+                href: "/campaigns",
             },
         ],
     },
@@ -81,11 +81,11 @@ const footerNavList = [
         items: [
             {
                 label: "Cursos",
-                href: "#",
+                href: "/cursos",
             },
             {
                 label: "Vagas de Emprego",
-                href: "#",
+                href: "/vagas",
             },
         ],
     },
