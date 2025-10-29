@@ -11,7 +11,7 @@
 import { Route as rootRouteImport } from './pages/__root'
 import { Route as TermosdeusoIndexRouteImport } from './pages/termosdeuso/index'
 import { Route as SignupIndexRouteImport } from './pages/signup/index'
-import { Route as ResetPasswordIndexRouteImport } from './pages/resetPassword/index'
+import { Route as ResetPasswordIndexRouteImport } from './pages/resetpassword/index'
 import { Route as PoliticadeprivacidadeIndexRouteImport } from './pages/politicadeprivacidade/index'
 import { Route as OpportunitiesIndexRouteImport } from './pages/opportunities/index'
 import { Route as LoginIndexRouteImport } from './pages/login/index'
