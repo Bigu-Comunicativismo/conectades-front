@@ -6,6 +6,12 @@ import { Image } from "@/components/structuralComponents/Image";
 import styles from "./LoginError.module.css";
 import error from "@/assets/Assets Visuais/envato-graphic-b3f22aec-976e-43f6-ba2d-0191a81e4e97 1.png";
 
+import { createFileRoute } from "@tanstack/react-router";
+
+export const Route = createFileRoute('/error/')({
+    component: LoginError,
+});
+
 export function LoginError() {
     return (
         <Container classCss={styles.container}>

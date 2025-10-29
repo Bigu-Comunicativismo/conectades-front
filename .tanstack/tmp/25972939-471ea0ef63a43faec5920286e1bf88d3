@@ -13,7 +13,11 @@ import { AboutConectades } from '@/components/Home/AboutConectades';
 import { JoinUs } from '@/components/Home/JoinUs';
 import peoples from '@/assets/Assets Visuais/envato-graphic-68c24836-04d4-4367-ab44-3a32e067a11b.png';
 import styles from './Home.module.css';
+import { createFileRoute } from '@tanstack/react-router';
 
+export const Route = createFileRoute('/Home/')({
+  component: Home,
+});
 
 export function Home() {
   return (
