@@ -22,7 +22,7 @@ interface CardProps {
 
 export function CausesCard({cardList, cardType}: {cardList: CardProps[], cardType: 'donations' | 'opportunities'}) {
     return (
-        <div  className={styles.cardContainer}>
+        <div  className={`${styles.cardContainer} ${classCss}`}>
           {cardList.map(card => (
             <Link to={`/${cardType}/$id`} key={card.cardId} params={{ id: String(card.cardId) }}>
               <Card.Root key={card.cardId}>

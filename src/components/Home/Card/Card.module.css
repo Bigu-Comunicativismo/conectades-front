@@ -10,6 +10,13 @@
     font-weight: var(--bold);
 }
 
+.cardTitle {
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .foto{
     height: 125px;
     width: 100%;
