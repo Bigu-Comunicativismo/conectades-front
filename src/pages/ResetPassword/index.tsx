@@ -5,7 +5,7 @@ import { Section } from "@/components/structuralComponents/Section";
 
 import { createFileRoute } from '@tanstack/react-router';
 
-export const Route = createFileRoute('/resetPassword/')({
+export const Route = createFileRoute('/resetpassword/')({
   component: ResetPassword,
 });
 
