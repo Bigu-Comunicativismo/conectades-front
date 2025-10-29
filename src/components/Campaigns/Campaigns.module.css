@@ -1,0 +1,22 @@
+.container {
+    margin-bottom: 7.6rem;
+}
+
+.donationsContainer {
+    flex-direction: column;
+
+    div[aria-label="Card Component"] {
+        width: 100%;
+    }
+}
+
+.title {
+    font-size: var(--h4);
+    line-height: var(--h4-line);
+    font-weight: var(--semibold);
+    color: var(--gray-900);
+}
+
+.inputMargin {
+    margin-top: 2.4rem;
+}

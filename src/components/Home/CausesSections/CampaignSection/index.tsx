@@ -8,7 +8,7 @@ type Author = {
     authorImage: string;
 }
 
-interface CampaignData {
+export interface CampaignData {
     cardId: number;
     cardName: string;
     cardImage: string; 

@@ -15,23 +15,23 @@ export function ListFilter() {
     const [showLocationModal, setShowLocationModal] = useState(false);
     const [showActionModal, setShowActionModal] = useState(false);
       useEffect(() => {
-        console.log(selectedItems, selectedLocations);
+        
       }, [selectedItems, selectedLocations]);
     return (
         <Container classCss="">
             <Container classCss={styles.container}>
                 <Button className={styles.btn} 
                 onClick={() => setShowActionModal((previous) => !previous)}
-                iconLeading={<MarkerPin01 className={styles.filterImage} 
-                color="#f00"/>} 
+                iconLeading={<Image src={donationType} 
+                    alternateText="" 
+                    className={styles.filterImage} />} 
                 iconTrailing={
                     <ChevronDown className={styles.filterChevron} />}>Tipo de doação </Button>
                 <Button className={styles.btn} 
                 onClick={() => setShowLocationModal((previous) => !previous)}
                 iconLeading={
-                    <Image src={donationType} 
-                    alternateText="" 
-                    className={styles.filterImage} />} iconTrailing={<ChevronDown className={styles.filterChevron} />}>Localização </Button>
+                    <MarkerPin01 className={styles.filterImage} 
+                color="#f00"/>} iconTrailing={<ChevronDown className={styles.filterChevron} />}>Localização </Button>
             </Container>
             {showLocationModal && <Location selectedLocations={selectedLocations}
                 setShowModal={setShowLocationModal} 

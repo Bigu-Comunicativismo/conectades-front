@@ -25,9 +25,9 @@ interface CardProps {
   cardContribution: cardContribution;
 }
 
-export function NewCampaignCard({cardList}: {cardList: CardProps[]}) {
+export function NewCampaignCard({cardList, classCss = ''}: {cardList: CardProps[], classCss?: string}) {
     return (
-        <div className={styles.cardContainer}>
+        <div className={`${styles.cardContainer} ${classCss}`}>
           {cardList.map(card => (
             <Link to={`/campaigns/$id`} key={card.cardId} params={{ id: String(card.cardId) }}>
               <Card.Root key={card.cardId}>
