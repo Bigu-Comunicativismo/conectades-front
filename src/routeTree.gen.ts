@@ -16,12 +16,12 @@ import { Route as PoliticadeprivacidadeIndexRouteImport } from './pages/politica
 import { Route as OpportunitiesIndexRouteImport } from './pages/opportunities/index'
 import { Route as LoginIndexRouteImport } from './pages/login/index'
 import { Route as ErrorIndexRouteImport } from './pages/error/index'
-import { Route as DonationsIndexRouteImport } from './pages/donations/index'
-import { Route as CampaignsIndexRouteImport } from './pages/campaigns/index'
+import { Route as DonationsIndexRouteImport } from './pages/d-donations/index'
+import { Route as CampaignsIndexRouteImport } from './pages/c-campaigns/index'
 import { Route as HomeIndexRouteImport } from './pages/_Home/index'
 import { Route as OpportunitiesOpportunityIdRouteImport } from './pages/opportunities/_Opportunity/$id'
-import { Route as DonationsDonationIdRouteImport } from './pages/donations/_Donation/$id'
-import { Route as CampaignsCampaignIdRouteImport } from './pages/campaigns/_Campaign/$id'
+import { Route as DonationsDonationIdRouteImport } from './pages/d-donations/_Donation/$id'
+import { Route as CampaignsCampaignIdRouteImport } from './pages/c-campaigns/_Campaign/$id'
 
 const TermosdeusoIndexRoute = TermosdeusoIndexRouteImport.update({
   id: '/termosdeuso/',
