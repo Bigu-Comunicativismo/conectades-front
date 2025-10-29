@@ -1,5 +1,5 @@
 .sectionHomePrimary{
-    background-color: #ecdff5;
+    background-color: var(--navbar-bg);
     padding-top: 5.6rem;
 }
 
