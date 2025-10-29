@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.13",
+    "@tanstack/react-router": "^1.133.32",
     "@untitledui/icons": "^0.0.19",
     "input-otp": "^1.4.2",
     "react": "^19.1.1",
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
+    "@tanstack/router-plugin": "^1.133.32",
     "@types/node": "^24.5.0",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
