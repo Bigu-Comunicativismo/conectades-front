@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Navigate, Outlet, createRootRoute } from '@tanstack/react-router';
 import { TabProvider } from '@/contexts/campaign';
 import { Main } from '@/components/Main';
-import { Header } from '@/components/marketing/header-navigation/header';
+import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import '../App.css';
 import '@/styles/global.css';
