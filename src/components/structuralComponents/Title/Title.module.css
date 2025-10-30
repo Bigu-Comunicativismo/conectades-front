@@ -1,5 +1,7 @@
 .titleH1 {
-
+    font-size: var(--h4);
+    line-height: var(--h4-line);
+    font-weight: var(--semibold);
 }
 
 .titleH2 {
