@@ -34,3 +34,17 @@
     font-weight: var(--semibold);
     color: var(--gray-900);
 }
+
+.withoutImg {
+    font-size: var(--text-md);
+    line-height: var(--md-line);
+    font-weight: var(--regular);
+    text-align: center;
+}
+
+.badgeContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}

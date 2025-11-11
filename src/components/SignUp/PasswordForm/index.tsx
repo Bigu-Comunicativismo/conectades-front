@@ -5,12 +5,14 @@ import { validations } from "@/utils/validations";
 import { useState, type FormEvent } from "react";
 import { FormDescription } from "../FormDescription";
 import { useUserContext } from "@/contexts/userContext";
+import { signUpUsers } from "@/utils/formSignUp";
+import { useNavigate } from "@tanstack/react-router";
 
 export function PasswordForm() {
     const [inputPasswordValue, setInputPasswordValue] = useState('');
     const [inputConfirmPasswordValue, setInputConfirmPasswordValue] = useState('');
     const {passwordHasUpperandLower, passwordHasNumber,  passwordHasMinChar}: {passwordHasUpperandLower: boolean, passwordHasNumber: boolean,  passwordHasMinChar: boolean} = validations.password(inputPasswordValue);
-
+    const navigate = useNavigate();
     const {user, setUser} = useUserContext();
 
     return (
@@ -24,7 +26,18 @@ export function PasswordForm() {
                     const newUser = user;
                     newUser.password = inputPasswordValue;
                     setUser(newUser);
-                    console.log(user);
+
+                    const response = signUpUsers(user);
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    response.then((data: any) => {
+                        if (data) {
+                            navigate({to:"/login"});
+                        }
+                    }).catch((error) => {
+                        console.log(error)
+                        navigate({to:"/error"});
+                    });
+                    
                 }}>Criar conta</Button>
         </form>
     )

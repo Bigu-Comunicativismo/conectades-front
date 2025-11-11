@@ -1,3 +1,4 @@
+import { SpanText } from "@/components/structuralComponents/SpanText";
 import { Message, type Contribuition } from "./Message";
 
 
@@ -9,7 +10,7 @@ interface SupportsProps {
 export function Supports({supports}:SupportsProps) {
     return (
         <>
-        {supports.map((contribuition:Contribuition) => <Message key={contribuition.id} contribuitionMessage={contribuition}/>) }
+        {supports.length > 0 ? supports.map((contribuition:Contribuition) => <Message key={contribuition.id} contribuitionMessage={contribuition}/>) : <SpanText text="Ainda sem doações. Contribua!"/>}
         </>
     )
 }

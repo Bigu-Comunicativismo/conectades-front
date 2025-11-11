@@ -22,17 +22,22 @@ export function EmailCheck({nextStep}: EmailCheckFormProps) {
 
     const handleSubmit = async () => {
         setLoadingVerification(true)
-        const response = await fetch("https://jsonplaceholder.typicode.com/user")
-        if(response.ok){
-            setLoadingVerification(false)
-            window.location.href = "/login"
-        } else {
-            setLoadingVerification(false)
+        // const response = await fetch("https://jsonplaceholder.typicode.com/user")
+        // if(response.ok){
+        //     setLoadingVerification(false)
+        //     window.location.href = "/login"
+        // } else {
+        //     setLoadingVerification(false)
+        //     const newUser = user;
+        //     newUser.email = email;
+        //     setUser(newUser);
+        //     nextStep((previous) => previous + 1)
+        // }
+        setLoadingVerification(false)
             const newUser = user;
             newUser.email = email;
             setUser(newUser);
             nextStep((previous) => previous + 1)
-        }
     }
 
     return (

@@ -1,35 +1,49 @@
 import { type User } from "@/contexts/userContext";
+import { apiFetch } from "./fetchApi";
 
 export const signUpUsers = async (user: User) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const createFormData = (user: any) => {
     const formData = new FormData();
-    formData.append('nome_completo', user.fullname);
-    formData.append('nome_social', user.socialName);
-    formData.append('username', user.socialName || user.fullname);
-    formData.append('email', user.email);
-    formData.append('telefone', user.phone);
-    formData.append('genero', '1');
-    formData.append('password', user.password);
-    formData.append('mini_bio', user.miniBio);
-    formData.append('cpf', user.cpf);
-    formData.append('tipo_usuario', '1');
-    formData.append('cidade', user.location.city);
-    formData.append('bairro', user.location.neighborhood.id);
-    formData.append('interesses_categorias', JSON.stringify(user.interestedCategories));
-    formData.append('interesses_bairros', JSON.stringify(user.interestedLocations));
-    if (user.avatar)  formData.append('avatar', user.avatar, user.avatar.name);
+
+    formData.append("email", user.email);
+    formData.append("username", user.socialName || user.fullname);
+    formData.append("password", user.password);
+    formData.append("nome_completo", user.fullname);
+    formData.append("cpf", user.cpf);
+    formData.append("telefone", user.phone);
+    formData.append("tipo_usuario", "6");
+    formData.append("genero", "13");
+    formData.append("cidade", "17");
+    formData.append("bairro", "136");
+    formData.append("nome_social", user.socialName || "");
+    formData.append("mini_bio", user.miniBio || "");
+
+    if (user.avatar instanceof File) {
+        formData.append("avatar", user.avatar);
+    }
+
+    [13].forEach((cat: number) => {
+        formData.append("categorias_interesse", String(cat));
+    });
+
+    [137].forEach((loc: number) => {
+        formData.append("localizacoes_interesse", String(loc));
+    });
+
+    // formData.append("categorias_interesse", JSON.stringify([13]));
+
+    // formData.append("localizacoes_interesse", JSON.stringify([137]));
+
+    return formData;
+    };
+
+    const data = createFormData(user);
 
     try{
-        const response = await fetch('/api/auth/registro/iniciar/', {
-            method: 'POST',
-            headers: {
-                'Access-Control-Allow-Origin': '*'
-            },
-            body: formData
-        });
+        
+        const response = await apiFetch({apiPath: 'http://srv1037558.hstgr.cloud:8001/api/auth/registro/iniciar/', apiMethod: 'POST', apiBody: data, });
 
-        if (!response.ok) {
-            throw new Error('Failed to sign up user.');
-        }
         return response;
 
     } catch (error) {

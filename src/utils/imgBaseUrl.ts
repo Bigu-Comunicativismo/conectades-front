@@ -1,0 +1,1 @@
+export const imgBaseUrl = "http://srv1037558.hstgr.cloud:8001";

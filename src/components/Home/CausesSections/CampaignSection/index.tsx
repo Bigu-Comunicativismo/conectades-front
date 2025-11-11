@@ -1,7 +1,10 @@
 import { CausesSectionsContainer } from "../CausesSectionsContainer";
 import { NewCampaignCard } from "../../Card/NewCampaign";
-import { mockApiReturn } from "@/utils/mockapireturn";
 import { useEffect, useState } from "react";
+import { apiFetch } from "@/utils/fetchApi";
+import { setOptions } from "@/utils/setOptions";
+import type { LabedItem } from "@/components/structuralComponents/ListFilter";
+import type { CampaignFetched } from "@/pages/campaigns/_Campaign/$id";
 
 type Author = {
     authorName: string;
@@ -20,34 +23,65 @@ export interface CampaignData {
     }
 }
 
-export function CampaignSection() {
+export interface Data {
+    cardId: number;
+    cardName: string;
+    cardImage: string; 
+    cardLocation: string;    
+    cardAuthor: Author;
+    cardTag: string;
+    cardContribution: {
+        quantityContribution: number;
+    }
+}
+
+export function CampaignSection({causeTitle="Novas campanhas", causeCallMessage="Confira as últimas campanhas criadas"}: {causeTitle?: string, causeCallMessage?: string}) {
 
     const [CampaignList, setCampaignList] = useState<CampaignData[]>([]);
 
     useEffect(() => {
         const CampaignList: CampaignData[] = [];
-        mockApiReturn.data.campanhas.forEach(campaign => {
-            const campaignData = {
-                cardId: campaign.id,
-                cardName: campaign.title,
-                cardImage: campaign.imageUrl,
-                cardLocation: campaign.location,
-                cardAuthor: {
-                    authorName: campaign.author.name,
-                    authorImage: campaign.author.avatarUrl
-                },
-                cardTag: campaign.tag,
-                cardContribution: {
-                    quantityContribution: campaign.apoios
+        let categoriesList: LabedItem[] = [];
+        const storedCategories = localStorage.getItem('categories');
+        if (storedCategories) categoriesList = JSON.parse(storedCategories);
+        if (!categoriesList) {
+        
+            setOptions().then(({categories}) => {
+                categoriesList = categories;
+            })
+            return categoriesList;
+        };
+        const loadCampaigns = async () => {
+            await apiFetch<CampaignFetched[]>({ apiPath: 'http://srv1037558.hstgr.cloud:8001/api/campanhas/listar?ordenar=recente' })
+            .then((data) => {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                data.forEach((campaign: any) => {
+                    
+                const item = {
+                    cardId: campaign.id,
+                    cardName: campaign.titulo,
+                    cardImage: campaign.imagem_url,
+                    cardLocation: `${campaign.organizadora.pessoa.bairro}, ${campaign.organizadora.pessoa.cidade}`,
+                    cardAuthor: {
+                        authorName: campaign.organizadora.pessoa.nome_social,
+                        authorImage: campaign.organizadora.pessoa.avatar,
+                    },
+                    cardTag: (categoriesList.length > 0 && categoriesList.find((category) => category.id === campaign.categorias.find(() => true))?.label) || '',
+                    cardContribution: {
+                        quantityContribution: campaign.doacoes.length
+                    }
                 }
-            };
-            CampaignList.push(campaignData);   
-        })
-        setCampaignList(CampaignList);
+                CampaignList.push(item);
+            });
+            setCampaignList(CampaignList.slice(0, 6));
+            });
+            
+        }
+        loadCampaigns();
     }, []);
 
     return (
-        <CausesSectionsContainer causeContainerAriaName="Novas campanhas" causeTitle="Novas campanhas" causeCallMessage="Confira as últimas campanhas criadas" causeUrl="/campaigns">
+        <CausesSectionsContainer causeContainerAriaName="Campanhas" causeTitle={causeTitle} causeCallMessage={causeCallMessage} causeUrl="/campaigns">
             <NewCampaignCard cardList={CampaignList} />
         </CausesSectionsContainer>
     )

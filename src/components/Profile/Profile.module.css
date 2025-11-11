@@ -1,0 +1,59 @@
+.externalContainer {
+    padding: 4rem 1.6rem 4rem;
+}
+
+.editContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.locationBox {
+    margin-top: 0.8rem;
+}
+
+.location {
+    font-size: var(--text-sm);
+    line-height: var(--sm-line);
+    font-weight: var(--regular);
+    color: var(--gray-600);
+}
+
+.section {
+    margin-top: 1.6rem;
+    padding: 0;
+}
+
+.about {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.profileImage {
+    width: 14.4rem;
+    height: 14.4rem;
+    border-radius: 50%;
+    outline: 0.1rem solid var(--gray-300);
+    object-fit: cover;
+    object-position: top;
+}
+
+.causesContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.causesTitle {
+    font-size: var(--text-md);
+    line-height: var(--md-line);
+    font-weight: var(--medium);
+    color: var(--gray-900);
+    padding: 1.6rem 0;
+}
+
+.causes {
+    border-top: 4px solid var(--brand-purple-500);
+    width: 100vw;
+}

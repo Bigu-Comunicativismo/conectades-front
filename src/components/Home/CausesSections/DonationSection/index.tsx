@@ -20,7 +20,7 @@ export interface DonationData {
     }
 }
 
-export function DonationSection() {
+export function DonationSection({causeTitle="Novas doações", causeCallMessage="Veja as novas doações criadas"}: {causeTitle?: string, causeCallMessage?: string}) {
 
     const [DonationList, setDonationList] = useState<DonationData[]>([]);
 
@@ -47,7 +47,7 @@ export function DonationSection() {
     }, []);
 
     return (
-        <CausesSectionsContainer causeContainerAriaName="Novas doações" causeTitle="Novas doações" causeCallMessage="Veja as novas doações criadas" causeUrl="/donations">
+        <CausesSectionsContainer causeContainerAriaName="Doações" causeTitle={causeTitle} causeCallMessage={causeCallMessage} causeUrl="/donations">
             <CausesCard cardList={DonationList} cardType='donations' />
         </CausesSectionsContainer>
     )

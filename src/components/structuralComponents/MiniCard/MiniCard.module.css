@@ -1,0 +1,25 @@
+.miniCardContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 1.6rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.6rem;
+}
+
+.miniCardImage {
+    width: 8.2rem;
+    height: 8.2rem;
+    border-radius: 0.8rem;
+}
+
+.editIcon {
+    align-self: flex-start;
+    flex-shrink: 0;
+}
+
+.cardName {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
