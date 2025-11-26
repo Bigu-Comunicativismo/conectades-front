@@ -4,7 +4,7 @@ import { Container } from '@/components/structuralComponents/Container';
 import { MiniCard, type MiniCardItem } from '@/components/structuralComponents/MiniCard';
 import { Title } from '@/components/structuralComponents/Title';
 import { apiFetch } from '@/utils/fetchApi'
-import styles from './MyDonations.module.css'
+import styles from './mydonations.module.css'
 import { Section } from '@/components/structuralComponents/Section';
 
 export const Route = createFileRoute('/mydonations/')({
