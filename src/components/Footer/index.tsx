@@ -3,6 +3,8 @@ import { FooterLarge01 as UntitledFooter } from '../marketing/footers/footer-lar
 import { Logo } from '../structuralComponents/Logo';
 import { Button } from '../base/buttons/button';
 import { Link } from '@tanstack/react-router';
+import { useLoggedUserContext } from '@/contexts/loggedUserContext';
+import { useEffect, useState } from 'react';
 
 const footerNavList = [
     {
@@ -10,19 +12,19 @@ const footerNavList = [
         items: [
             {
                 label: "Sobre a Bigu",
-                href: "/quemsomos#sobreabigu",
+                href: "/aboutus#sobreabigu",
             },
             {
                 label: "Sobre a Plataforma",
-                href: "/quemsomos#sobreaplataforma",
+                href: "/aboutus#sobreaplataforma",
             },
             {
                 label: "Como Funciona",
-                href: "/quemsomos#como-funciona",
+                href: "/aboutus#comofunciona",
             },
             {
                 label: "Contato",
-                href: "/quemsomos#contato",
+                href: "/aboutus#contato",
             },
         ],
     },
@@ -31,19 +33,19 @@ const footerNavList = [
         items: [
             {
                 label: "Saúde e Bem-estar",
-                href: "#",
+                href: "/donations",
             },
             {
                 label: "Jurídico e Direitos",
-                href: "#",
+                href: "/donations",
             },
             {
                 label: "Educação e Capacitação",
-                href: "#",
+                href: "/donations",
             },
             {
                 label: "Outros",
-                href: "#",
+                href: "/donations",
             },
         ],
     },
@@ -52,49 +54,154 @@ const footerNavList = [
         items: [
             {
                 label: "Saúde e Bem-estar",
-                href: "#",
+                href: "/campaigns",
             },
             {
                 label: "Gênero e Sexualidade",
-                href: "#",
+                href: "/campaigns",
             },
             {
                 label: "Cultura e Comunidade",
-                href: "#",
+                href: "/campaigns",
             },
             {
                 label: "Necessidades Básicas",
-                href: "#",
+                href: "/campaigns",
             },
             {
                 label: "Trabalho",
-                href: "#",
+                href: "/campaigns",
             },
             {
                 label: "Outros",
-                href: "#",
+                href: "/campaigns",
+            },
+        ],
+    },
+    // {
+    //     label: "Oportunidades",
+    //     items: [
+    //         {
+    //             label: "Cursos",
+    //             href: "/cursos",
+    //         },
+    //         {
+    //             label: "Vagas de Emprego",
+    //             href: "/vagas",
+    //         },
+    //     ],
+    // },
+];
+
+const footerDonatariesNavList = [
+    {
+        label: "Quem Somos",
+        items: [
+            {
+                label: "Sobre a Bigu",
+                href: "/aboutus#sobreabigu",
+            },
+            {
+                label: "Sobre a Plataforma",
+                href: "/aboutus#sobreaplataforma",
+            },
+            {
+                label: "Como Funciona",
+                href: "/aboutus#comofunciona",
+            },
+            {
+                label: "Contato",
+                href: "/aboutus#contato",
             },
         ],
     },
     {
-        label: "Oportunidades",
+        label: "Campanhas",
         items: [
             {
-                label: "Cursos",
-                href: "#",
+                label: "Saúde e Bem-estar",
+                href: "/campaigns",
             },
             {
-                label: "Vagas de Emprego",
-                href: "#",
+                label: "Gênero e Sexualidade",
+                href: "/campaigns",
+            },
+            {
+                label: "Cultura e Comunidade",
+                href: "/campaigns",
+            },
+            {
+                label: "Necessidades Básicas",
+                href: "/campaigns",
+            },
+            {
+                label: "Trabalho",
+                href: "/campaigns",
+            },
+            {
+                label: "Outros",
+                href: "/campaigns",
+            },
+        ],
+    }
+];
+
+const footerBeneficiariesNavList = [
+    {
+        label: "Quem Somos",
+        items: [
+            {
+                label: "Sobre a Bigu",
+                href: "/aboutus#sobreabigu",
+            },
+            {
+                label: "Sobre a Plataforma",
+                href: "/aboutus#sobreaplataforma",
+            },
+            {
+                label: "Como Funciona",
+                href: "/aboutus#comofunciona",
+            },
+            {
+                label: "Contato",
+                href: "/aboutus#contato",
             },
         ],
     },
+    {
+        label: "Doações",
+        items: [
+            {
+                label: "Saúde e Bem-estar",
+                href: "/donations",
+            },
+            {
+                label: "Jurídico e Direitos",
+                href: "/donations",
+            },
+            {
+                label: "Educação e Capacitação",
+                href: "/donations",
+            },
+            {
+                label: "Outros",
+                href: "/donations",
+            },
+        ],
+    }
 ];
 
-export function Footer() {
+export function Footer({ref}: {ref?: React.RefObject<HTMLDivElement | null>}) {
+    const { loggedUser } = useLoggedUserContext();
+    const [userType, setUserType] = useState<number | undefined>(undefined);
+
+    useEffect(() => {
+        if (loggedUser?.user) setUserType(loggedUser.user.tipo_usuario);
+
+    }, []);
     return (
         <>
-            <UntitledFooter footerNavList={footerNavList} navCategoryCss={styles.categoryTitle} navItemCss={styles.categoryItem} footerCss={styles.footer}>
+            <UntitledFooter footerNavList={userType === 5 ? footerBeneficiariesNavList : userType === 6 ? footerDonatariesNavList : footerNavList} navCategoryCss={styles.categoryTitle} navItemCss={styles.categoryItem} footerCss={styles.footer} ref={ref}>
                 <div style={{ marginTop: '84px' }}>
                     <Logo />
                 </div>

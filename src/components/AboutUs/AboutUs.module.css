@@ -1,0 +1,64 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 4.8rem;
+    padding-top: 4rem;
+    
+    @media (min-width: 1024px) {
+        margin-bottom: 0.8rem;
+    }
+}
+
+.paragraphAbout {
+    @media (min-width: 1024px) {
+        max-width: 70%;
+    }
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.inverterSection {
+    @media (min-width: 1024px) {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+    }
+}
+
+.descriptionContainer {
+    @media (min-width: 1024px) {
+        max-width: 45%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+}
+
+.image1 {
+    display: none;
+    @media (min-width: 1024px) {
+        display: block;
+        margin-top: 0.8rem;
+        border-radius: 1.6rem;
+        aspect-ratio: 960/400;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+.image2 {
+    margin-top: 0.8rem;
+    border-radius: 1.6rem;
+    aspect-ratio: 288/289;
+    object-fit: cover;
+    object-position: center;
+    @media (min-width: 1024px) {
+        display: none;
+    }
+}
+
+.strong {
+    font-weight: var(--medium);
+}

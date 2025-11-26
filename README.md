@@ -11,11 +11,80 @@ A aplicação é dividida em módulos separados por responsabilidades: front-end
 ## Tecnologias Utilizadas
 
 ### Front-end
-* **React**: Biblioteca JavaScript para o desenvolvimento da interface de usuário.
-* **TypeScript**: Um superset do JavaScript que adiciona tipagem estática, proporcionando uma camada extra de segurança e melhor estruturação do código.
-* **Vite**: Ferramenta de build otimizada para iniciar o projeto.
-* **UntitleUI**: Pacote de componentes que utiliza **Tailwind CSS** para a maioria de suas estilizações. Apesar de ter componentes pagos, seguindo a premissa de ser software livre, usamos componentes disponíveis em sua versão free.
-* **Swiper**: Pacote de componentes free focado em slider.
+#### 🏗️ Core e Linguagem
+
+| Tecnologia | Descrição |
+| :--- | :--- |
+| **React** | Biblioteca JavaScript fundamental para a construção de **interfaces de usuário (UI)**. |
+| **TypeScript** | Um **superconjunto de JavaScript** que adiciona **tipos estáticos**, aumentando a robustez e a manutenibilidade do código. |
+
+---
+
+#### 🧭 Roteamento e Navegação
+
+| Tecnologia | Característica Principal |
+| :--- | :--- |
+| **TanStack Router** | O foco é em **roteamento moderno e tipado**. É uma alternativa mais nova que oferece **proteção de tipos** em rotas e parâmetros, e suporta **roteamento baseado em arquivos**, simplificando a organização da aplicação de forma semelhante ao Next.js. |
+
+---
+
+#### ⚙️ Gerenciamento de Estado e Dados
+
+| Tecnologia | Descrição |
+| :--- | :--- |
+| **Fetch API** | Alternativa **nativa do navegador** para fazer requisições HTTP (chamadas de API), eliminando a necessidade de clientes HTTP de terceiros (como Axios) e diminuindo o número de pacotes instalados. |
+| **Context API** | Solução **nativa do React** para **gerenciamento de estado** global, permitindo compartilhar dados entre componentes sem a necessidade de *prop drilling* e reduzindo a dependência de bibliotecas externas de gerenciamento de estado. |
+
+---
+
+#### 🎨 UI, Estilo e Acessibilidade
+
+| Tecnologia | Descrição |
+| :--- | :--- |
+| **Tailwind CSS** | Framework CSS baseado em **classes utilitárias** para estilizar componentes de forma rápida e eficiente. |
+| **CSS modules** | Técnica para **encapsular estilos CSS**, garantindo que sejam de escopo local para cada componente. |
+| **React Aria** | Biblioteca para adicionar **acessibilidade** e interações de alto nível (WAI-ARIA) a componentes React. |
+| **shadcn/ui** | Coleção de **componentes reutilizáveis** baseados no Tailwind CSS, focados em estética e acessibilidade. |
+| **Lucide React** | Biblioteca de **ícones SVG** de código aberto. |
+| **Untitled UI** | Biblioteca de **ícones SVG** e **componentes reutilizáveis** de código aberto também baseado em Tailwind CSS. |
+| **Semântica TSX** | Ênfase no uso de **tags HTML semânticas** (`<header>`, `<main>`, `<button>`, etc.) na construção do TSX para melhorar a acessibilidade e a otimização de mecanismos de busca (SEO). |
+
+---
+
+#### 📝 Formulários
+
+| Conceito | Descrição |
+| :--- | :--- |
+| **Componentes Controlados** | Abordagem utilizada para gerenciar formulários, onde a **entrada de dados (inputs, selects, etc.) é controlada pelo estado do React**. Isso garante que o estado da aplicação seja a "única fonte da verdade" para os valores do formulário. |
+
+---
+
+#### 🧪 Testes
+
+| Tecnologia | Descrição |
+| :--- | :--- |
+| **Jest** | Biblioteca de **testes unitários** JavaScript amplamente utilizada. |
+| **React Testing Library (RTL)** | Biblioteca fundamental para **testar componentes React**, focada em testar a experiência do usuário. |
+| **Testing Library** | Conjunto de utilitários para testar interfaces. |
+
+---
+
+#### 🛠️ Ferramentas de Desenvolvimento e Qualidade
+
+| Tecnologia | Descrição |
+| :--- | :--- |
+| **Vite** | Ferramenta de **construção (`build tool`)** moderna e rápida para aplicações front-end. |
+| **ESLint** | Ferramenta de **análise estática (`linter`)** para identificar padrões problemáticos no código JavaScript/TypeScript. |
+| **Padrões de Branching** | Utilização de um modelo de criação de branches próxima ao **Gitflow** para garantir um fluxo de trabalho de desenvolvimento organizado. |
+| **Commits Semânticos** | Adoção de **commits semânticos** o mais próximo do padrão **Conventional Commits** para padronizar mensagens de commit e facilitar a geração automática de changelogs. |
+
+---
+
+#### 🧩 Patterns de Componentes
+
+| Conceito | Aplicação |
+| :--- | :--- |
+| **Composition (Composição)** | Utilização de **patterns de composition** (e.g., *Compound Components*, *Slot Pattern*) em componentes pertinentes para facilitar a **reutilização**, melhorar a flexibilidade e desacoplar o design da lógica interna. |
 
 ### Métricas Front-end
 Usaremos a ferramenta open-souce do Google Lighthouse para fazer as avaliações gerais da página front, buscando equilibrio e boa pontuação nos indicadores abaixo. Esta ferramenta está disponível nos navegadores (browsers) baseados em Chromium, como o próprio Chrome, o Edge, o Opera. 

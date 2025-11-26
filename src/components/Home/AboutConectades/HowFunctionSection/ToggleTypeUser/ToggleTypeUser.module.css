@@ -6,6 +6,11 @@
     border-style: solid;
     border-color: var(--brand-purple-200);
     display: flex;
+
+    @media (min-width: 1024px) {
+        width: 44.4rem;
+        height: 5.2rem;
+    }
 }
 
 .toggleTypeUserItem {

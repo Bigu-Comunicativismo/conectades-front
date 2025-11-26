@@ -10,6 +10,8 @@ import styles from "./BiographyForm.module.css";
 import inputStyles from "@/components/base/input/Input.module.css";
 import type { LocationFormProps as BiographyFomrProps } from "../LocationForm";
 import { useUserContext, type UserGender } from "@/contexts/userContext";
+import { setOptions } from "@/utils/setOptions";
+import type { LabedItem } from "@/components/structuralComponents/ListFilter";
 
 
 
@@ -23,18 +25,20 @@ export function BiographyForm({nextStep}: BiographyFomrProps) {
 
     const { user, setUser } = useUserContext();
 
-    const MockedGenderList: UserGender[] = [
-        { id: "Homem Cis", label: "Homem Cis" },
-        { id: "Mulher Cis", label: "Mulher Cis" },
-        { id: "Homem Trans", label: "Homem Trans" }, 
-        { id: "Mulher Trans", label: "Mulher Trans" }, 
-        { id: "Travesti", label: "Travesti" },
-        { id: "Não-Binario", label: "Não-Binario" },
-    ]
-
     useEffect(() => {
-        setGenderList(MockedGenderList);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        let genderList: LabedItem[] = [];
+        const storedGender = localStorage.getItem('genders');
+        if (storedGender) genderList = JSON.parse(storedGender);
+        if (!genderList) {
+        
+            setOptions().then(({genders}) => {
+                genderList = genders;
+            })
+            return genderList;
+        };
+        
+        setGenderList(genderList);
+     
     }, []);
 
     return (

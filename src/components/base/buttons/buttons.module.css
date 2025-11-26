@@ -8,6 +8,8 @@
     color: var(--white);
     margin-top: 2.4rem;
     margin-bottom: 2.4rem;
+    background-color: var(--brand-purple-600);
+    box-shadow: none;
 }
 
 .btnDesactive {

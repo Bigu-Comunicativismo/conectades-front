@@ -1,0 +1,44 @@
+import { Container } from "../structuralComponents/Container";
+import { Image } from "../structuralComponents/Image";
+import { Paragraph } from "../structuralComponents/Paragraph";
+import { Section } from "../structuralComponents/Section";
+import { Title } from "../structuralComponents/Title";
+import { Input } from "../base/input/input";
+import { CampaignSection } from "./CausesSections/CampaignSection";
+import { FilterButtonGroup } from "./FilterButton";
+import peoples from '@/assets/Assets Visuais/envato-graphic-68c24836-04d4-4367-ab44-3a32e067a11b.png';
+import campaingnIcon from '@/assets/Assets Visuais/envato-graphic-e417e6db-4b26-48ec-9acd-9fb83cebe3a6.png';
+import styles from './Home.module.css';
+import { useState } from "react";
+import { SearchSm } from "@untitledui/icons";
+import inputStyles from '../base/input/Input.module.css';
+
+const filters = [
+{ label: 'Campanhas', iconUrl: campaingnIcon, href: '/campaigns' },
+];
+
+export function DonaHome() {
+        const handleSearch = (searchTerm: string) => {
+          setSearchTerm(() => searchTerm);
+      };
+    const [searchTerm, setSearchTerm] = useState('');
+    return (
+        <Container classCss=''>
+        <Section classCss={styles.sectionHomePrimary}>
+          <Title.Level2 text="Conecte-se e transforme vidas" />
+          <Paragraph text="Busque causas ou doe serviços para quem realmente precisa!" size="lg" />
+          <Image src={peoples} alternateText='Três pessoas diferentes se abraçando e sorrindo.' className={styles.image} />
+          <Input icon={SearchSm} type="text" 
+            placeholder="Pesquisar" 
+            className={`${inputStyles.input} ${styles.inputMargin}`} 
+            value={searchTerm}
+            onChange={handleSearch}  />
+
+          <FilterButtonGroup filterLists={filters}/>
+        </Section>
+        <Section>
+          <CampaignSection causeTitle={"Campanhas pra você"} causeCallMessage={"Essas campanhas dão um match com seus interesses"} searchTerm={searchTerm}/>
+        </Section>
+      </Container>
+    )
+}

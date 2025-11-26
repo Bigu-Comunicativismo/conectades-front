@@ -1,19 +1,12 @@
 import React, { useState, createContext, useContext } from "react";
+import type { Category } from "@/components/SignUp/PreferenceForm";
 
-type UserType = "beneficiaria" | "doadora" | "admin" | "deslogado";
+type UserType = "5" | "6" | "admin" | "deslogado";
 
 export type UserGender = 
-    { id: "Homem Cis", label: "Homem Cis" } | 
-    { id: "Mulher Cis", label: "Mulher Cis" } |
-    { id: "Homem Trans", label: "Homem Trans" } |
-    { id: "Mulher Trans", label: "Mulher Trans" } | 
-    { id: "Travesti", label: "Travesti" } |
-    { id: "Não-Binario", label: "Não-Binario" } |
-    { id: "Outro", label: "Outro" };
+    { id: string, label: string } 
 
 type Neighborhood = { id: string, label: string };
-
-type Category = string;
 
 export interface User {
     fullname: string;

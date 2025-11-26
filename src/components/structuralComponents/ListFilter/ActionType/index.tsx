@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useFilterContext } from "@/contexts/filterContext";
 import { Container } from "../../Container";
 import { Paragraph } from "../../Paragraph";
 import { Button } from "@/components/base/buttons/button";
@@ -6,40 +7,39 @@ import multiSelectStyles from "@/components/SignUp/PreferenceForm/PreferenceForm
 import btnStyles from "@/components/base/buttons/buttons.module.css";
 import styles from "../ListFilter.module.css";
 import { X } from "@untitledui/icons";
+import type { LabedItem } from "..";
 
-export type Category = "Saúde e Bem-estar" | "Jurídico e Direitos" | "Educação e Capacitação" | "Gênero e Sexualidade" | "Cultura e Comunidade" | "Necessidades Básicas" | "Trabalho";
-
-export function ActionType({action, categoryFilters,setCategoryFilter, setShowModal}: {action: string, categoryFilters: Category[] | never[], setCategoryFilter: React.Dispatch<React.SetStateAction<Category[] | never[]>>, setShowModal: React.Dispatch<React.SetStateAction<boolean>>}) {
-
-    const [categories] = useState<Category[]>(["Saúde e Bem-estar", "Jurídico e Direitos", "Educação e Capacitação", "Gênero e Sexualidade", "Cultura e Comunidade", "Necessidades Básicas", "Trabalho"]);
-    const [markedCategories, setMarkedCategories] = useState<Category[] | never>(categoryFilters);
+export function ActionType({action, categories, setShowModal}: {action: string, categories: LabedItem[], setShowModal: React.Dispatch<React.SetStateAction<boolean>>}) {
+    
+    const {selectedItems, setSelectedItems} = useFilterContext();
+    const [markedCategories, setMarkedCategories] = useState<LabedItem[] | never>(selectedItems);
 
     return (
-        <Container classCss={styles.modalBack}>
-            <Container classCss={`${styles.modal} ${multiSelectStyles.selectContainer}`}>
+        <Container classCss={styles.modalBack} onClick={() => setShowModal((previous) => !previous)}>
+            <Container classCss={`${styles.modal} ${multiSelectStyles.selectContainer}`} onClick={(event: React.MouseEvent) => event.stopPropagation()}>
                 <Paragraph text={`Tipo de ${action}`} size="lg" weight="semibold"  />
                 <Container classCss={multiSelectStyles.filtersContainer}>
                     {categories.map((category) => (
-                       <Button key={category} 
+                       <Button key={category.id} 
                        onClick={() => {
                         if (markedCategories.includes(category)) {
-                            setMarkedCategories((previous) => previous.filter((listedCategory) => listedCategory !== category));
+                            setMarkedCategories((previous) => previous.filter((listedCategory) => listedCategory.id !== category.id));
                         } else{
                         setMarkedCategories((previous) => [...previous, category])
                     }
                 }
             } 
-                        className={`${multiSelectStyles.unselectedFilterBtn} ${markedCategories.includes(category) ? multiSelectStyles.selectedFilterBtn : ""}`}>{category}{markedCategories.includes(category) ? <X /> : null}</Button> 
+                        className={`${multiSelectStyles.unselectedFilterBtn} ${markedCategories.includes(category) ? multiSelectStyles.selectedFilterBtn : ""}`}>{category.label}{markedCategories.includes(category) ? <X /> : null}</Button> 
                     ))}
                 </Container>
                 <Container classCss={styles.btnContainer}>
                 <Button className={btnStyles.btn} onClick={() => {
-                    setCategoryFilter(markedCategories)
+                    setSelectedItems(markedCategories)
                     setShowModal((previous) => !previous)}}>
                     Salvar
                 </Button>
                 <Button className={styles.btnOnlyText} onClick={() => {
-                    setCategoryFilter([])
+                    setSelectedItems([])
                      setShowModal((previous) => !previous)}}>
                     Limpar filtros
                 </Button>

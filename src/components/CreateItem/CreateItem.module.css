@@ -1,0 +1,22 @@
+.createItemBtn {
+    z-index: 4;
+    position: fixed;
+    bottom: 1.9rem;
+    right: 1.6rem;
+    font-size: var(--text-md);
+    line-height: var(--md-line);
+    font-weight: var(--semibold);
+    color: var(--white);
+    background-color: var(--brand-purple-600);
+    padding: 1rem 1.8rem;
+    border-radius: 1.2rem;
+
+    @media (min-width: 1024px) {
+        display: none;
+    }
+}
+
+.plus {
+    display: inline-block;
+    margin-right: 0.8rem;
+}

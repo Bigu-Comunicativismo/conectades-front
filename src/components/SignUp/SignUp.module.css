@@ -2,3 +2,39 @@
     margin-top: 4rem;
     margin-bottom: 2.4rem;
 }
+
+.contentContainer {
+
+    @media (min-width: 1024px) {
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin-right: 3.2rem;
+    width: 33rem;
+    /* overflow-y: scroll; */
+    }
+}
+
+.externalContainer {
+    @media (min-width: 1024px) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.6rem;
+        overflow: hidden;
+    }
+}
+
+.bgImg {
+    display: none;
+    @media (min-width: 1024px) {
+        display: block;
+        height: 656px;
+        width: 558px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        align-self: start;
+        flex-grow: 2;
+
+    }
+}

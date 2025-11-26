@@ -8,6 +8,9 @@
     font-size: var(--text-xs);
     line-height: var(--xs-line);
     font-weight: var(--bold);
+    background-color: var(--brand-purple-50);
+    color: var(--brand-purple-700);
+    box-shadow: none;
 }
 
 .cardTitle {
@@ -22,8 +25,14 @@
     width: 100%;
     border-radius: 8px;
     object-fit: cover;
-    object-position: top;
-    
+    object-position: top;   
+}
+
+.withoutImage{
+    font-size: var(--text-md);
+    line-height: var(--md-line);
+    font-weight: var(--regular);
+    text-align: center;
 }
 
 .cardContainer {
@@ -34,4 +43,21 @@
     border-radius: 10px;
     overflow: hidden;
     overflow-x: scroll;
+    margin-top: 2.4rem;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    @media (min-width: 1024px) {
+        flex-wrap: wrap;
+        overflow-x: hidden;
+    }
+}
+
+.elipses {
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
 }

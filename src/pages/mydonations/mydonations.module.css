@@ -1,0 +1,12 @@
+.container {
+    padding: 0 1.6rem;
+    padding-top: 4rem;
+}
+
+.section {
+    margin-top: 2.4rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}

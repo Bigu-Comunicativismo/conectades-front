@@ -5,6 +5,8 @@ import { Avatar } from '@/components/base/avatar/avatar';
 import { Badge } from '@/components/base/badges/badges';
 import styles from '../Card.module.css';
 import { Link } from "@tanstack/react-router";
+import { imgBaseUrl } from "@/utils/imgBaseUrl";
+import { Error } from "@/components/Error";
 
 type cardAuthor = {
   authorName: string; 
@@ -26,19 +28,20 @@ interface CardProps {
 }
 
 export function NewCampaignCard({cardList, classCss = ''}: {cardList: CardProps[], classCss?: string}) {
+  
     return (
         <div className={`${styles.cardContainer} ${classCss}`}>
-          {cardList.map(card => (
-            <Link to={`/campaigns/$id`} key={card.cardId} params={{ id: String(card.cardId) }}>
+          {cardList.length > 0 ? (cardList.map(card => (
+            <Link to={`/campaigns/$id`} key={card.cardId} params={{ id: String(card.cardId) }} className="lg:size-fit">
               <Card.Root key={card.cardId}>
                 <Card.InforContainer cardGap='gap16'>
-                  <Card.CardImage src={card.cardImage} alternateText={`Imagem da campanha ${card.cardName} do usuário ${card.cardAuthor.authorName}`} className={styles.foto} />
+                  {card.cardImage ? <Card.CardImage src={`${imgBaseUrl}${card.cardImage}`} alternateText={`Imagem de capa da campanha ${card.cardName} do usuário ${card.cardAuthor.authorName}`} className={styles.foto} /> : <div className={`${styles.foto} ${styles.withoutImage}`}>Campanha sem capa</div>}
                   <Card.InforContainer>
                     <Badge className={styles.badge} color="purple">{card.cardTag}</Badge>
                     <Card.InforContainer cardGap='gap4'>
-                      <SpanText text={card.cardName}  />
+                      <SpanText text={card.cardName} classCss={styles.elipses} />
                       <Card.IconTextContainer>
-                        <Avatar size='xs' src={card.cardAuthor.authorImage} alt={`Avatar do usuário ${card.cardAuthor.authorName}`} className={styles.avatar} />
+                        <Avatar size='xs' src={`${imgBaseUrl}${card.cardAuthor.authorImage}`} alt={`Avatar do usuário ${card.cardAuthor.authorName}`} className={styles.avatar} />
                         <Card.Author name={card.cardAuthor.authorName} />
                       </Card.IconTextContainer>
                       <Card.IconTextContainer>
@@ -54,7 +57,7 @@ export function NewCampaignCard({cardList, classCss = ''}: {cardList: CardProps[
                 </Card.IconTextContainer>
               </Card.Root>
             </Link>
-          ))}
+          ))) : <Error />}
         </div>
     );
 }

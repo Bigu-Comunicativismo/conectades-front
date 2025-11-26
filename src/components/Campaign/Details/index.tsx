@@ -6,39 +6,36 @@ import { Container } from "@/components/structuralComponents/Container";
 import { Clock, HeartHand } from "@untitledui/icons";
 import styles from './Details.module.css';
 
-type Deadline = {
-    daysRemaining: number;
-};
 
 type SolicitedItem = {
     id: number;
-    name: string;
-    quantitySolicited: string;
-    quantityContributed: string;
+    nome: string;
+    quantidade_solicitada: string;
+    quantidade_contribuida: string;
 };
 
 
 
 interface CampaignDetailsProps {
-    deadline: Deadline;
+    daysRemaining: number;
     solicitedItems: SolicitedItem[];
     contributions: number;
 }
 
-export function CampaignDetails({deadline, solicitedItems, contributions}: CampaignDetailsProps) {
+export function CampaignDetails({daysRemaining, solicitedItems, contributions}: CampaignDetailsProps) {
     return (
        <Card.Root classCss={styles.cardContainer}>
         <Badge color="orange" className={styles.campaingDeadline}>
-            <Clock className={`icon ${styles.campaingDeadlineIcon}`} size={12} /><SpanText text={deadline.daysRemaining.toString()} classCss={styles.campaingDeadlineValue}/>&nbsp;{deadline.daysRemaining === 1 ? 'dia restante' : 'dias restantes'}
+            <Clock className={`icon ${styles.campaingDeadlineIcon}`} size={12} /><SpanText text={daysRemaining.toString()} classCss={styles.campaingDeadlineValue}/>&nbsp;{daysRemaining === 1 ? 'dia restante' : 'dias restantes'}
         </Badge>
         <Container classCss={styles.solicitedItemsContainer}>
             {solicitedItems.map((item) => (
-                <Container key={item.id} classCss={`flex flex-row justify-between items-center ${item.quantitySolicited === item.quantityContributed ? styles.solicitedItemCompleted : ''}`} >
-                    <Paragraph text={item.name} size="md" />
+                <Container key={item.id} classCss={`flex flex-row justify-between items-center ${item.quantidade_solicitada === item.quantidade_contribuida ? styles.solicitedItemCompleted : ''}`} >
+                    <Paragraph text={item.nome} size="md" />
                     <span className={styles.solicitedItemQuantitys}>
-                        <Paragraph text={item.quantitySolicited} size="md" classCss={styles.solicitedItems} />
+                        <Paragraph text={item.quantidade_contribuida} size="md" classCss={styles.solicitedItems} />
                         /
-                        <Paragraph text={item.quantityContributed} size="md" classCss={styles.solicitedItems} />
+                        <Paragraph text={item.quantidade_solicitada} size="md" classCss={styles.solicitedItems} />
                     </span>
                 </Container>
             ))}

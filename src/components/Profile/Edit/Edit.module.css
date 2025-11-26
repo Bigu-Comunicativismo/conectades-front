@@ -1,0 +1,43 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.4rem;
+    width: 100vw;
+    padding: 4rem 0 4.1rem 0;
+
+    @media (min-width: 1024px) {
+        margin: 0 20vw;
+        width: auto;
+    }
+}
+
+.formContainer {
+    width: 100%;
+}
+
+.inputs {
+    margin-top: 1.6rem;
+}
+
+.textArea {
+    margin-top: 1.6rem;
+    min-height: 16rem;
+}
+
+.textArea textarea {
+    min-height: 16rem;
+}
+
+.textArea label {
+    font-size: var(--text-sm);
+    line-height: var(--sm-line);
+    font-weight: var(--medium);
+    color: var(--gray-700);
+}
+
+.locations {
+    display: flex;
+    gap: 0.8rem;
+}

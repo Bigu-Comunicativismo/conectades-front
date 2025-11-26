@@ -1,0 +1,86 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem 1.6rem;
+    @media (min-width: 1024px) {
+        margin: 0 20vw;
+    }
+}
+
+.toggle {
+    margin-top: 1rem;
+    justify-content: center;
+    align-items: start;
+
+    p {
+        font-size: var(--text-md);
+        line-height: var(--md-line);
+        font-weight: var(--medium);
+        width: 60%;
+    }
+
+    div[class^="cursor-pointer"] {
+        width: 4.4rem;
+        height: 2.4rem;
+    }
+
+    div[class^="rounded-full"] {
+        width: 2rem;
+        height: 2rem;
+        --tw-translate-x: calc(var(--spacing) * 9);
+    }
+}
+
+.addItemBtn {
+    align-self: flex-start;
+}
+
+.addItemContainer {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+
+    div[data-input-wrapper] {
+        justify-content: center;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+
+.addItemBtnContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 999px;
+    padding: 0.8rem;
+    border: 0.1rem solid var(--brand-purple-500);
+}
+
+.addItemBtnCounter {
+    width: 2.4rem;
+    height: 2.4rem;
+
+}
+
+.addItemBtnText {
+    font-size: var(--text-sm);
+    line-height: var(--sm-line);
+    font-weight: var(--regular);
+    color: var(--gray-900);
+}
+
+.daySelected td[data-selected="true"] button {
+    background-color: var(--brand-purple-600);
+    color: var(--white);
+}
+
+.dayInRange {
+    background-color: var(--brand-purple-100);
+    color: var(--gray-900);
+}
+
+.inputMargin {
+    margin-top: 0.9rem;
+}

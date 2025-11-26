@@ -11,13 +11,13 @@ import { ToggleTypeUser } from './ToggleTypeUser';
 import type { UserType } from '@/components/SignUp/UserTypeForm';
 
 export function HowFunctionSection() {
-    const [userType, setUserType] = useState<UserType>("beneficiaria");
+    const [userType, setUserType] = useState<UserType>("5");
     return (
         <Container classCss={`flex flex-col items-center gap-8 ${styles.howFunctionContainer}`}>
             <Title.Level2 text="Como Conectades funciona?" />
             <Paragraph text="Conectades é uma plataforma que conecta quem precisa com quem quer ajudar!" size="lg" />
             <ToggleTypeUser userType={userType} setUserType={setUserType}/>
-            <Image src={userType === "doadora" ? oldMan : manWithBook} alternateText="Ilustração de um homem segurando alguns livros" className={styles.image} />
+            <Image src={userType === "6" ? oldMan : manWithBook} alternateText="Ilustração de um homem segurando alguns livros" className={styles.image} />
             <HowItWorksCard userType={userType}/>
         </Container>
     );

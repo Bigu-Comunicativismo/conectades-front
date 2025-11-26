@@ -1,3 +1,17 @@
 .donationContainer {
     padding-bottom: 2.4rem;
 }
+
+
+.mobileContainer {
+    @media (min-width: 1024px) {
+        display: none;
+    }
+}
+
+.desktopContainer {
+    display: none;
+    @media (min-width: 1024px) {
+        display: block;
+    }
+}

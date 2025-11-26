@@ -1,0 +1,1 @@
+export const imgBaseUrl = "https://conectades.com.br";

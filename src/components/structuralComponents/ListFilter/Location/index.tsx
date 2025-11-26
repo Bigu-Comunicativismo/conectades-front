@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useListData } from "react-stately";
 import { Container } from "../../Container";
 import { Paragraph } from "../../Paragraph";
@@ -7,29 +6,23 @@ import { MultiSelect } from "@/components/base/select/multi-select";
 import multiSelectStyles from "@/components/SignUp/PreferenceForm/PreferenceForm.module.css";
 import btnStyles from "@/components/base/buttons/buttons.module.css";
 import styles from "../ListFilter.module.css";
+import { useFilterContext } from "@/contexts/filterContext";
 
+type location = {
+    id: string,
+    label: string
+}
 
-export function Location({selectedLocations, setLocationFilter, setShowModal}: { selectedLocations: [] | never[], setLocationFilter: React.Dispatch<React.SetStateAction<[] | never[]>>, setShowModal: React.Dispatch<React.SetStateAction<boolean>>}) {
-
-    const [locations] = useState([
-    { id: "Centro", label: "Centro" },
-    { id: "Boa Viagem", label: "Boa Viagem" },
-    { id: "Coque", label: "Coque" },
-    { id: "Ibura", label: "Ibura" },
-    { id: "Várzea", label: "Várzea" },
-    { id: "Bairro Novo", label: "Bairro Novo" },
-    { id: "Peixinhos", label: "Peixinhos" },
-    { id:"V8", label: "V8" },
-    { id: "Fragoso", label: "Fragoso" },
-    { id: "Ouro Preto", label: "Ouro Pretp" },
-]);
+export function Location({ setShowModal, locations}: { setShowModal: React.Dispatch<React.SetStateAction<boolean>>, locations: location[] }) {
+    const {selectedLocations, setSelectedLocations: setLocationFilter} = useFilterContext();
+    
 
     const selectedItems = useListData({
         initialItems: selectedLocations,
     });
     return (
-        <Container classCss={styles.modalBack}>
-            <Container classCss={`${styles.modal} ${styles.modalLocation} ${multiSelectStyles.selectContainer}`}>
+        <Container classCss={styles.modalBack} onClick={() => setShowModal((previous) => !previous)}>
+            <Container classCss={`${styles.modal} ${styles.modalLocation} ${multiSelectStyles.selectContainer}`} onClick={(event: React.MouseEvent) => event.stopPropagation()}>
                 <Paragraph text={"Localização"} size="lg" weight="semibold"  />
                 <MultiSelect isRequired
                     size="md"
@@ -43,7 +36,7 @@ export function Location({selectedLocations, setLocationFilter, setShowModal}: {
                         className={multiSelectStyles.selectItem} 
                         key={location.id} 
                         icon={null} 
-                        label={location.id} 
+                        label={location.label} 
                         textValue={location.id}>
                             {location.label}
                         </MultiSelect.Item>))}

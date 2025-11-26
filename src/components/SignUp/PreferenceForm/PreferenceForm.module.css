@@ -17,6 +17,7 @@
     font-size: var(--text-sm);
     line-height: var(--sm-line);
     font-weight: var(--medium);
+    box-shadow: none;
 }
 
 .selectedFilterBtn {
@@ -81,6 +82,7 @@
     color: var(--white);
     margin-top: 2.4rem;
     margin-bottom: 2.4rem;
+    box-shadow: none;
 }
 
 .btnDesactive {

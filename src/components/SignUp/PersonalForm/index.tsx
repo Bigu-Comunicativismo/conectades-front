@@ -137,9 +137,9 @@ export function PersonalForm({nextStep}: LocationFormProps) {
 
         <Button
           type="submit"
-          className={`${styles.btn} ${(displayName === "" || bio === "" || profileImage === null) && styles.btnDesactive}`}
+          className={`${styles.btn} ${(displayName === "" || bio === "" ) && styles.btnDesactive}`}
           size="lg"
-          isDisabled={displayName === "" || bio === "" || profileImage === null}
+          isDisabled={displayName === "" || bio === "" }
           onClick={(event: FormEvent) => {
             event.preventDefault();
             const newUser = user;

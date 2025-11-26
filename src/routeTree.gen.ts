@@ -8,45 +8,119 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
+import { createFileRoute } from '@tanstack/react-router'
+
 import { Route as rootRouteImport } from './pages/__root'
-import { Route as TermosdeusoIndexRouteImport } from './pages/termosdeuso/index'
 import { Route as SignupIndexRouteImport } from './pages/signup/index'
-import { Route as ResetpasswordIndexRouteImport } from './pages/resetpassword/index'
-import { Route as PoliticadeprivacidadeIndexRouteImport } from './pages/politicadeprivacidade/index'
-import { Route as OpportunitiesIndexRouteImport } from './pages/opportunities/index'
+import { Route as MydonationsIndexRouteImport } from './pages/mydonations/index'
+import { Route as MycampaignsIndexRouteImport } from './pages/mycampaigns/index'
 import { Route as LoginIndexRouteImport } from './pages/login/index'
-import { Route as ErrorIndexRouteImport } from './pages/error/index'
-import { Route as DonationsIndexRouteImport } from './pages/donations/index'
-import { Route as CampaignsIndexRouteImport } from './pages/campaigns/index'
+import { Route as FavoritesIndexRouteImport } from './pages/favorites/index'
 import { Route as HomeIndexRouteImport } from './pages/_Home/index'
+import { Route as ProfileEditIndexRouteImport } from './pages/profile/edit/index'
+import { Route as OpportunitiesNewIndexRouteImport } from './pages/opportunities/new/index'
+import { Route as OpportunitiesEditIndexRouteImport } from './pages/opportunities/edit/index'
+import { Route as DonationsNewIndexRouteImport } from './pages/donations/new/index'
+import { Route as CampaignsNewIndexRouteImport } from './pages/campaigns/new/index'
 import { Route as OpportunitiesOpportunityIdRouteImport } from './pages/opportunities/_Opportunity/$id'
+import { Route as DonationsEditIdRouteImport } from './pages/donations/edit/$id'
 import { Route as DonationsDonationIdRouteImport } from './pages/donations/_Donation/$id'
+import { Route as CampaignsEditIdRouteImport } from './pages/campaigns/edit/$id'
 import { Route as CampaignsCampaignIdRouteImport } from './pages/campaigns/_Campaign/$id'
 
-const TermosdeusoIndexRoute = TermosdeusoIndexRouteImport.update({
+const TermosdeusoIndexLazyRouteImport = createFileRoute('/termosdeuso/')()
+const ResetpasswordIndexLazyRouteImport = createFileRoute('/resetpassword/')()
+const ProfileIndexLazyRouteImport = createFileRoute('/profile/')()
+const PoliticadeprivacidadeIndexLazyRouteImport = createFileRoute(
+  '/politicadeprivacidade/',
+)()
+const OpportunitiesIndexLazyRouteImport = createFileRoute('/opportunities/')()
+const MyopportunitiesIndexLazyRouteImport =
+  createFileRoute('/myopportunities/')()
+const ErrorIndexLazyRouteImport = createFileRoute('/error/')()
+const DonationsIndexLazyRouteImport = createFileRoute('/donations/')()
+const CampaignsIndexLazyRouteImport = createFileRoute('/campaigns/')()
+const AboutusIndexLazyRouteImport = createFileRoute('/aboutus/')()
+
+const TermosdeusoIndexLazyRoute = TermosdeusoIndexLazyRouteImport.update({
   id: '/termosdeuso/',
   path: '/termosdeuso/',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any).lazy(() =>
+  import('./pages/termosdeuso/index.lazy').then((d) => d.Route),
+)
+const ResetpasswordIndexLazyRoute = ResetpasswordIndexLazyRouteImport.update({
+  id: '/resetpassword/',
+  path: '/resetpassword/',
+  getParentRoute: () => rootRouteImport,
+} as any).lazy(() =>
+  import('./pages/resetpassword/index.lazy').then((d) => d.Route),
+)
+const ProfileIndexLazyRoute = ProfileIndexLazyRouteImport.update({
+  id: '/profile/',
+  path: '/profile/',
+  getParentRoute: () => rootRouteImport,
+} as any).lazy(() => import('./pages/profile/index.lazy').then((d) => d.Route))
+const PoliticadeprivacidadeIndexLazyRoute =
+  PoliticadeprivacidadeIndexLazyRouteImport.update({
+    id: '/politicadeprivacidade/',
+    path: '/politicadeprivacidade/',
+    getParentRoute: () => rootRouteImport,
+  } as any).lazy(() =>
+    import('./pages/politicadeprivacidade/index.lazy').then((d) => d.Route),
+  )
+const OpportunitiesIndexLazyRoute = OpportunitiesIndexLazyRouteImport.update({
+  id: '/opportunities/',
+  path: '/opportunities/',
+  getParentRoute: () => rootRouteImport,
+} as any).lazy(() =>
+  import('./pages/opportunities/index.lazy').then((d) => d.Route),
+)
+const MyopportunitiesIndexLazyRoute =
+  MyopportunitiesIndexLazyRouteImport.update({
+    id: '/myopportunities/',
+    path: '/myopportunities/',
+    getParentRoute: () => rootRouteImport,
+  } as any).lazy(() =>
+    import('./pages/myopportunities/index.lazy').then((d) => d.Route),
+  )
+const ErrorIndexLazyRoute = ErrorIndexLazyRouteImport.update({
+  id: '/error/',
+  path: '/error/',
+  getParentRoute: () => rootRouteImport,
+} as any).lazy(() => import('./pages/error/index.lazy').then((d) => d.Route))
+const DonationsIndexLazyRoute = DonationsIndexLazyRouteImport.update({
+  id: '/donations/',
+  path: '/donations/',
+  getParentRoute: () => rootRouteImport,
+} as any).lazy(() =>
+  import('./pages/donations/index.lazy').then((d) => d.Route),
+)
+const CampaignsIndexLazyRoute = CampaignsIndexLazyRouteImport.update({
+  id: '/campaigns/',
+  path: '/campaigns/',
+  getParentRoute: () => rootRouteImport,
+} as any).lazy(() =>
+  import('./pages/campaigns/index.lazy').then((d) => d.Route),
+)
+const AboutusIndexLazyRoute = AboutusIndexLazyRouteImport.update({
+  id: '/aboutus/',
+  path: '/aboutus/',
+  getParentRoute: () => rootRouteImport,
+} as any).lazy(() => import('./pages/aboutus/index.lazy').then((d) => d.Route))
 const SignupIndexRoute = SignupIndexRouteImport.update({
   id: '/signup/',
   path: '/signup/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ResetpasswordIndexRoute = ResetpasswordIndexRouteImport.update({
-  id: '/resetpassword/',
-  path: '/resetpassword/',
+const MydonationsIndexRoute = MydonationsIndexRouteImport.update({
+  id: '/mydonations/',
+  path: '/mydonations/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PoliticadeprivacidadeIndexRoute =
-  PoliticadeprivacidadeIndexRouteImport.update({
-    id: '/politicadeprivacidade/',
-    path: '/politicadeprivacidade/',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const OpportunitiesIndexRoute = OpportunitiesIndexRouteImport.update({
-  id: '/opportunities/',
-  path: '/opportunities/',
+const MycampaignsIndexRoute = MycampaignsIndexRouteImport.update({
+  id: '/mycampaigns/',
+  path: '/mycampaigns/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginIndexRoute = LoginIndexRouteImport.update({
@@ -54,24 +128,39 @@ const LoginIndexRoute = LoginIndexRouteImport.update({
   path: '/login/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ErrorIndexRoute = ErrorIndexRouteImport.update({
-  id: '/error/',
-  path: '/error/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DonationsIndexRoute = DonationsIndexRouteImport.update({
-  id: '/donations/',
-  path: '/donations/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CampaignsIndexRoute = CampaignsIndexRouteImport.update({
-  id: '/campaigns/',
-  path: '/campaigns/',
+const FavoritesIndexRoute = FavoritesIndexRouteImport.update({
+  id: '/favorites/',
+  path: '/favorites/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HomeIndexRoute = HomeIndexRouteImport.update({
   id: '/_Home/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileEditIndexRoute = ProfileEditIndexRouteImport.update({
+  id: '/profile/edit/',
+  path: '/profile/edit/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OpportunitiesNewIndexRoute = OpportunitiesNewIndexRouteImport.update({
+  id: '/opportunities/new/',
+  path: '/opportunities/new/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OpportunitiesEditIndexRoute = OpportunitiesEditIndexRouteImport.update({
+  id: '/opportunities/edit/',
+  path: '/opportunities/edit/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DonationsNewIndexRoute = DonationsNewIndexRouteImport.update({
+  id: '/donations/new/',
+  path: '/donations/new/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CampaignsNewIndexRoute = CampaignsNewIndexRouteImport.update({
+  id: '/campaigns/new/',
+  path: '/campaigns/new/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OpportunitiesOpportunityIdRoute =
@@ -80,9 +169,19 @@ const OpportunitiesOpportunityIdRoute =
     path: '/opportunities/$id',
     getParentRoute: () => rootRouteImport,
   } as any)
+const DonationsEditIdRoute = DonationsEditIdRouteImport.update({
+  id: '/donations/edit/$id',
+  path: '/donations/edit/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DonationsDonationIdRoute = DonationsDonationIdRouteImport.update({
   id: '/donations/_Donation/$id',
   path: '/donations/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CampaignsEditIdRoute = CampaignsEditIdRouteImport.update({
+  id: '/campaigns/edit/$id',
+  path: '/campaigns/edit/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CampaignsCampaignIdRoute = CampaignsCampaignIdRouteImport.update({
@@ -93,112 +192,203 @@ const CampaignsCampaignIdRoute = CampaignsCampaignIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof HomeIndexRoute
-  '/campaigns': typeof CampaignsIndexRoute
-  '/donations': typeof DonationsIndexRoute
-  '/error': typeof ErrorIndexRoute
+  '/favorites': typeof FavoritesIndexRoute
   '/login': typeof LoginIndexRoute
-  '/opportunities': typeof OpportunitiesIndexRoute
-  '/politicadeprivacidade': typeof PoliticadeprivacidadeIndexRoute
-  '/resetpassword': typeof ResetpasswordIndexRoute
+  '/mycampaigns': typeof MycampaignsIndexRoute
+  '/mydonations': typeof MydonationsIndexRoute
   '/signup': typeof SignupIndexRoute
-  '/termosdeuso': typeof TermosdeusoIndexRoute
+  '/aboutus': typeof AboutusIndexLazyRoute
+  '/campaigns': typeof CampaignsIndexLazyRoute
+  '/donations': typeof DonationsIndexLazyRoute
+  '/error': typeof ErrorIndexLazyRoute
+  '/myopportunities': typeof MyopportunitiesIndexLazyRoute
+  '/opportunities': typeof OpportunitiesIndexLazyRoute
+  '/politicadeprivacidade': typeof PoliticadeprivacidadeIndexLazyRoute
+  '/profile': typeof ProfileIndexLazyRoute
+  '/resetpassword': typeof ResetpasswordIndexLazyRoute
+  '/termosdeuso': typeof TermosdeusoIndexLazyRoute
   '/campaigns/$id': typeof CampaignsCampaignIdRoute
+  '/campaigns/edit/$id': typeof CampaignsEditIdRoute
   '/donations/$id': typeof DonationsDonationIdRoute
+  '/donations/edit/$id': typeof DonationsEditIdRoute
   '/opportunities/$id': typeof OpportunitiesOpportunityIdRoute
+  '/campaigns/new': typeof CampaignsNewIndexRoute
+  '/donations/new': typeof DonationsNewIndexRoute
+  '/opportunities/edit': typeof OpportunitiesEditIndexRoute
+  '/opportunities/new': typeof OpportunitiesNewIndexRoute
+  '/profile/edit': typeof ProfileEditIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof HomeIndexRoute
-  '/campaigns': typeof CampaignsIndexRoute
-  '/donations': typeof DonationsIndexRoute
-  '/error': typeof ErrorIndexRoute
+  '/favorites': typeof FavoritesIndexRoute
   '/login': typeof LoginIndexRoute
-  '/opportunities': typeof OpportunitiesIndexRoute
-  '/politicadeprivacidade': typeof PoliticadeprivacidadeIndexRoute
-  '/resetpassword': typeof ResetpasswordIndexRoute
+  '/mycampaigns': typeof MycampaignsIndexRoute
+  '/mydonations': typeof MydonationsIndexRoute
   '/signup': typeof SignupIndexRoute
-  '/termosdeuso': typeof TermosdeusoIndexRoute
+  '/aboutus': typeof AboutusIndexLazyRoute
+  '/campaigns': typeof CampaignsIndexLazyRoute
+  '/donations': typeof DonationsIndexLazyRoute
+  '/error': typeof ErrorIndexLazyRoute
+  '/myopportunities': typeof MyopportunitiesIndexLazyRoute
+  '/opportunities': typeof OpportunitiesIndexLazyRoute
+  '/politicadeprivacidade': typeof PoliticadeprivacidadeIndexLazyRoute
+  '/profile': typeof ProfileIndexLazyRoute
+  '/resetpassword': typeof ResetpasswordIndexLazyRoute
+  '/termosdeuso': typeof TermosdeusoIndexLazyRoute
   '/campaigns/$id': typeof CampaignsCampaignIdRoute
+  '/campaigns/edit/$id': typeof CampaignsEditIdRoute
   '/donations/$id': typeof DonationsDonationIdRoute
+  '/donations/edit/$id': typeof DonationsEditIdRoute
   '/opportunities/$id': typeof OpportunitiesOpportunityIdRoute
+  '/campaigns/new': typeof CampaignsNewIndexRoute
+  '/donations/new': typeof DonationsNewIndexRoute
+  '/opportunities/edit': typeof OpportunitiesEditIndexRoute
+  '/opportunities/new': typeof OpportunitiesNewIndexRoute
+  '/profile/edit': typeof ProfileEditIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_Home/': typeof HomeIndexRoute
-  '/campaigns/': typeof CampaignsIndexRoute
-  '/donations/': typeof DonationsIndexRoute
-  '/error/': typeof ErrorIndexRoute
+  '/favorites/': typeof FavoritesIndexRoute
   '/login/': typeof LoginIndexRoute
-  '/opportunities/': typeof OpportunitiesIndexRoute
-  '/politicadeprivacidade/': typeof PoliticadeprivacidadeIndexRoute
-  '/resetpassword/': typeof ResetpasswordIndexRoute
+  '/mycampaigns/': typeof MycampaignsIndexRoute
+  '/mydonations/': typeof MydonationsIndexRoute
   '/signup/': typeof SignupIndexRoute
-  '/termosdeuso/': typeof TermosdeusoIndexRoute
+  '/aboutus/': typeof AboutusIndexLazyRoute
+  '/campaigns/': typeof CampaignsIndexLazyRoute
+  '/donations/': typeof DonationsIndexLazyRoute
+  '/error/': typeof ErrorIndexLazyRoute
+  '/myopportunities/': typeof MyopportunitiesIndexLazyRoute
+  '/opportunities/': typeof OpportunitiesIndexLazyRoute
+  '/politicadeprivacidade/': typeof PoliticadeprivacidadeIndexLazyRoute
+  '/profile/': typeof ProfileIndexLazyRoute
+  '/resetpassword/': typeof ResetpasswordIndexLazyRoute
+  '/termosdeuso/': typeof TermosdeusoIndexLazyRoute
   '/campaigns/_Campaign/$id': typeof CampaignsCampaignIdRoute
+  '/campaigns/edit/$id': typeof CampaignsEditIdRoute
   '/donations/_Donation/$id': typeof DonationsDonationIdRoute
+  '/donations/edit/$id': typeof DonationsEditIdRoute
   '/opportunities/_Opportunity/$id': typeof OpportunitiesOpportunityIdRoute
+  '/campaigns/new/': typeof CampaignsNewIndexRoute
+  '/donations/new/': typeof DonationsNewIndexRoute
+  '/opportunities/edit/': typeof OpportunitiesEditIndexRoute
+  '/opportunities/new/': typeof OpportunitiesNewIndexRoute
+  '/profile/edit/': typeof ProfileEditIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/favorites'
+    | '/login'
+    | '/mycampaigns'
+    | '/mydonations'
+    | '/signup'
+    | '/aboutus'
     | '/campaigns'
     | '/donations'
     | '/error'
-    | '/login'
+    | '/myopportunities'
     | '/opportunities'
     | '/politicadeprivacidade'
+    | '/profile'
     | '/resetpassword'
-    | '/signup'
     | '/termosdeuso'
     | '/campaigns/$id'
+    | '/campaigns/edit/$id'
     | '/donations/$id'
+    | '/donations/edit/$id'
     | '/opportunities/$id'
+    | '/campaigns/new'
+    | '/donations/new'
+    | '/opportunities/edit'
+    | '/opportunities/new'
+    | '/profile/edit'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/favorites'
+    | '/login'
+    | '/mycampaigns'
+    | '/mydonations'
+    | '/signup'
+    | '/aboutus'
     | '/campaigns'
     | '/donations'
     | '/error'
-    | '/login'
+    | '/myopportunities'
     | '/opportunities'
     | '/politicadeprivacidade'
+    | '/profile'
     | '/resetpassword'
-    | '/signup'
     | '/termosdeuso'
     | '/campaigns/$id'
+    | '/campaigns/edit/$id'
     | '/donations/$id'
+    | '/donations/edit/$id'
     | '/opportunities/$id'
+    | '/campaigns/new'
+    | '/donations/new'
+    | '/opportunities/edit'
+    | '/opportunities/new'
+    | '/profile/edit'
   id:
     | '__root__'
     | '/_Home/'
+    | '/favorites/'
+    | '/login/'
+    | '/mycampaigns/'
+    | '/mydonations/'
+    | '/signup/'
+    | '/aboutus/'
     | '/campaigns/'
     | '/donations/'
     | '/error/'
-    | '/login/'
+    | '/myopportunities/'
     | '/opportunities/'
     | '/politicadeprivacidade/'
+    | '/profile/'
     | '/resetpassword/'
-    | '/signup/'
     | '/termosdeuso/'
     | '/campaigns/_Campaign/$id'
+    | '/campaigns/edit/$id'
     | '/donations/_Donation/$id'
+    | '/donations/edit/$id'
     | '/opportunities/_Opportunity/$id'
+    | '/campaigns/new/'
+    | '/donations/new/'
+    | '/opportunities/edit/'
+    | '/opportunities/new/'
+    | '/profile/edit/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   HomeIndexRoute: typeof HomeIndexRoute
-  CampaignsIndexRoute: typeof CampaignsIndexRoute
-  DonationsIndexRoute: typeof DonationsIndexRoute
-  ErrorIndexRoute: typeof ErrorIndexRoute
+  FavoritesIndexRoute: typeof FavoritesIndexRoute
   LoginIndexRoute: typeof LoginIndexRoute
-  OpportunitiesIndexRoute: typeof OpportunitiesIndexRoute
-  PoliticadeprivacidadeIndexRoute: typeof PoliticadeprivacidadeIndexRoute
-  ResetpasswordIndexRoute: typeof ResetpasswordIndexRoute
+  MycampaignsIndexRoute: typeof MycampaignsIndexRoute
+  MydonationsIndexRoute: typeof MydonationsIndexRoute
   SignupIndexRoute: typeof SignupIndexRoute
-  TermosdeusoIndexRoute: typeof TermosdeusoIndexRoute
+  AboutusIndexLazyRoute: typeof AboutusIndexLazyRoute
+  CampaignsIndexLazyRoute: typeof CampaignsIndexLazyRoute
+  DonationsIndexLazyRoute: typeof DonationsIndexLazyRoute
+  ErrorIndexLazyRoute: typeof ErrorIndexLazyRoute
+  MyopportunitiesIndexLazyRoute: typeof MyopportunitiesIndexLazyRoute
+  OpportunitiesIndexLazyRoute: typeof OpportunitiesIndexLazyRoute
+  PoliticadeprivacidadeIndexLazyRoute: typeof PoliticadeprivacidadeIndexLazyRoute
+  ProfileIndexLazyRoute: typeof ProfileIndexLazyRoute
+  ResetpasswordIndexLazyRoute: typeof ResetpasswordIndexLazyRoute
+  TermosdeusoIndexLazyRoute: typeof TermosdeusoIndexLazyRoute
   CampaignsCampaignIdRoute: typeof CampaignsCampaignIdRoute
+  CampaignsEditIdRoute: typeof CampaignsEditIdRoute
   DonationsDonationIdRoute: typeof DonationsDonationIdRoute
+  DonationsEditIdRoute: typeof DonationsEditIdRoute
   OpportunitiesOpportunityIdRoute: typeof OpportunitiesOpportunityIdRoute
+  CampaignsNewIndexRoute: typeof CampaignsNewIndexRoute
+  DonationsNewIndexRoute: typeof DonationsNewIndexRoute
+  OpportunitiesEditIndexRoute: typeof OpportunitiesEditIndexRoute
+  OpportunitiesNewIndexRoute: typeof OpportunitiesNewIndexRoute
+  ProfileEditIndexRoute: typeof ProfileEditIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -207,7 +397,70 @@ declare module '@tanstack/react-router' {
       id: '/termosdeuso/'
       path: '/termosdeuso'
       fullPath: '/termosdeuso'
-      preLoaderRoute: typeof TermosdeusoIndexRouteImport
+      preLoaderRoute: typeof TermosdeusoIndexLazyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resetpassword/': {
+      id: '/resetpassword/'
+      path: '/resetpassword'
+      fullPath: '/resetpassword'
+      preLoaderRoute: typeof ResetpasswordIndexLazyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile/': {
+      id: '/profile/'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileIndexLazyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/politicadeprivacidade/': {
+      id: '/politicadeprivacidade/'
+      path: '/politicadeprivacidade'
+      fullPath: '/politicadeprivacidade'
+      preLoaderRoute: typeof PoliticadeprivacidadeIndexLazyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/opportunities/': {
+      id: '/opportunities/'
+      path: '/opportunities'
+      fullPath: '/opportunities'
+      preLoaderRoute: typeof OpportunitiesIndexLazyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/myopportunities/': {
+      id: '/myopportunities/'
+      path: '/myopportunities'
+      fullPath: '/myopportunities'
+      preLoaderRoute: typeof MyopportunitiesIndexLazyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/error/': {
+      id: '/error/'
+      path: '/error'
+      fullPath: '/error'
+      preLoaderRoute: typeof ErrorIndexLazyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/donations/': {
+      id: '/donations/'
+      path: '/donations'
+      fullPath: '/donations'
+      preLoaderRoute: typeof DonationsIndexLazyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/campaigns/': {
+      id: '/campaigns/'
+      path: '/campaigns'
+      fullPath: '/campaigns'
+      preLoaderRoute: typeof CampaignsIndexLazyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/aboutus/': {
+      id: '/aboutus/'
+      path: '/aboutus'
+      fullPath: '/aboutus'
+      preLoaderRoute: typeof AboutusIndexLazyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/signup/': {
@@ -217,25 +470,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SignupIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/resetpassword/': {
-      id: '/resetpassword/'
-      path: '/resetpassword'
-      fullPath: '/resetpassword'
-      preLoaderRoute: typeof ResetpasswordIndexRouteImport
+    '/mydonations/': {
+      id: '/mydonations/'
+      path: '/mydonations'
+      fullPath: '/mydonations'
+      preLoaderRoute: typeof MydonationsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/politicadeprivacidade/': {
-      id: '/politicadeprivacidade/'
-      path: '/politicadeprivacidade'
-      fullPath: '/politicadeprivacidade'
-      preLoaderRoute: typeof PoliticadeprivacidadeIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/opportunities/': {
-      id: '/opportunities/'
-      path: '/opportunities'
-      fullPath: '/opportunities'
-      preLoaderRoute: typeof OpportunitiesIndexRouteImport
+    '/mycampaigns/': {
+      id: '/mycampaigns/'
+      path: '/mycampaigns'
+      fullPath: '/mycampaigns'
+      preLoaderRoute: typeof MycampaignsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login/': {
@@ -245,25 +491,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/error/': {
-      id: '/error/'
-      path: '/error'
-      fullPath: '/error'
-      preLoaderRoute: typeof ErrorIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/donations/': {
-      id: '/donations/'
-      path: '/donations'
-      fullPath: '/donations'
-      preLoaderRoute: typeof DonationsIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/campaigns/': {
-      id: '/campaigns/'
-      path: '/campaigns'
-      fullPath: '/campaigns'
-      preLoaderRoute: typeof CampaignsIndexRouteImport
+    '/favorites/': {
+      id: '/favorites/'
+      path: '/favorites'
+      fullPath: '/favorites'
+      preLoaderRoute: typeof FavoritesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_Home/': {
@@ -273,6 +505,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/profile/edit/': {
+      id: '/profile/edit/'
+      path: '/profile/edit'
+      fullPath: '/profile/edit'
+      preLoaderRoute: typeof ProfileEditIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/opportunities/new/': {
+      id: '/opportunities/new/'
+      path: '/opportunities/new'
+      fullPath: '/opportunities/new'
+      preLoaderRoute: typeof OpportunitiesNewIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/opportunities/edit/': {
+      id: '/opportunities/edit/'
+      path: '/opportunities/edit'
+      fullPath: '/opportunities/edit'
+      preLoaderRoute: typeof OpportunitiesEditIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/donations/new/': {
+      id: '/donations/new/'
+      path: '/donations/new'
+      fullPath: '/donations/new'
+      preLoaderRoute: typeof DonationsNewIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/campaigns/new/': {
+      id: '/campaigns/new/'
+      path: '/campaigns/new'
+      fullPath: '/campaigns/new'
+      preLoaderRoute: typeof CampaignsNewIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/opportunities/_Opportunity/$id': {
       id: '/opportunities/_Opportunity/$id'
       path: '/opportunities/$id'
@@ -280,11 +547,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OpportunitiesOpportunityIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/donations/edit/$id': {
+      id: '/donations/edit/$id'
+      path: '/donations/edit/$id'
+      fullPath: '/donations/edit/$id'
+      preLoaderRoute: typeof DonationsEditIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/donations/_Donation/$id': {
       id: '/donations/_Donation/$id'
       path: '/donations/$id'
       fullPath: '/donations/$id'
       preLoaderRoute: typeof DonationsDonationIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/campaigns/edit/$id': {
+      id: '/campaigns/edit/$id'
+      path: '/campaigns/edit/$id'
+      fullPath: '/campaigns/edit/$id'
+      preLoaderRoute: typeof CampaignsEditIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/campaigns/_Campaign/$id': {
@@ -299,18 +580,31 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   HomeIndexRoute: HomeIndexRoute,
-  CampaignsIndexRoute: CampaignsIndexRoute,
-  DonationsIndexRoute: DonationsIndexRoute,
-  ErrorIndexRoute: ErrorIndexRoute,
+  FavoritesIndexRoute: FavoritesIndexRoute,
   LoginIndexRoute: LoginIndexRoute,
-  OpportunitiesIndexRoute: OpportunitiesIndexRoute,
-  PoliticadeprivacidadeIndexRoute: PoliticadeprivacidadeIndexRoute,
-  ResetpasswordIndexRoute: ResetpasswordIndexRoute,
+  MycampaignsIndexRoute: MycampaignsIndexRoute,
+  MydonationsIndexRoute: MydonationsIndexRoute,
   SignupIndexRoute: SignupIndexRoute,
-  TermosdeusoIndexRoute: TermosdeusoIndexRoute,
+  AboutusIndexLazyRoute: AboutusIndexLazyRoute,
+  CampaignsIndexLazyRoute: CampaignsIndexLazyRoute,
+  DonationsIndexLazyRoute: DonationsIndexLazyRoute,
+  ErrorIndexLazyRoute: ErrorIndexLazyRoute,
+  MyopportunitiesIndexLazyRoute: MyopportunitiesIndexLazyRoute,
+  OpportunitiesIndexLazyRoute: OpportunitiesIndexLazyRoute,
+  PoliticadeprivacidadeIndexLazyRoute: PoliticadeprivacidadeIndexLazyRoute,
+  ProfileIndexLazyRoute: ProfileIndexLazyRoute,
+  ResetpasswordIndexLazyRoute: ResetpasswordIndexLazyRoute,
+  TermosdeusoIndexLazyRoute: TermosdeusoIndexLazyRoute,
   CampaignsCampaignIdRoute: CampaignsCampaignIdRoute,
+  CampaignsEditIdRoute: CampaignsEditIdRoute,
   DonationsDonationIdRoute: DonationsDonationIdRoute,
+  DonationsEditIdRoute: DonationsEditIdRoute,
   OpportunitiesOpportunityIdRoute: OpportunitiesOpportunityIdRoute,
+  CampaignsNewIndexRoute: CampaignsNewIndexRoute,
+  DonationsNewIndexRoute: DonationsNewIndexRoute,
+  OpportunitiesEditIndexRoute: OpportunitiesEditIndexRoute,
+  OpportunitiesNewIndexRoute: OpportunitiesNewIndexRoute,
+  ProfileEditIndexRoute: ProfileEditIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

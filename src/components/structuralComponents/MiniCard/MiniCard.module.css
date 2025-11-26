@@ -1,0 +1,45 @@
+.miniCardContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 1.6rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.6rem;
+
+    @media (min-width: 1024px) {
+        width: 100%;
+        justify-content: flex-start;
+    }
+}
+
+.miniCardImage {
+    width: 8.2rem;
+    height: 8.2rem;
+    border-radius: 0.8rem;
+    flex-shrink: 0;
+}
+
+.editIcon {
+    align-self: flex-start;
+    flex-shrink: 0;
+}
+
+.cardName {
+    display: inline-block;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.miniCard {
+    width: 100%;
+    @media (min-width: 1024px) {
+        width: 80vw;
+    }
+}
+
+.link {
+    display: inline-block;
+    width: 46%;
+}

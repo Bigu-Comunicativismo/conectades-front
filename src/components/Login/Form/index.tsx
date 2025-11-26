@@ -5,6 +5,11 @@ import styles from './Input.module.css';
 import inputStyles from "@/components/base/input/Input.module.css";
 import { Mail01, Passcode, Eye, EyeOff } from "@untitledui/icons";
 import { useState, type FormEvent } from "react";
+import { apiFetch } from "@/utils/fetchApi";
+import { useLoggedUserContext } from "@/contexts/loggedUserContext";
+import { useNavigate } from "@tanstack/react-router";
+
+
 
 interface LoginInputProps {
     isValidEmail: boolean;
@@ -12,6 +17,9 @@ interface LoginInputProps {
 }
 
 export function LoginForm({isValidEmail, setIsValidEmail}: LoginInputProps) {
+    const navigate = useNavigate();
+    const { setLoggedUser } = useLoggedUserContext();
+
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const [inputValue, setInputValue] = useState('');
     const [email, setEmail] = useState('');
@@ -20,7 +28,7 @@ export function LoginForm({isValidEmail, setIsValidEmail}: LoginInputProps) {
     const [hasEmailError, setHasEmailError] = useState(false);
     const [ isShowPassword, setIsShowPassword ] = useState(false);
     const [ passwordType, setPasswordType ] = useState('text');
-    const passwordInvalid: boolean = false;
+    const [passwordInvalid, setPasswordInvalid] = useState<boolean>(false);
 
     return (
         <form>
@@ -40,17 +48,9 @@ export function LoginForm({isValidEmail, setIsValidEmail}: LoginInputProps) {
                                 setHasEmail(false)
                             }
                         setInputValue(inputValue);
-                        return isValidEmail ? setPassword(inputValue) : setEmail(inputValue)}}
-                    onBlur={() => {
-                        if (isValidEmail) {
-                            console.log(password)
-                        }else if (!isValidEmail) {
-                            console.log(email)
-                        }
-                        return 
-                        }} 
+                        return isValidEmail ? setPassword(inputValue) : setEmail(inputValue)}} 
                     className={`${inputStyles.input} ${styles.input}`}
-                    hint={(hasEmailError && password === '') ? "Este e-mail não é válido" : passwordInvalid ? "Senha incorreta. Tente novamente ou redefina a senha." : null}
+                    hint={(hasEmailError && password === '' && !hasEmail) ? "Este e-mail não é válido" : passwordInvalid ? "Senha incorreta. Tente novamente ou redefina a senha." : null}
                     isInvalid={(hasEmailError && password === '') || passwordInvalid}
                     />
                     {isValidEmail ? isShowPassword ? 
@@ -71,10 +71,25 @@ export function LoginForm({isValidEmail, setIsValidEmail}: LoginInputProps) {
             </Container>
                 {isValidEmail ? <Button className={`${styles.btn} ${!password && styles.btnDesactive}`} onClick={(event: FormEvent) => {
                 event.preventDefault();
-                console.log({
+                const user ={
                 email,
                 password
-                });
+                };
+                
+                    const response = apiFetch({ apiPath: "https://conectades.com.br/api/auth/login/", apiMethod: "POST", apiBody: user, apiHeaders: { 'Content-Type': 'application/json' } });
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    response.then((data: any) => {
+                        setLoggedUser({user: data.user, tokens: data.tokens});
+                        localStorage.setItem('tokens', JSON.stringify(data.tokens));
+                        localStorage.setItem('user', JSON.stringify(data.user));
+    
+                        return navigate({ to: '/' })
+                        
+                    }).catch((error) => {
+                        console.log(error);
+                        setPasswordInvalid(true) 
+                    })
+
                 }}  isDisabled={password === ''}>Entrar</Button> : <Button className={`${styles.btn} ${!hasEmail && styles.btnDesactive}`} isDisabled={!hasEmail} onClick={(event: FormEvent) => {
                 event.preventDefault();
                 setInputValue('');

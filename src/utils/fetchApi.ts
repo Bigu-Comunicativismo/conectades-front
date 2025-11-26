@@ -4,11 +4,12 @@ interface FetchOptions {
     apiPath: string;
     apiMethod?: string;
     apiHeaders?: HeadersInit;
-    apiBody?: BodyInit | null;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    apiBody?: any | null;
     cacheStrategy?: RequestCache
 };
 
-async function apiFetch<T>({
+export async function apiFetch<T>({
     apiPath,
     apiMethod = "GET", 
     apiHeaders,
@@ -19,9 +20,10 @@ async function apiFetch<T>({
     const method = apiMethod.toUpperCase();
     const isBodyMethod = ["POST", "PUT", "PATCH"].includes(method);
     
+    const convertedBody = (apiBody instanceof FormData) ? apiBody : JSON.stringify(apiBody);
     
     const bodyContent = isBodyMethod && apiBody !== undefined && apiBody !== null
-        ? JSON.stringify(apiBody) 
+        ? convertedBody
         : undefined; 
 
     try {
@@ -29,7 +31,7 @@ async function apiFetch<T>({
             method: method,
             cache: cacheStrategy,
             headers: { 
-                ...(isBodyMethod && bodyContent ? { "Content-Type": "application/json" } : {}),
+                ...(isBodyMethod && !(bodyContent instanceof FormData) ? {  } : {}),
                 ...apiHeaders,
             },
             body: bodyContent

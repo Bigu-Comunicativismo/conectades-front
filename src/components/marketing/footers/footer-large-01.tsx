@@ -199,11 +199,12 @@ interface FooterLarge01Props {
     footerCss?: string;
     navCategoryCss?: string;
     navItemCss?: string;
+    ref?: React.RefObject<HTMLDivElement | null>;
 };
 
-export const FooterLarge01 = ({footerNavList, children, footerCss, navCategoryCss, navItemCss}: FooterLarge01Props) => {
+export const FooterLarge01 = ({footerNavList, children, footerCss, navCategoryCss, navItemCss, ref}: FooterLarge01Props) => {
     return (
-        <footer className={`bg-primary py-12 pl-16 md:pt-16 ${footerCss}`}>
+        <footer className={`bg-primary py-12 pl-16 md:pt-16 ${footerCss}`} ref={ref}>
             <div className="mx-auto max-w-container px-4 md:px-8">
                 <nav>
                     <ul className="grid grid-cols-1 gap-8 md:grid-cols-3 lg:grid-cols-6">

@@ -24,3 +24,22 @@
     background-color: var(--brand-purple-50);
     border: 0.1rem solid var(--brand-purple-500);
 }
+
+.image {
+    @media (min-width: 1024px) {
+        width: 30.2rem;
+        height: 30.2rem;
+    }
+}
+
+.howItWorksCard {
+    @media (min-width: 1024px) {
+        flex-direction: column;
+    }
+}
+
+.toggleTypeUser {
+    @media (min-width: 1024px) {
+        width: 33rem;
+    }
+}

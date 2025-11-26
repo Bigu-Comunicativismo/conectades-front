@@ -4,8 +4,17 @@ import { Paragraph } from "@/components/structuralComponents/Paragraph";
 import { Image } from "@/components/structuralComponents/Image";
 import styles from "./SuccessMessage.module.css";
 import success from "@/assets/Assets Visuais/envato-graphic-16565ad0-28f4-4f88-8105-1bf3bd296793.png";
+import { useEffect } from "react";
+import { useNavigate } from "@tanstack/react-router";
 
 export function SuccessMessage() {
+
+    const navigate = useNavigate();
+    useEffect(() => {
+        setTimeout(() => {
+            navigate({to:"/login"});
+        }, 3000)
+    })
     return (
         <Container classCss={styles.container}>
                 <Image
@@ -14,7 +23,7 @@ export function SuccessMessage() {
                     className={styles.image}                    
                 />                
                 <Title.Level1 text="Conta criada com sucesso!" classCss={styles.title}/>
-                <Paragraph text="Por favor, aguarde... Estamos redirecionando você" size="md" weight="regular" classCss={styles.paragraph}/>
+                <Paragraph text="Verifique seu e-mail para ativar sua conta. Por favor, aguarde... Estamos redirecionando você" size="md" weight="regular" classCss={styles.paragraph}/>
         </Container>
     );
 }
