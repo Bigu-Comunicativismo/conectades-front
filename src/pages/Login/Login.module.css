@@ -19,7 +19,7 @@
     display: none;
     @media (min-width: 1024px) {
         display: block;
-        background-image: url('@/assets/assets Visuais/Rectangle 13134.svg');
+        background-image: url('../../assets/assets Visuais/Rectangle 13134.svg');
         height: 656px;
         width: 558px;
         background-size: cover;
