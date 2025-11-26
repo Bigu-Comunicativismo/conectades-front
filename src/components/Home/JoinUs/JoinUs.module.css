@@ -6,15 +6,24 @@
     background: -moz-linear-gradient(180deg, rgba(236, 223, 245, 0) 0%, rgba(236, 223, 245, 1) 100%);
     background: linear-gradient(180deg, rgba(236, 223, 245, 0) 0%, rgba(236, 223, 245, 1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ECDFF5", endColorstr="#ECDFF5", GradientType=0);
+
+    @media (min-width: 1024px) {
+        margin-top: 8rem;
+    }
 }
 
 .form {
-    gap: 1.6rem
+    gap: 1.6rem;
+    
+    @media (min-width: 1024px) {
+        padding: 0 15%;
+    }
 }
 
 .btn {
     padding: 10px 16px;
     border-radius: 1.2rem;
+    background-color: var(--brand-purple-600);
 }
 
 .input {

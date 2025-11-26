@@ -76,7 +76,7 @@ export function LoginForm({isValidEmail, setIsValidEmail}: LoginInputProps) {
                 password
                 };
                 
-                    const response = apiFetch({ apiPath: "http://srv1037558.hstgr.cloud:8001/api/auth/login/", apiMethod: "POST", apiBody: user, apiHeaders: { 'Content-Type': 'application/json' } });
+                    const response = apiFetch({ apiPath: "https://conectades.com.br/api/auth/login/", apiMethod: "POST", apiBody: user, apiHeaders: { 'Content-Type': 'application/json' } });
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     response.then((data: any) => {
                         setLoggedUser({user: data.user, tokens: data.tokens});

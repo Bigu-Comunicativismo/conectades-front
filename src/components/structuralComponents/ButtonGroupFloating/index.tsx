@@ -15,7 +15,7 @@ export const ButtonGroupFloating = ({btn1Text, btn1Action, btn2Text, btn2Action,
     return (
         <Container classCss={styles["button-group-floating"]}>
                 <Button className={`${btnStyles.btn} ${styles.outline}`} onClick={btn1Action}>{btn1Text}</Button>
-                <Button className={`${btnStyles.btn} ${disebled ? btnStyles.btnDesactive : ''}`} onClick={btn2Action} isDisabled={disebled}>{btn2Text}</Button>
+                <Button className={`${btnStyles.btn} ${styles.btn} ${disebled ? btnStyles.btnDesactive : ''}`} onClick={btn2Action} isDisabled={disebled}>{btn2Text}</Button>
         </Container>
     );
 };

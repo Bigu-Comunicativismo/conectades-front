@@ -15,8 +15,8 @@ export function ActionType({action, categories, setShowModal}: {action: string, 
     const [markedCategories, setMarkedCategories] = useState<LabedItem[] | never>(selectedItems);
 
     return (
-        <Container classCss={styles.modalBack}>
-            <Container classCss={`${styles.modal} ${multiSelectStyles.selectContainer}`}>
+        <Container classCss={styles.modalBack} onClick={() => setShowModal((previous) => !previous)}>
+            <Container classCss={`${styles.modal} ${multiSelectStyles.selectContainer}`} onClick={(event: React.MouseEvent) => event.stopPropagation()}>
                 <Paragraph text={`Tipo de ${action}`} size="lg" weight="semibold"  />
                 <Container classCss={multiSelectStyles.filtersContainer}>
                     {categories.map((category) => (

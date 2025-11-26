@@ -18,7 +18,7 @@ export function LoginError() {
             <Image src={error} alternateText="Ilustração de erro com uma mulher em dúvida" className={styles.image} />
             <Title.Level1 classCss={styles.title} text="Ops, identificamos algum erro."/>
             <Paragraph size="md" weight="regular" text="Tente novamente. Caso o problema persista, entre em contato conosco!" classCss={styles.paragraph}/>
-            <Button className={styles.btn}>Tentar novamente</Button>
+            <Button className={styles.btn} href="/">Tentar novamente</Button>
         </Container>
     );
 }

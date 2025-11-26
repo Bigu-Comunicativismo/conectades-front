@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import type { LabedItem } from "@/components/structuralComponents/ListFilter";
 
 export type Category = {
     id: string;
@@ -8,8 +9,8 @@ export type Category = {
 interface FilterContextType {
     selectedItems: Category[] | never[];
     setSelectedItems: React.Dispatch<React.SetStateAction<Category[] | never[]>>;
-    selectedLocations: [] | never[];
-    setSelectedLocations: React.Dispatch<React.SetStateAction<[] | never[]>>;
+    selectedLocations: LabedItem[] | never[];
+    setSelectedLocations: React.Dispatch<React.SetStateAction<LabedItem[] | never[]>>;
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -22,7 +23,7 @@ type FilterProviderProps = {
 
 export function FilterProvider ({children}:FilterProviderProps) {
     const [selectedItems, setSelectedItems] = useState<Category[] | never[]>([]);
-    const [selectedLocations, setSelectedLocations] = useState<[] | never[]>([]);
+    const [selectedLocations, setSelectedLocations] = useState<LabedItem[] | never[]>([]);
     
     return(
         <FilterContext.Provider value={{selectedItems, setSelectedItems, selectedLocations, setSelectedLocations}}>

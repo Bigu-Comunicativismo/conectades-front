@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Navigate, Outlet, createRootRoute } from '@tanstack/react-router';
+import { Navigate, Outlet, createRootRoute, useRouterState } from '@tanstack/react-router';
 import { TabProvider } from '@/contexts/campaign';
 import { Main } from '@/components/Main';
 import { Header } from '@/components/Header';
@@ -23,6 +23,10 @@ function RootComponent() {
   const [userType, setUserType] = React.useState<number | undefined>(undefined);
   const [isOnFocus, setIsOnFocus] = React.useState(true);
   const activeSection = React.useRef<HTMLDivElement>(null);
+  
+  const showFooter = useRouterState({
+    select: (state) => state.location.pathname,
+  });
   
   React.useEffect(() => {
     
@@ -53,8 +57,8 @@ function RootComponent() {
           <Outlet />
         </Main>
         </TabProvider>
-        <Footer ref={activeSection}/>
-        {!isOnFocus && (userType !== undefined && <CreateItem btnText={userType === 5 ? "Ciar campanha" : "Criar doação"} path={userType === 5 ? "/campaigns/new" : "/donations/new"}/>)}
+        {showFooter === "/login" || showFooter === "/signup" ? <div style={{display: "none"}}><Footer ref={activeSection}/></div> : <Footer ref={activeSection}/>}
+        {!isOnFocus && (userType !== undefined && <CreateItem btnText={userType === 5 ? "Criar campanha" : "Criar doação"} path={userType === 5 ? "/campaigns/new" : "/donations/new"}/>)}
     </React.Fragment>
   )
 }

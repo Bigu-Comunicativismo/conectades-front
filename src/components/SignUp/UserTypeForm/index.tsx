@@ -10,10 +10,10 @@ import { Image } from "@/components/structuralComponents/Image";
 import { useState } from "react";
 import { useUserContext } from "@/contexts/userContext";
 
-export type UserType = "beneficiaria" | "doadora";
+export type UserType = "5" | "6";
 
 export function UserTypeForm({nextStep}: {nextStep: React.Dispatch<React.SetStateAction<number>>}) {
-    const [userType, setUserType] = useState<UserType>("beneficiaria");
+    const [userType, setUserType] = useState<UserType>("5");
     const {user ,setUser} = useUserContext();
 
     const handleNextStep = (newUserType: UserType) => {
@@ -30,17 +30,17 @@ export function UserTypeForm({nextStep}: {nextStep: React.Dispatch<React.SetStat
                 <FormDescription titleText="Escolha em qual perfil você se encaixa" paragraphText="Tenha honestidade na escolha, pois não será possível mudar no futuro qual perfina" />
             </Container>
             <Container classCss={styles.changeUserTypeContainer}>
-                <ToggleTypeUser userType={userType} setUserType={setUserType}/>
-                <Image src={userType === "beneficiaria" ? manWithBook : oldMan} 
-                alternateText={userType === "beneficiaria" ? "Ilustração de um homem segurando alguns livros" : "Ilustração de um homem de óculos com a mão estirada"} 
+                <ToggleTypeUser userType={userType} setUserType={setUserType} classCss={styles.toggleTypeUser}/>
+                <Image src={userType === "5" ? manWithBook : oldMan} 
+                alternateText={userType === "5" ? "Ilustração de um homem segurando alguns livros" : "Ilustração de um homem de óculos com a mão estirada"} 
                 className={styles.image} />
-                <HowItWorksCard userType={userType}/>
+                <HowItWorksCard userType={userType} ClassCss={styles.howItWorksCard}/>
             </Container>
             <Container classCss={styles.buttonContainer}>
                 <Button className={styles.btn} 
-                onClick={() => handleNextStep("beneficiaria")}>Sou pessoa beneficiária</Button>
+                onClick={() => handleNextStep("5")}>Sou pessoa beneficiária</Button>
                 <Button className={styles.btn} 
-                onClick={() => handleNextStep("doadora")}>Sou pessoa doadora</Button>
+                onClick={() => handleNextStep("6")}>Sou pessoa doadora</Button>
             </Container>
         </Container>
     );

@@ -48,10 +48,10 @@ export async function formEditDonation<T extends Record<string, any>>(obj: T, id
         if(!tokens) return Promise.reject(new Error("Tokens not found"));
         const reToken = JSON.parse(tokens).refresh;
         const prevToken = JSON.parse(tokens).access;
-        const token: {access: string} = await apiFetch({apiPath: 'http://srv1037558.hstgr.cloud:8001/api/token/refresh/', apiMethod: 'POST', apiBody: {refresh: reToken}, apiHeaders: { "Content-Type": "application/json", "Authorization": `Bearer ${prevToken}`}});
+        const token: {access: string} = await apiFetch({apiPath: 'https://conectades.com.br/api/token/refresh/', apiMethod: 'POST', apiBody: {refresh: reToken}, apiHeaders: { "Content-Type": "application/json", "Authorization": `Bearer ${prevToken}`}});
         localStorage.setItem("tokens", JSON.stringify({refresh: reToken, access: token.access}));
 
-        const response = await apiFetch({apiPath: `http://srv1037558.hstgr.cloud:8001/api/doacoes/independentes/${id}/atualizar/`, apiMethod: 'PUT', apiBody: data, apiHeaders: { "Authorization": `Bearer ${token.access}` }});
+        const response = await apiFetch({apiPath: `https://conectades.com.br/api/doacoes/independentes/${id}/atualizar/`, apiMethod: 'PUT', apiBody: data, apiHeaders: { "Authorization": `Bearer ${token.access}` }});
 
         return response;
 

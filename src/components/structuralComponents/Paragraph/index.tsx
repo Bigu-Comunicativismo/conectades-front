@@ -10,7 +10,7 @@ interface ParagraphProps {
 
 export function Paragraph({text, size, weight = 'regular', variant = 'primary', classCss}: ParagraphProps) {
   return (
-    <p className={`${styles.paragraph} ${styles[size]} ${styles[weight]} ${styles[variant]} ${classCss}`}>
+    <p className={`${styles.paragraph} ${styles[size]} ${styles[weight]} ${styles[variant]} ${classCss}`} >
       {text}
     </p>
   );

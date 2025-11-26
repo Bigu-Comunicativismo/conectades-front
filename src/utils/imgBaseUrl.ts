@@ -1,1 +1,1 @@
-export const imgBaseUrl = "http://srv1037558.hstgr.cloud:8001";
+export const imgBaseUrl = "https://conectades.com.br";

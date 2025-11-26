@@ -2,4 +2,25 @@
     background-color: var(--navbar-bg);
     height: 64px;
     padding: 0 14px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.customHeader [aria-label="Avatar do usuário logado"] {
+    margin-right: 0.6rem;
+}
+
+.customHeader [aria-label="avatar-and-menu"] {
+    display: flex;
+    align-items: center;
+}
+
+.customHeader [data-avatar="true"] {
+    width: 3.2rem;
+    height: 3.2rem;
+}
+
+.customHeader [aria-label="hamburguer-menu-item"] {
+    height: 3rem;
 }

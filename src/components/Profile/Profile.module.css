@@ -56,4 +56,29 @@
 .causes {
     border-top: 4px solid var(--brand-purple-500);
     width: 100vw;
+
+    @media (min-width: 1024px) {
+        width: 100%;
+    }
+}
+
+.desktopInfoContainer {
+    display: none;
+    @media (min-width: 1024px) {
+        display: flex;
+        flex-direction: row;
+        gap: 2.4rem;
+        position: relative;
+    }
+
+    svg[aria-label="botão editar perfil"] {
+        position: absolute;
+        right: 0;
+    }
+}
+
+.mobileInfoContainer {
+    @media (min-width: 1024px) {
+        display: none;
+    }
 }

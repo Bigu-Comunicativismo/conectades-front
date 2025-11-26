@@ -6,7 +6,7 @@ export const Route = createFileRoute('/campaigns/edit/$id')({
   component: RouteComponent,
   loader: async ({ params }) => {
     const campaignId = Number(params.id)
-    const campaign = await apiFetch({apiPath:`http://srv1037558.hstgr.cloud:8001/api/campanhas/${campaignId}`})
+    const campaign = await apiFetch({apiPath:`https://conectades.com.br/api/campanhas/${campaignId}`})
 
     return {campaign}
   }

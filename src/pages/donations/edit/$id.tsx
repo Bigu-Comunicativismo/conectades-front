@@ -6,7 +6,7 @@ export const Route = createFileRoute('/donations/edit/$id')({
   component: RouteComponent,
     loader: async ({ params }) => {
       const donationId = Number(params.id)
-      const donation = await apiFetch({apiPath:`http://srv1037558.hstgr.cloud:8001/api/doacoes/independentes/${donationId}`})
+      const donation = await apiFetch({apiPath:`https://conectades.com.br/api/doacoes/independentes/${donationId}`})
   
       return {donation}
     }

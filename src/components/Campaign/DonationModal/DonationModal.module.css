@@ -13,6 +13,10 @@
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
+
+    @media (min-width: 1024px) {
+        background: rgba(0, 0, 0, 0.702);
+    }
 }
 
 .modal {
@@ -20,7 +24,7 @@
     bottom: 39;
     width: 90vw;
     height: 90vh;
-    background-color: var(--background);
+    background-color: var(--backgroundC);
     border-radius: 1.6rem;
     padding: 0 1.6rem;
     padding-top: 4rem;
@@ -30,6 +34,10 @@
     align-items: center;
     justify-content: start;
     gap: 3.7rem;
+
+    @media (min-width: 1024px) {
+        width: 40vw;
+    }
 }
 
 .modalLocation [data-rac] {
@@ -86,4 +94,40 @@ min-height: 4.4rem;
     line-height: var(--md-line);
     font-weight: var(--medium);
     color: var(--gray-900);
+}
+
+.quantityPicker {
+    font-size: var(--text-xs);
+    line-height: var(--xs-line);
+    font-weight: var(--regular);
+    color: var(--gray-900);
+    display: block;
+    margin-bottom: 0.8rem;
+}
+
+.pickerContainer {
+    align-self: flex-start;
+}
+
+.mobileContainer {
+    @media (min-width: 1024px) {
+        display: none;
+    }
+}
+
+.desktopContainer {
+    display: none;
+    @media (min-width: 1024px) {
+        display: flex;
+        flex-direction: row-reverse;
+        margin-top: 4rem;
+    }
+
+    .suportContainer {
+        flex-grow: 1;
+    }
+
+    .infoCampaignContainer {
+        width: 50vw;
+    }
 }

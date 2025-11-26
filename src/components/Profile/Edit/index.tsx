@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Container } from "@/components/structuralComponents/Container";
 import { Image } from "@/components/structuralComponents/Image";
 import { imgBaseUrl } from "@/utils/imgBaseUrl";
@@ -12,6 +12,9 @@ import inputStyles from "@/components/base/input/Input.module.css";
 import selectStyles from "@/components/Campaign/DonationModal/DonationModal.module.css"
 import avatarStyles from "../Profile.module.css"
 import { useNavigate } from "@tanstack/react-router";
+import type { LabedItem } from "@/components/structuralComponents/ListFilter";
+import { apiFetch } from "@/utils/fetchApi";
+import { editUsers } from "@/utils/formEditUser";
 
 export type User = {
     avatar: string;
@@ -28,34 +31,70 @@ export type User = {
     tipo_usuario: number;
 }
 
+interface EditProfileProps {
+    userInfo: User;
+    gendersList: LabedItem[];
+    citysList: LabedItem[];
+    neighborhoodsList: LabedItem[];
+    userCityId: string;
+    userNeighborhoodId: string;
+}
 
-export function EditProfile({userInfo}: {userInfo: User}) {
-const {avatar, nome_completo, nome_exibicao, cpf, telefone, genero, bairro, cidade, mini_bio} = userInfo;
-const [fullName, setFullName] = useState("");
-const [showName, setShowName] = useState("");
-const [CPF, setCPF] = useState("");
-const [phone, setPhone] = useState("");
-const [miniBio, setMiniBio] = useState("");
-const [gender, setGender] = useState<string>("");
-const [neighborhood, setNeighborhood] = useState< string>("");
-const [city, setCity] = useState<string>("");
-// const [cityList, setCityList] = useState([]);
-// const [neighborhoodList, setNeighborhoodList] = useState([]);
+
+export function EditProfile({userInfo, gendersList, citysList, neighborhoodsList, userCityId, userNeighborhoodId}: EditProfileProps) {
+const {avatar, nome_completo, nome_exibicao, cpf, telefone, genero, mini_bio} = userInfo;
+const [fullName, setFullName] = useState(nome_completo);
+const [showName, setShowName] = useState(nome_exibicao);
+const [CPF, setCPF] = useState(cpf);
+const [phone, setPhone] = useState(telefone);
+const [miniBio, setMiniBio] = useState(mini_bio);
+const [gender, setGender] = useState<string>(genero.toString());
+const [neighborhood, setNeighborhood] = useState< string>(userNeighborhoodId.toString());
+const [city, setCity] = useState<string>(userCityId.toString());
+const [isOnFocus, setIsOnFocus] = useState(true);
+const activeSection = useRef<HTMLDivElement>(null);
+const [genderList] = useState<LabedItem[]>(gendersList);
+const [cityList] = useState<LabedItem[]>(citysList);
+const [neighborhoodList, setNeighborhoodList] = useState<LabedItem[]>(neighborhoodsList);
+
+
 
 const navigate = useNavigate();
 
+
+
 useEffect(() => {
-    setFullName(nome_completo)
-    setShowName(nome_exibicao)
-    setCPF(cpf)
-    setPhone(telefone)
-    setMiniBio(mini_bio)
-    setGender(genero.toString())
-    setNeighborhood(bairro)
-    setCity(cidade)
-},[])
+    const observer = new IntersectionObserver(([entry]) => {
+        
+        setIsOnFocus(entry.isIntersecting);
+        }, {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.7
+        });
+        
+    observer.observe(activeSection.current!);
+
+    return () => {observer.disconnect();}
+     
+    }, [activeSection]);
+
+useEffect(() => {
+
+    const userCity = cityList.find(item => item.id == city)?.label;
+    
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    apiFetch({ apiPath: `https://conectades.com.br/api/auth/bairros/${userCity}` }).then((data: any) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const neighborhoodList: LabedItem[] = data.bairros.map((item: any) => ({ id: item.id, label: item.nome }));
+            return neighborhoodList;
+    }).then((data) => setNeighborhoodList(data));
+    
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [city])
+
  return (
-   <Container classCss={styles.container}>
+   <Container classCss={styles.container} ref={activeSection}>
         <Image src={`${imgBaseUrl}${avatar}`} alternateText="" className={avatarStyles.profileImage} />
         <Section classCss={styles.formContainer} aria-label="Formulário">
             <Input placeholder="Nome completo" label="Nome Completo"
@@ -79,33 +118,82 @@ useEffect(() => {
             onChange={(miniBio) => setMiniBio(() => miniBio)} 
             className={`${styles.textArea}`} />
             <Select placeholder="Gênero" 
-            label="Gênero" 
-            onSelectionChange={() => console.log(gender)}
+            label="Gênero"
+            id="Gênero" 
+            name="Gênero"
+            defaultSelectedKey={Number(gender)}
+            onSelectionChange={(key) => {
+                    if(gender !== key) {
+                        setGender(key as string);}
+                    return;
+                }}
             className={`${selectStyles.select} ${styles.inputs}`}>
-                <Select.Item id="1" value={undefined}>Masculino</Select.Item>
-                <Select.Item id="2" value={undefined}>Feminino</Select.Item>
+                {genderList.map((gender) => (
+                        <Select.Item key={gender.id} 
+                        id={gender.id} 
+                        textValue={gender.label}
+                        className={styles.selectOption}
+                        >{gender.label}</Select.Item>
+                    ))}
             </Select>
-            <Select placeholder="Cidade" 
-            label="Cidade" 
-            onSelectionChange={() => console.log(city)}
-            className={`${selectStyles.select} ${styles.inputs}`}>
-                <Select.Item id="1" value={undefined}>Masculino</Select.Item>
-                <Select.Item id="2" value={undefined}>Feminino</Select.Item>
-            </Select>
-            <Select placeholder="Bairro" 
-            label="Bairro" 
-            onSelectionChange={() => console.log(neighborhood)}
-            className={`${selectStyles.select} ${styles.inputs}`}>
-                <Select.Item id="1" value={undefined}>Masculino</Select.Item>
-                <Select.Item id="2" value={undefined}>Feminino</Select.Item>
-            </Select>
+           <Container classCss={styles.locations}>
+                <Select placeholder="Cidade" 
+                defaultSelectedKey={Number(city)}
+                label="Cidade" 
+                id="Cidade"
+                name="Cidade"
+                onSelectionChange={(key) => {
+                    if(city !== key) {
+                        setCity(key as string);
+                        setNeighborhood("");}
+                    return;
+                }}
+                className={`${selectStyles.select} ${styles.inputs}`}>
+                    {cityList.map((city) => (
+                        <Select.Item key={city.id} 
+                        id={city.id} 
+                        textValue={city.label}
+                        className={styles.selectOption}
+                        >{city.label}</Select.Item>
+                    ))}
+                </Select>
+                <Select placeholder="Bairro" 
+                label="Bairro" 
+                id="Bairro"
+                name="Bairro"
+                defaultSelectedKey={Number(neighborhood)}
+                onSelectionChange={(key) => {
+                    return neighborhood !== key ? setNeighborhood(key as string) : null;
+                }}
+                className={`${selectStyles.select} ${styles.inputs}`} >
+                    {neighborhoodList.map((city) => (
+                        <Select.Item key={city.id} 
+                        id={city.id} 
+                        textValue={city.label}
+                        className={styles.selectOption}
+                        >{city.label}</Select.Item>
+                    ))}
+                </Select>
+            </Container>
         </Section>
-        <ButtonGroupFloating 
+        {isOnFocus ? <ButtonGroupFloating 
         btn1Text="Cancelar" 
         btn1Action={() => navigate({to: "/profile"})} 
         btn2Text="Salvar" 
-        btn2Action={() => console.log("Atualizou!")
-        } />
+        btn2Action={async () => {
+            const tokens = JSON.parse(localStorage.getItem("tokens")!);
+            const refreshToken = tokens.refresh;
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const refreshedToken = await apiFetch({ apiPath: `https://conectades.com.br/api/token/refresh/`, apiMethod: 'POST', apiBody: {refresh: refreshToken}, apiHeaders: { "Content-Type": "application/json" } }).then((data: any) => data.access);
+            localStorage.setItem("tokens", JSON.stringify({refresh: refreshToken, access: refreshedToken}));
+            const editedUser = {nome_completo: fullName, nome_exibicao: showName, cpf: CPF, telefone: phone, genero: gender, bairro: neighborhood, cidade: city, mini_bio};
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            editUsers(editedUser, refreshedToken).then((data: any) => {
+                localStorage.setItem("user", JSON.stringify(data.user));
+            })
+            navigate({to: "/profile"});
+        }
+        } /> : null}
    </Container>
  );
 }

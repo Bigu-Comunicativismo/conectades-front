@@ -21,8 +21,8 @@ export function Location({ setShowModal, locations}: { setShowModal: React.Dispa
         initialItems: selectedLocations,
     });
     return (
-        <Container classCss={styles.modalBack}>
-            <Container classCss={`${styles.modal} ${styles.modalLocation} ${multiSelectStyles.selectContainer}`}>
+        <Container classCss={styles.modalBack} onClick={() => setShowModal((previous) => !previous)}>
+            <Container classCss={`${styles.modal} ${styles.modalLocation} ${multiSelectStyles.selectContainer}`} onClick={(event: React.MouseEvent) => event.stopPropagation()}>
                 <Paragraph text={"Localização"} size="lg" weight="semibold"  />
                 <MultiSelect isRequired
                     size="md"

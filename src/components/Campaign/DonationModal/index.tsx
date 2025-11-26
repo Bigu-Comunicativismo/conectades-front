@@ -8,6 +8,7 @@ import btnStyles from "@/components/base/buttons/buttons.module.css";
 import { Select } from "@/components/base/select/select";
 import multiSelectStyles from "@/components/SignUp/PreferenceForm/PreferenceForm.module.css";
 import { createDonation } from "@/utils/createDonation";
+import { SpanText } from "@/components/structuralComponents/SpanText";
 
 type Item = {
     id: number;
@@ -25,6 +26,9 @@ export function DonationModal ({setShowDonationModal, items, whatsapp}: {setShow
     const campaignItems = items.map((item) => {
         return {label: item.nome, id: item.id.toString()}
     })
+
+    console.log(items);
+    
     return (
     
         <Container classCss={styles.modalBack}>
@@ -50,13 +54,16 @@ export function DonationModal ({setShowDonationModal, items, whatsapp}: {setShow
                         className={styles.selectItem}/>
                     ))}
                 </Select>
+                <div className={styles.pickerContainer}>
+                <SpanText text="Quanto deste item deseja doar?" classCss={styles.quantityPicker}/>
                 <ItemQuantityPicker handleQuantity={setDonationQuantity} disponibleQuantity={disponibleQuantity} quantity={donationQuantity} />
+                </div>
                 <Container classCss={styles.btnGroup}>
                     <Button className={`${btnStyles.btn} ${styles.noMargin} ${donationQuantity === 0 && btnStyles.btnDesactive}`} 
                     onClick={() => {
                         if(items){
                              
-                            const campanha_id = items && items.find(() => true)?.id;
+                            const campanha_id = items && items.find(() => true)?.campanha;
 
                             if(campanha_id) createDonation({campanha_id, item_campanha_id: Number(selectedItem), quantidade: donationQuantity}).then(() => {
                                 const message = `Olá, vi sua campanha no Conectades e gostaria de doar ${donationQuantity} ${items.find((item) => item.id.toString() === selectedItem)?.nome}`;

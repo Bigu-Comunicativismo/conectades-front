@@ -44,7 +44,7 @@ export function NewDonation() {
     const [whatsapp, setWhatsapp] = useState("");
     const [city] = useState<string>("");
     const [neighborhood] = useState<string>("");
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+     
     const [neighborhoods, setNeighborhoods] = useState<Neighborhood[] | []>([]);
     const [cities, setCities] = useState<any[] | []>([]);
     const [dateRange, setDateRange] = useState<DateRange | undefined>(undefined);
@@ -58,10 +58,10 @@ export function NewDonation() {
         if(storedloggedUser) setLoggedUser({user: JSON.parse(storedloggedUser), tokens: JSON.parse(localStorage.getItem("tokens")!)});
         console.log(neighborhoods);
         
-        const response = apiFetch({ apiPath: "http://srv1037558.hstgr.cloud:8001/api/auth/opcoes/" });
+        const response = apiFetch({ apiPath: "https://conectades.com.br/api/auth/opcoes/" });
         response.then((data: any) => {
             setCities(data.cidades);
-            return apiFetch({apiPath: "http://srv1037558.hstgr.cloud:8001/api/doacoes/tipos-servico/"})
+            return apiFetch({apiPath: "https://conectades.com.br/api/doacoes/tipos-servico/"})
         }).then((data: any) => {
             const dataCategories = fetchedServiceTypes(data);
             setCategories(dataCategories);
@@ -86,7 +86,7 @@ export function NewDonation() {
     useEffect(() => {
         const lockedCity: any = cities.find((listedCity: any) => listedCity.id === city);
         if(city !== "") {
-        const response = apiFetch({ apiPath: `http://srv1037558.hstgr.cloud:8001/api/auth/bairros/${lockedCity?.nome}` });
+        const response = apiFetch({ apiPath: `https://conectades.com.br/api/auth/bairros/${lockedCity?.nome}` });
         response.then((data: any) => {
             setNeighborhoods(data.bairros);
         });
@@ -94,13 +94,13 @@ export function NewDonation() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [city]);
 
-    const handleSubmit = async () => {
-        const lockedCity: any = cities.find((listedCity: any) => listedCity.id === Number(loggedUser?.user.cidade));
+    const handleSubmit = async () => {    
+        // const lockedCity: any = cities.find((listedCity: any) => listedCity.id === Number(loggedUser?.user.cidade));
         let donationNeighborhood = "";
         if(neighborhood == ""){
-             await apiFetch({ apiPath: `http://srv1037558.hstgr.cloud:8001/api/auth/bairros/${lockedCity.nome}` }).then((data: any) => {    
+             await apiFetch({ apiPath: `https://conectades.com.br/api/auth/bairros/${loggedUser?.user.cidade}` }).then((data: any) => {    
             const neighborhoods = data.bairros;
-            donationNeighborhood = neighborhoods.find((neighborhood: any) => neighborhood.id === Number(loggedUser?.user.bairro)).id
+            donationNeighborhood = neighborhoods.find((neighborhood: any) => neighborhood.nome === loggedUser?.user.bairro).id
 
         });
         }
@@ -146,20 +146,20 @@ export function NewDonation() {
 
     return (
         <Container classCss={styles.container} ref={activeSection}>
-            {isOnFocus ? <ButtonGroupFloating btn1Text="Cancelar" btn2Text="Criar" disebled={((!!title) && (!!subtitle) && (!!description) && (!!markedCategories) && (!!items) && (!!dateRange)) && (!!whatsapp) ? false : true} btn1Action={() => navigate({ to: "/" })
+            {isOnFocus ? <ButtonGroupFloating btn1Text="Cancelar" btn2Text="Criar" disebled={((!!title) && (!!subtitle) && (!!description) && (!!markedCategories) && (!!dateRange)) && (!!whatsapp) ? false : true} btn1Action={() => navigate({ to: "/" })
             } btn2Action={handleSubmit} /> : <div></div>}
             <Title.Level1 text="Criar doação" classCss={styles.title} />
             <Paragraph text="Doações são ações para quando você deseja doar algum serviço de forma voluntária para pessoas beneficiárias (ex. atendimento psicológico)" size="md" variant="secondary" classCss={styles.paragraph} />
             <Input label="Qual o título da sua doação?" 
             placeholder="Nome da doação" 
             type="text" 
-            className={inputStyles.input}
+            className={`${inputStyles.input} ${styles.inputMargin}`}
             value={title}
             onChange={(title) => setTitle(() => title)} />
             <Input label="Subtítulo da doação (Use uma frase curta que convida à aproveitar a oportunidade)" 
             placeholder="Ex. Atendimento gratuito" 
             type="text" 
-            className={inputStyles.input}
+            className={`${inputStyles.input} ${styles.inputMargin}`}
             value={subtitle}
             onChange={(subtitle) => setSubtitle(() => subtitle)} />
             <TextArea
@@ -171,7 +171,7 @@ export function NewDonation() {
             isInvalid={description.length >= 600}
             hint={`${description.length}/600 caracteres`}
             onChange={(description) => setDescription(description)}
-            className={`${inputStyles.input} ${description.length < 600 && imageStyles.inputError} ${imageStyles.textarea}`}
+            className={`${inputStyles.input} ${styles.inputMargin} ${description.length < 600 && imageStyles.inputError} ${imageStyles.textarea}`}
           />
             <Container classCss="space-y-3">
                 <Container classCss={`relative rounded-xl p-8 flex flex-col items-center justify-center transition-all duration-300 hover:shadow-md ${imageStyles.fileContainer}`}>

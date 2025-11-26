@@ -1,0 +1,42 @@
+.navigationListItem {
+    font-size: var(--text-md);
+    line-height: var(--md-line);
+    font-weight: var(--medium);
+    color: var(--gray-900);
+    padding: 0.75rem 1rem;
+}
+
+.btn {
+    font-size: var(--text-sm);
+    font-weight: var(--semibold);
+    color: var(--white);
+    border-radius: 0.8rem;
+    background-color: var(--brand-purple-600);
+    padding: 1rem 1.8rem;
+}
+
+.btnOutlined {
+    box-shadow: none;
+    background-color: transparent;
+    color: var(--brand-purple-700);
+}
+
+.btnCreate {
+    font-size: var(--text-sm);
+    font-weight: var(--semibold);
+    color: var(--white);
+    border-radius: 1.2rem;
+    background-color: var(--brand-purple-600);
+    padding: 0.8rem 1.4rem;
+}
+
+.navUl {
+    gap: 1.6rem;
+}
+
+.headerLiItem {
+    font-size: var(--text-md);
+    line-height: var(--md-line);
+    font-weight: var(--semibold);
+    color: var(--gray-600);
+}

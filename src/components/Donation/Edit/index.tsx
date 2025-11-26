@@ -56,7 +56,7 @@ export function EditDonation({campaign}: any) {
     const [retriedUser] = useState(retrieveLoggedUser(setLoggedUser));
 
     useEffect(() => {
-        apiFetch({apiPath: "http://srv1037558.hstgr.cloud:8001/api/doacoes/tipos-servico/"})
+        apiFetch({apiPath: "https://conectades.com.br/api/doacoes/tipos-servico/"})
         .then((data: any) => {
             const dataCategories = fetchedServiceTypes(data);
             setCategories(dataCategories);
@@ -68,7 +68,7 @@ export function EditDonation({campaign}: any) {
     // useEffect(() => {
     //     const lockedCity: any = cities.find((city: any) => city.id === city);
     //     if (lockedCity){
-    //         const response = apiFetch({ apiPath: `http://srv1037558.hstgr.cloud:8001/api/auth/bairros/${lockedCity?.nome}` });
+    //         const response = apiFetch({ apiPath: `https://conectades.com.br/api/auth/bairros/${lockedCity?.nome}` });
     //         response.then((data: any) => {
     //             setNeighborhoods(data.bairros);
     //         });}

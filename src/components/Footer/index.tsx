@@ -78,19 +78,19 @@ const footerNavList = [
             },
         ],
     },
-    {
-        label: "Oportunidades",
-        items: [
-            {
-                label: "Cursos",
-                href: "/cursos",
-            },
-            {
-                label: "Vagas de Emprego",
-                href: "/vagas",
-            },
-        ],
-    },
+    // {
+    //     label: "Oportunidades",
+    //     items: [
+    //         {
+    //             label: "Cursos",
+    //             href: "/cursos",
+    //         },
+    //         {
+    //             label: "Vagas de Emprego",
+    //             href: "/vagas",
+    //         },
+    //     ],
+    // },
 ];
 
 const footerDonatariesNavList = [

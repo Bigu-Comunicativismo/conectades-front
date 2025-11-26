@@ -15,7 +15,7 @@ export const Route = createFileRoute('/mydonations/')({
   loader: async () => {
     const {access, refresh} = JSON.parse(localStorage.getItem("tokens")!);
     const myDonations: MiniCardItem[] = await apiFetch({
-    apiPath: "http://srv1037558.hstgr.cloud:8001/api/token/refresh/",
+    apiPath: "https://conectades.com.br/api/token/refresh/",
     apiMethod: "POST",
     apiHeaders: {
       "Authorization": `Bearer ${access}`,
@@ -27,17 +27,17 @@ export const Route = createFileRoute('/mydonations/')({
       localStorage.setItem("tokens", JSON.stringify({ refresh, access: data.access }));
 
       return apiFetch<MiniCardItem[]>({
-          apiPath: "http://srv1037558.hstgr.cloud:8001/api/doacoes/independentes/minhas/",
+          apiPath: "https://conectades.com.br/api/doacoes/independentes/minhas/",
           apiHeaders: { "Authorization": `Bearer ${data.access}` }
         })
       
       // Promise.all([
       //   apiFetch({
-      //     apiPath: "http://srv1037558.hstgr.cloud:8001/api/doacoes/independentes/minhas/",
+      //     apiPath: "https://conectades.com.br/api/doacoes/independentes/minhas/",
       //     apiHeaders: { "Authorization": `Bearer ${data.access}` }
       //   }),
       //   apiFetch({
-      //     apiPath: "http://srv1037558.hstgr.cloud:8001/api/oportunidades/minhas/",
+      //     apiPath: "https://conectades.com.br/api/oportunidades/minhas/",
       //     apiHeaders: { "Authorization": `Bearer ${data.access}` }
       //   })
       // ]);
@@ -64,7 +64,7 @@ function RouteComponent() {
           cardName: donation.titulo,
           cardImage: donation.imagem_url,
           cardLocation: donation.localizacao_nome,
-          cardTag: donation.categorias_detalhadas,
+          cardTag: donation.categorias_detalhadas.find(() => true).nome,
         }
        return <MiniCard card={card} cardType='donations' key={card.cardId}/>
       })}

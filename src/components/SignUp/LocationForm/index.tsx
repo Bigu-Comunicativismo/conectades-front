@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FormDescription } from "../FormDescription";
 import { Select } from "@/components/base/select/select";
 import { Button } from "@/components/base/buttons/button";
 import styles from './LocationForm.module.css';
 import { Container } from "@/components/structuralComponents/Container";
 import { useUserContext } from "@/contexts/userContext";
+import { apiFetch } from "@/utils/fetchApi";
+import type { LabedItem } from "@/components/structuralComponents/ListFilter";
 
 export interface LocationFormProps {
     nextStep: React.Dispatch<React.SetStateAction<number>>;
@@ -18,34 +20,41 @@ export function LocationForm({nextStep}: LocationFormProps) {
     }
     const { user, setUser } = useUserContext();
     const [city, setCity] = useState<string>("");
+    const [cities, setCities] = useState<LabedItem[] | []>([]);
     const [neighborhood, setNeighborhood] = useState<string>("");
     const [neighborhoods, setNeighborhoods] = useState<Neighborhood[] | []>([]);
 
-        const Recife = { 
-            label: "Recife", 
-            id: "Recife",  
-            neighborhoods: [
-                { label: "Centro", id: "Centro" },
-                { label: "Boa Viagem", id: "Boa Viagem" },
-                { label: "Coque", id: "Coque" },
-                { label: "Ibura", id: "Ibura" },
-                { label: "Várzea", id: "Várzea" },
-        ] }
-        const Olinda = { 
-            label: "Olinda", 
-            id: "Olinda", 
-            neighborhoods: [
-                { label: "Bairro Novo", id: "Bairro Novo" },
-                { label: "Peixinhos", id: "Peixinhos" },
-                { label: "V8", id: "V8", supportingText: "V8" },
-                { label: "Fragoso", id: "Fragoso" },
-                { label: "Ouro Preto", id: "Ouro Preto" },
-        ] }
 
-    const cities = [
-        Recife,
-        Olinda
-    ]
+        useEffect(() => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            apiFetch<LabedItem[]>({ apiPath: "https://conectades.com.br/api/auth/opcoes/"}).then((data: any) => {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                const cityList = data.cidades.map((item: any) => ({ id: item.id, label: item.nome }));
+                return cityList;
+            }).then((cityList) => {
+                setCities(cityList);
+            })
+
+            
+            
+         
+        }, []);
+
+        useEffect(() => {
+            
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const lockedCity: any = cities.find((listedCity: LabedItem) => listedCity.id === city)
+            if(city !== "") {
+            apiFetch({ apiPath: `https://conectades.com.br/api/auth/bairros/${lockedCity?.label}` })
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            .then((data: any) => {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                const neighborhoods: Neighborhood[] = data.bairros.map((item: any) => ({ id: item.id, label: item.nome }));
+                setNeighborhoods(neighborhoods);
+            });
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, [city]);
 
     return (
         <Container classCss={styles.container}>
@@ -57,9 +66,10 @@ export function LocationForm({nextStep}: LocationFormProps) {
                 id="Cidade" 
                 name="Cidade"
                 onSelectionChange={(key) => {
-                    if(city !== key) {setCity(key as string);
-                    setNeighborhoods(cities.find((city) => city.id === key)?.neighborhoods || []);
-                    setNeighborhood("");}
+                    if(city !== key) {
+                        setCity(key as string);
+                    // setNeighborhoods(cities.find((city) => city.id === key)?.neighborhoods || []);
+                        setNeighborhood("");}
                     return;
                 }}
                 className={styles.selectInput}
@@ -82,7 +92,7 @@ export function LocationForm({nextStep}: LocationFormProps) {
                 }}
                 className={styles.selectInput}>
                     {neighborhoods.map((neighborhood) => (
-                        <Select.Item key={neighborhood.id} id={neighborhood.id} className={styles.selectOption}>{neighborhood.label}</Select.Item>
+                        <Select.Item key={neighborhood.id} id={neighborhood.id} textValue={neighborhood.label} className={styles.selectOption}>{neighborhood.label}</Select.Item>
                     ))}
                 </Select>
                 <Button className={`${styles.btn} ${(!city || !neighborhood) ? styles.btnDesactive : ''}`}

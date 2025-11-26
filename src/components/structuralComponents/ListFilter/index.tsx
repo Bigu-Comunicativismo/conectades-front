@@ -8,6 +8,7 @@ import { ChevronDown, MarkerPin01 } from "@untitledui/icons";
 import donationType from "@/assets/Assets Visuais/envato-graphic-1be80dd4-214a-4576-ae14-65f1a7a9ddfb.png";
 import styles from "./ListFilter.module.css";
 import { setOptions } from "@/utils/setOptions";
+import { useFilterContext } from "@/contexts/filterContext";
 
 
 export type LabedItem = {
@@ -20,6 +21,7 @@ export function ListFilter() {
     const [showActionModal, setShowActionModal] = useState(false);
     const [locations, setLocations] = useState<LabedItem[]>([]);
     const [categories, setCategories] = useState<LabedItem[]>([]);
+    const {selectedLocations, selectedItems} = useFilterContext();
 
     useEffect(() => {
         const storedLocations = localStorage.getItem("locations");
@@ -46,12 +48,12 @@ export function ListFilter() {
                     alternateText="" 
                     className={styles.filterImage} />} 
                 iconTrailing={
-                    <ChevronDown className={styles.filterChevron} />}>Tipo de doação </Button>
+                    <ChevronDown className={styles.filterChevron} />}>Tipo de doação {selectedItems.length > 0 && <span className={styles.activeFilterQuantity}>{selectedItems.length}</span>}</Button>
                 <Button className={styles.btn} 
                 onClick={() => setShowLocationModal((previous) => !previous)}
                 iconLeading={
                     <MarkerPin01 className={styles.filterImage} 
-                color="#f00"/>} iconTrailing={<ChevronDown className={styles.filterChevron} />}>Localização </Button>
+                color="#f00"/>} iconTrailing={<ChevronDown className={styles.filterChevron} />}>Localização {selectedLocations.length > 0 &&<span className={styles.activeFilterQuantity}>{selectedLocations.length}</span>}</Button>
             </Container>
             {showLocationModal && <Location locations={locations}
                 setShowModal={setShowLocationModal} />}

@@ -15,10 +15,10 @@ import { Link } from "@tanstack/react-router";
 
 
 export function EmailCheck({nextStep}: EmailCheckFormProps) {
-    const [email, setEmail] = useState("")
+    const { user, setUser } = useUserContext()
+    const [email, setEmail] = useState(user.email)
     const [emailError, setEmailError] = useState(false)
     const [loadingVerification, setLoadingVerification] = useState(false)
-    const { user, setUser } = useUserContext();
 
     const handleSubmit = async () => {
         setLoadingVerification(true)

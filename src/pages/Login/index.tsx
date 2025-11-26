@@ -17,10 +17,13 @@ export function Login () {
     const [isValidEmail, setIsValidEmail] = useState(false);
 
     return (
-        <Container classCss={styles.container}>
-            <Title.Level1 text={ isValidEmail ? "Digite sua senha para entrar!" : "Insira seu e-mail para iniciar!" } classCss={styles.title} />
-            <SpanText text="Não tem uma conta?" classCss={spanStyles.spanText} /> <Link to="/signup"><SpanText classCss={spanStyles.spanLink} text="Cadastre-se" /></Link>
-            <LoginForm isValidEmail={isValidEmail} setIsValidEmail={setIsValidEmail}/>
+        <Container classCss={styles.externalContainer}>
+            <Container classCss={styles.container}>
+                <Title.Level1 text={ isValidEmail ? "Digite sua senha para entrar!" : "Insira seu e-mail para iniciar!" } classCss={styles.title} />
+                <SpanText text="Não tem uma conta?" classCss={spanStyles.spanText} /> <Link to="/signup"><SpanText classCss={spanStyles.spanLink} text="Cadastre-se" /></Link>
+                <LoginForm isValidEmail={isValidEmail} setIsValidEmail={setIsValidEmail}/>
+            </Container>
+            <div className={styles.bgImg} aria-hidden="true"></div>
         </Container>
     )
 }

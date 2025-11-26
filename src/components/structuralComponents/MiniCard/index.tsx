@@ -25,7 +25,7 @@ export function MiniCard({card, cardType}: {card: MiniCardItem, cardType: CardTy
                 alternateText={`Capa da campanha ${card.cardName}`} 
                 className={styles.miniCardImage}/>
                 </Link>
-                <Link to={`/${cardType}/$id`} params={{id: String(card.cardId)}}>
+                <Link to={`/${cardType}/$id`} params={{id: String(card.cardId)}} className={styles.link}>
                 <Container classCss={styles.miniCard}>
                     <Badge color="purple" className={styles.campaingDeadline}>{card.cardTag}</Badge>
                     <SpanText text={card.cardName} classCss={styles.cardName}/>

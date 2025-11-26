@@ -5,6 +5,17 @@
     align-items: center;
     overflow-x: scroll;
     margin-top: 1.6rem;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    @media (min-width: 1024px) {
+        z-index: 2;
+        margin-bottom: 3.8rem;
+        overflow-x: auto;
+    }
 }
 
 .filterButton {
@@ -23,6 +34,10 @@
     cursor: grabbing;
     flex-shrink: 0;
     scrollbar-width: none;
+
+    @media (min-width: 1024px) {
+        cursor: pointer;
+    }
     
 }
 

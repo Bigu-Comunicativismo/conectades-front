@@ -58,7 +58,7 @@ export function EditCampaign({campaign}: any) {
     const [retriedUser] = useState(retrieveLoggedUser(setLoggedUser));
 
     useEffect(() => {
-        apiFetch({ apiPath: "http://srv1037558.hstgr.cloud:8001/api/auth/opcoes/" })
+        apiFetch({ apiPath: "https://conectades.com.br/api/auth/opcoes/" })
         .then((data: any) => {
             // setCities(data.cidades);
             const dataCategories = fetchedCategories(data);
@@ -71,7 +71,7 @@ export function EditCampaign({campaign}: any) {
     // useEffect(() => {
     //     const lockedCity: any = cities.find((city: any) => city.id === city);
     //     if (lockedCity){
-    //         const response = apiFetch({ apiPath: `http://srv1037558.hstgr.cloud:8001/api/auth/bairros/${lockedCity?.nome}` });
+    //         const response = apiFetch({ apiPath: `https://conectades.com.br/api/auth/bairros/${lockedCity?.nome}` });
     //         response.then((data: any) => {
     //             setNeighborhoods(data.bairros);
     //         });}

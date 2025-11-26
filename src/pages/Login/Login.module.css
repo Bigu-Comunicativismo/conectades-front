@@ -1,5 +1,10 @@
 .container {
     margin: 4rem 1.6rem;
+
+    @media (min-width: 1024px) {
+        flex-grow: 1;
+        margin-right: 3.2rem;
+    }
 }
 
 .title {
@@ -8,4 +13,28 @@
     font-weight: var(--semibold);
     color: var(--gray-900);
     margin-bottom: 0.8rem;
+}
+
+.bgImg {
+    display: none;
+    @media (min-width: 1024px) {
+        display: block;
+        background-image: url('@/assets/assets Visuais/Rectangle 13134.svg');
+        height: 656px;
+        width: 558px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-right: 1.6rem;
+        margin-top: 1.6rem;
+        flex-grow: 2;
+    }
+}
+
+.externalContainer {
+    @media (min-width: 1024px) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 }

@@ -1,6 +1,14 @@
 .sectionHomePrimary{
     background-color: var(--navbar-bg);
     padding-top: 5.6rem;
+    padding-bottom: 5.6rem;
+
+    @media (min-width: 1024px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 .image {
@@ -9,12 +17,38 @@
     object-position: center;
     margin: 0 auto;
     z-index: 1;
+
+    @media (min-width: 1024px) {
+        height: 341px;
+        width: 355px;
+    }
 }
 
 .registerButtonsContainer {
     padding: 16px;
+    gap: 0.8rem;
+    z-index: 4;
+    background-color: var(--backgroundC);
+    position: fixed;
+    bottom: 1.9rem;
+    right: 0;
+    left: 0;
+
+    @media (min-width: 1024px) {
+        display: none;
+    }
 }
 
 .joinUsSection {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(236, 223, 245, 0) 60%, rgba(236, 223, 245, 1) 100%);
+}
+
+.inputMargin {
+    margin-top: -40px;
+    z-index: 2;
+    @media (min-width: 1024px) {
+        width: 60.5rem;
+        margin-top: -105px;
+        z-index: 2;
+    }
 }

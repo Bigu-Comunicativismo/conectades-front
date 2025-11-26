@@ -27,15 +27,15 @@ export default function ItemQuantityPicker({handleQuantity, disponibleQuantity, 
             size="sm"
             className={`${onlyTextbtnStyles.btnOnlyText} ${styles.addItemBtnCounter}`}
             onClick={() => handleDecrement()}
-            >
+             aria-label="Botão de diminuir quantidade doada">
             <Minus />
             </Button>
-            <span className={styles.addItemBtnText}>{quantity}</span>
+            <span className={styles.addItemBtnText} aria-label="Quanditade">{quantity}</span>
             <Button
             size="sm"
             className={`${onlyTextbtnStyles.btnOnlyText} ${styles.addItemBtnCounter}`} 
             onClick={() => handleIncrement()}
-            >
+            aria-label="Botão de aumentar quantidade doada">
             <Plus />
             </Button>
         </div>

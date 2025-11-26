@@ -6,6 +6,7 @@ import { setOptions } from "@/utils/setOptions";
 import type { LabedItem } from "@/components/structuralComponents/ListFilter";
 import type { CampaignFetched } from "@/pages/campaigns/_Campaign/$id";
 
+
 type Author = {
     authorName: string;
     authorImage: string;
@@ -35,7 +36,7 @@ export interface Data {
     }
 }
 
-export function CampaignSection({causeTitle="Novas campanhas", causeCallMessage="Confira as últimas campanhas criadas"}: {causeTitle?: string, causeCallMessage?: string}) {
+export function CampaignSection({causeTitle="Novas campanhas", causeCallMessage="Confira as últimas campanhas criadas", searchTerm}: {causeTitle?: string, causeCallMessage?: string, searchTerm?: string}) {
 
     const [CampaignList, setCampaignList] = useState<CampaignData[]>([]);
 
@@ -52,7 +53,7 @@ export function CampaignSection({causeTitle="Novas campanhas", causeCallMessage=
             return categoriesList;
         };
         const loadCampaigns = async () => {
-            await apiFetch<CampaignFetched[]>({ apiPath: 'http://srv1037558.hstgr.cloud:8001/api/campanhas/listar?ordenar=recente' })
+            await apiFetch<CampaignFetched[]>({ apiPath: `https://conectades.com.br/api/campanhas/listar?ordenar=recente&busca=${searchTerm}` })
             .then((data) => {
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 data.forEach((campaign: any) => {
@@ -78,7 +79,7 @@ export function CampaignSection({causeTitle="Novas campanhas", causeCallMessage=
             
         }
         loadCampaigns();
-    }, []);
+    }, [searchTerm]);
 
     return (
         <CausesSectionsContainer causeContainerAriaName="Campanhas" causeTitle={causeTitle} causeCallMessage={causeCallMessage} causeUrl="/campaigns">

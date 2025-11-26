@@ -7,8 +7,9 @@ import { FormDescription } from "../FormDescription";
 import { useUserContext } from "@/contexts/userContext";
 import { signUpUsers } from "@/utils/formSignUp";
 import { useNavigate } from "@tanstack/react-router";
+import type { LocationFormProps } from "../LocationForm";
 
-export function PasswordForm() {
+export function PasswordForm({nextStep}:LocationFormProps) {
     const [inputPasswordValue, setInputPasswordValue] = useState('');
     const [inputConfirmPasswordValue, setInputConfirmPasswordValue] = useState('');
     const {passwordHasUpperandLower, passwordHasNumber,  passwordHasMinChar}: {passwordHasUpperandLower: boolean, passwordHasNumber: boolean,  passwordHasMinChar: boolean} = validations.password(inputPasswordValue);
@@ -31,7 +32,7 @@ export function PasswordForm() {
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     response.then((data: any) => {
                         if (data) {
-                            navigate({to:"/login"});
+                            nextStep((previous: number) => previous + 1)
                         }
                     }).catch((error) => {
                         console.log(error)

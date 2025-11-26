@@ -1,5 +1,11 @@
 .howFunctionContainer {
     margin-top: 4rem;
-    padding: 0 1.6rem;
+    /* padding: 0 1.6rem; */
 }
 
+.image {
+    @media (min-width: 1024px) {
+        height: 35rem;
+        width: 35rem;
+    }
+}
