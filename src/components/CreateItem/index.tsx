@@ -2,7 +2,7 @@ import { createPortal } from "react-dom";
 import { useNavigate } from "@tanstack/react-router";
 import { Button } from "../base/buttons/button";
 import { Plus } from "@untitledui/icons";
-import styles from "./createItem.module.css";
+import styles from "./CreateItem.module.css";
 
 export function CreateItem({btnText, path}: {btnText: string, path: string}) {
     const navigate = useNavigate();
