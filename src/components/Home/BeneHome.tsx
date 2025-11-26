@@ -5,7 +5,7 @@ import { Section } from "../structuralComponents/Section";
 import { Title } from "../structuralComponents/Title";
 import { Input } from "../base/input/input";
 import { SearchSm } from "@untitledui/icons";
-import inputStyles from '../base/input/input.module.css';
+import inputStyles from '../base/input/Input.module.css';
 import { DonationSection } from "./CausesSections/DonationSection";
 import { FilterButtonGroup } from "./FilterButton";
 import peoples from '@/assets/Assets Visuais/envato-graphic-68c24836-04d4-4367-ab44-3a32e067a11b.png';

@@ -11,7 +11,7 @@ import campaingnIcon from '@/assets/Assets Visuais/envato-graphic-e417e6db-4b26-
 import styles from './Home.module.css';
 import { useState } from "react";
 import { SearchSm } from "@untitledui/icons";
-import inputStyles from '../base/input/input.module.css';
+import inputStyles from '../base/input/Input.module.css';
 
 const filters = [
 { label: 'Campanhas', iconUrl: campaingnIcon, href: '/campaigns' },

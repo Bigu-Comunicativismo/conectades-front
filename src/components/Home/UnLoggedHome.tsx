@@ -15,7 +15,7 @@ import { JoinUs } from "./JoinUs";
 import { RegisterButton } from "./RegisterButton";
 import peoples from '@/assets/Assets Visuais/envato-graphic-68c24836-04d4-4367-ab44-3a32e067a11b.png';
 import styles from './Home.module.css';
-import inputStyles from '../base/input/input.module.css';
+import inputStyles from '../base/input/Input.module.css';
 
 export function UnLoggedHome() {
   const [isOnFocus, setIsOnFocus] = useState(true);
