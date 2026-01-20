@@ -11,6 +11,14 @@
     }
 }
 
+.titlePrincipal {
+    color: #9c59d1;
+    font-weight: var(--semibold);
+    font-size: var(--h2);
+    line-height: var(--h2-line);
+    letter-spacing: -0.2px;
+}
+
 .image {
     height: 280px;
     object-fit: contain;

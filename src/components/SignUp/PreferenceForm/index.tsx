@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Container } from "@/components/structuralComponents/Container";
 import { FormDescription } from "../FormDescription";
 import { Paragraph } from "@/components/structuralComponents/Paragraph";
@@ -36,9 +36,15 @@ export function PreferenceForm({nextStep, preferences}: PreferenceFormProps) {
         initialItems: [user.location.neighborhood],
     });
 
+    const containerRef = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+        if (containerRef.current) {
+        containerRef.current.focus();
+        }
+    }, []);
     
     return (
-        <Container classCss="flex flex-col gap-4">
+        <Container classCss="flex flex-col gap-4" ref={containerRef}>
             <FormDescription titleText="Escolha suas preferências" paragraphText="Vamos dar ao serviço sua cara! Escolha suas preferências. Elas poderão ser alteradas a qualquer momento no seu perfil" />
             <form>
                 <Paragraph text={userType === "5" ? "Quais doações você deseja ver mais?" : "Quais campanhas você deseja ver mais?"} size="sm" variant="secondary" classCss={styles.filtersLabel} />

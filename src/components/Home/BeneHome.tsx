@@ -26,7 +26,7 @@ export function BeneHome() {
     return (
         <Container classCss=''>
         <Section classCss={styles.sectionHomePrimary}>
-          <Title.Level2 text="Conecte-se e transforme vidas" />
+          <Title.Level1 text="Conecte-se e transforme vidas" classCss={styles.titlePrincipal} />
           <Paragraph text="Busque causas ou doe serviços para quem realmente precisa!" size="lg" />
           <Image src={peoples} alternateText='Três pessoas diferentes se abraçando e sorrindo.' className={styles.image} />
           <Input icon={SearchSm} type="text" 

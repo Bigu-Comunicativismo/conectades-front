@@ -39,6 +39,7 @@ export function LoginForm({isValidEmail, setIsValidEmail}: LoginInputProps) {
                     icon={ isValidEmail ? Passcode : Mail01 } 
                     placeholder={ isValidEmail ? "Digite sua senha" : "Insira seu e-mail" }
                     value={inputValue}
+                    autoFocus={true}
                     onChange={(inputValue) => {
                         if(emailRegex.test(inputValue)){
                             setHasEmailError(false)

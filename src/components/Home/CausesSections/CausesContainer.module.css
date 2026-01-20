@@ -9,3 +9,10 @@
     margin-bottom: 1.6rem;
     max-width: 70%;
 }
+
+.causesTitle {
+    color: var(--gray-900);
+    font-weight: var(--medium);
+    font-size: var(--h5);
+    line-height: var(--h5-line);
+}

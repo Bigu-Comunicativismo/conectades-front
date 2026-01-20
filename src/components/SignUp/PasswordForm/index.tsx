@@ -2,7 +2,7 @@ import { Button } from "@/components/base/buttons/button";
 import { PasswordVerification } from "./PasswordVerification";
 import styles from "./PasswordForm.module.css";
 import { validations } from "@/utils/validations";
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { FormDescription } from "../FormDescription";
 import { useUserContext } from "@/contexts/userContext";
 import { signUpUsers } from "@/utils/formSignUp";
@@ -16,8 +16,15 @@ export function PasswordForm({nextStep}:LocationFormProps) {
     const navigate = useNavigate();
     const {user, setUser} = useUserContext();
 
+    const containerRef = useRef<HTMLFormElement>(null);
+    useEffect(() => {
+        if (containerRef.current) {
+        containerRef.current.focus();
+        }
+    }, []);
+    
     return (
-        <form >
+        <form ref={containerRef}>
             <FormDescription titleText="Crie uma senha" paragraphText="Estamos terminando! Por último, crie sua senha, ela será utilizada para você acessar seu perfil"/>
             <PasswordVerification inputPasswordValue={inputPasswordValue} setInputPasswordValue={setInputPasswordValue} inputConfirmPasswordValue={inputConfirmPasswordValue} setInputConfirmPasswordValue={setInputConfirmPasswordValue} />
                 <Button className={`${styles.btn} ${((!passwordHasUpperandLower && !passwordHasNumber && !passwordHasMinChar) || (inputPasswordValue !== inputConfirmPasswordValue)) && styles.btnDesactive}`} type="submit"

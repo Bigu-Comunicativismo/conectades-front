@@ -13,7 +13,8 @@ export function JoinUs() {
   const [email, setEmail] = useState('');
   const navigate = useNavigate();
 
-  const handleCreateAccount = () => {
+  const handleCreateAccount = (event: React.FormEvent) => {
+    event.preventDefault();
     const newUser = user;
     newUser.email = email;
     setUser(newUser);
@@ -26,7 +27,7 @@ export function JoinUs() {
       <Paragraph text="Entre na rede de apoio e solidariedade que é a Conectades." size="lg" weight="regular"/>
       <form className={`flex flex-row w-full ${styles.form}`}>
           <Input type="email" placeholder="E-mail" size="md" className={styles.input} value={email} onChange={(email) => {setEmail(email)}}/>
-          <Button type="button" color="primary" className={styles.btn} onClick={handleCreateAccount}>Criar conta</Button>
+          <Button type="submit" color="primary" className={styles.btn} onClick={handleCreateAccount}>Criar conta</Button>
       </form>
     </Container>
   );

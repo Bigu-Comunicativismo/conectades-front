@@ -186,6 +186,7 @@ type FooterNavItem = {
     label: string;
     href: string;
     badge?: React.ReactNode;
+    action?: () => void;
 };
 
 type FooterNavCategory = {
@@ -210,13 +211,15 @@ export const FooterLarge01 = ({footerNavList, children, footerCss, navCategoryCs
                     <ul className="grid grid-cols-1 gap-8 md:grid-cols-3 lg:grid-cols-6">
                         {footerNavList.map((category) => (
                             <li key={category.label}>
-                                <h4 className={`text-sm font-semibold text-quaternary ${navCategoryCss}`}>{category.label}</h4>
+                                <h2 className={`text-sm font-semibold text-quaternary ${navCategoryCss}`}>{category.label}</h2>
                                 <ul className="mt-4 flex flex-col gap-3">
                                     {category.items.map((item) => (
                                         <li key={item.label}>
-                                            <Button color="link-gray" size="lg" href={item.href} iconTrailing={item.badge} className={`gap-1 ${navItemCss}`}>
+                                            {item.action ? <Button color="link-gray" size="lg" iconTrailing={item.badge} className={`gap-1 ${navItemCss}`} onClick={item.action}>
                                                 {item.label}
-                                            </Button>
+                                            </Button> : <Button color="link-gray" size="lg" href={item.href} iconTrailing={item.badge} className={`gap-1 ${navItemCss}`}>
+                                                {item.label}
+                                            </Button>}
                                         </li>
                                     ))}
                                 </ul>

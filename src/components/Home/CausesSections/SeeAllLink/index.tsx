@@ -6,7 +6,7 @@ export function SeeAllLink({ href }: { href: string }) {
     return (
         <Link to={href}>
             <Button className={styles.seeAllLink} >
-                Ver todos
+                Ver todas
             </Button>
         </Link>
     )

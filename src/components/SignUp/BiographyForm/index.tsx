@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Container } from "@/components/structuralComponents/Container";
 import { FormDescription } from "../FormDescription";
 import { Input } from "@/components/base/input/input";
@@ -24,6 +24,7 @@ export function BiographyForm({nextStep}: BiographyFomrProps) {
     const [CPFError, setCPFError] = useState(false);
 
     const { user, setUser } = useUserContext();
+    const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         let genderList: LabedItem[] = [];
@@ -36,13 +37,16 @@ export function BiographyForm({nextStep}: BiographyFomrProps) {
             })
             return genderList;
         };
+        if (containerRef.current) {
+            containerRef.current.focus();
+        }
         
         setGenderList(genderList);
      
     }, []);
 
     return (
-        <Container classCss="">
+        <Container classCss="" ref={containerRef}>
             <form>
                 <FormDescription titleText="Dados de Cadastro" paragraphText="Esses dados são essenciais para garantir um melhor serviço e são protegidos com o máximo de segurança"/>
                 <Input id="Nome Completo"

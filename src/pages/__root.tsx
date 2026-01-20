@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Navigate, Outlet, createRootRoute, useRouterState } from '@tanstack/react-router';
 import { TabProvider } from '@/contexts/campaign';
+import { FilterProvider } from "@/contexts/filterContext";
 import { Main } from '@/components/Main';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -51,13 +52,15 @@ function RootComponent() {
   return (
     <React.Fragment>
         <Header />
+        <FilterProvider>
         <TabProvider>
         <Main>
           <ScrollManager />
           <Outlet />
         </Main>
         </TabProvider>
-        {showFooter === "/login" || showFooter === "/signup" ? <div style={{display: "none"}}><Footer ref={activeSection}/></div> : <Footer ref={activeSection}/>}
+         {showFooter === "/login" || showFooter === "/signup" ? <div style={{display: "none"}}><Footer ref={activeSection}/></div> : <Footer ref={activeSection}/>}
+        </FilterProvider>
         {!isOnFocus && (userType !== undefined && <CreateItem btnText={userType === 5 ? "Criar campanha" : "Criar doação"} path={userType === 5 ? "/campaigns/new" : "/donations/new"}/>)}
     </React.Fragment>
   )

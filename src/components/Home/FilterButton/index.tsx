@@ -8,9 +8,9 @@ import { Link } from '@tanstack/react-router';
 function FilterButton({ href, children }: { href: string; children: React.ReactNode }) {
     return (
         <Link to={href}>
-            <button className={styles.filterButton} >
+            <p className={styles.filterButton} >
                 {children}
-            </button>
+            </p>
         </Link>
     );
 }

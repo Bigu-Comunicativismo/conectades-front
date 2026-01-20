@@ -8,7 +8,7 @@ interface ContainerProps {
 
 export function Container({ classCss, ariaLabel, children, ref, onClick }: ContainerProps) {
     return (
-        <div className={classCss} aria-label={ariaLabel} ref={ref} onClick={onClick}>
+        <div className={classCss} aria-label={ariaLabel} ref={ref} onClick={onClick} tabIndex={0}>
             {children}
         </div>
     )

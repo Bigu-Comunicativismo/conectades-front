@@ -49,7 +49,7 @@ export function NewCampaign() {
     // const [isOnlyOrganizer, setIsOnlyOrganizer] = useState(false);
     const [city] = useState<string>("");
     const [neighborhood] = useState<string>("");
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+     
     const [neighborhoods, setNeighborhoods] = useState<Neighborhood[] | []>([]);
     const [cities, setCities] = useState<any[] | []>([]);
     const [dateRange, setDateRange] = useState<DateRange | undefined>(undefined);

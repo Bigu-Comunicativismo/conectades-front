@@ -7,7 +7,7 @@ import styles from "./UserTypeForm.module.css";
 import manWithBook from '@/assets/Assets Visuais/envato-graphic-9486d54a-4fc7-49c5-af97-4351e8bc1df5.png'
 import oldMan from '@/assets/Assets Visuais/envato-graphic-50c6ef61-8964-455b-8b7d-5b91e4276c82.png'
 import { Image } from "@/components/structuralComponents/Image";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useUserContext } from "@/contexts/userContext";
 
 export type UserType = "5" | "6";
@@ -24,10 +24,18 @@ export function UserTypeForm({nextStep}: {nextStep: React.Dispatch<React.SetStat
         nextStep((previous: number) => previous + 1)
     }
 
+const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.focus();
+    }
+  }, []);
+
     return (
         <Container classCss="">
-            <Container classCss={`flex flex-col items-center gap-8 ${styles.userTypeFormContainer}`} >
-                <FormDescription titleText="Escolha em qual perfil você se encaixa" paragraphText="Tenha honestidade na escolha, pois não será possível mudar no futuro qual perfina" />
+            <Container classCss={`flex flex-col items-center gap-8 ${styles.userTypeFormContainer}`} ref={containerRef}>
+                <FormDescription titleText="Escolha em qual perfil você se encaixa" paragraphText="Tenha honestidade na escolha, pois não será possível mudar no futuro qual perfil você se encaixa" />
             </Container>
             <Container classCss={styles.changeUserTypeContainer}>
                 <ToggleTypeUser userType={userType} setUserType={setUserType} classCss={styles.toggleTypeUser}/>

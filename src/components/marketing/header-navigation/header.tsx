@@ -141,7 +141,7 @@ export const Header = ({ items = headerNavItems, isFullWidth, isFloating, classN
                         {showAvatar && <Link to="/profile" aria-label="Avatar do usuário logado" className="md:hidden"><Avatar src={userAvatar} size="lg" /></Link>}
                         <div className="flex flex-1 items-center gap-5 hidden md:block">
                             {/* Desktop navigation */}
-                            <nav className="max-md:hidden">
+                            <nav className="max-md:hidden" aria-label="Menu navegação para desktop">
                                 <ul className={`flex items-center gap-0.5 ${styles.navUl}`}>
                                     {items.map((navItem) => (
                                         <li key={navItem.label}>

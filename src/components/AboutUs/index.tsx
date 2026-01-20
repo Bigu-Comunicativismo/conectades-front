@@ -16,7 +16,7 @@ export function AboutUs(){
         <Container classCss={styles.container} ariaLabel="Informações sobre nós" >
             <Section classCss={styles.section}>
                 <div id="sobreabigu"></div>
-                <Title.Level2 text="Sobre a Bigu" />
+                <Title.Level1 text="Sobre a Bigu" classCss={styles.titlePrincipal}/>
                 <Paragraph text="A Bigu Comunicativismo, sediada no Recife, mas nascida pro mundo, é uma organização focada em fortalecer estratégias de comunicação para emancipação e mobilização de organizações, movimentos, indivíduos e territórios defensores de um modelo de mundo no qual pessoas e meio ambiente sejam priorizados acima do lucro." size="lg" classCss={styles.paragraphAbout}/>
                 <Image src={biguTeam1} alternateText="Foto com pessoas da Bigu Comunicativismo" className={styles.image1} />
                 <Image src={biguTeam2} alternateText="Foto com pessoas da Bigu Comunicativismo" className={styles.image2} />

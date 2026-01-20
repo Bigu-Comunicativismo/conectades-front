@@ -4,19 +4,24 @@ import { Paragraph } from "@/components/structuralComponents/Paragraph";
 import { Image } from "@/components/structuralComponents/Image";
 import styles from "./SuccessMessage.module.css";
 import success from "@/assets/Assets Visuais/envato-graphic-16565ad0-28f4-4f88-8105-1bf3bd296793.png";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "@tanstack/react-router";
 
 export function SuccessMessage() {
-
+    const containerRef = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+        if (containerRef.current) {
+        containerRef.current.focus();
+        }
+    }, []);
     const navigate = useNavigate();
     useEffect(() => {
         setTimeout(() => {
             navigate({to:"/login"});
-        }, 3000)
+        }, 15000)
     })
     return (
-        <Container classCss={styles.container}>
+        <Container classCss={styles.container} ref={containerRef}>
                 <Image
                     src={success}
                     alternateText="Ilustração de uma mulher negra fazendo sinal de legal."

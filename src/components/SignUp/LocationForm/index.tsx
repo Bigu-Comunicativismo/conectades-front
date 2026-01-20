@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { FormDescription } from "../FormDescription";
 import { Select } from "@/components/base/select/select";
 import { Button } from "@/components/base/buttons/button";
@@ -24,7 +24,8 @@ export function LocationForm({nextStep}: LocationFormProps) {
     const [neighborhood, setNeighborhood] = useState<string>("");
     const [neighborhoods, setNeighborhoods] = useState<Neighborhood[] | []>([]);
 
-
+    const containerRef = useRef<HTMLDivElement>(null);
+    
         useEffect(() => {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             apiFetch<LabedItem[]>({ apiPath: "https://conectades.com.br/api/auth/opcoes/"}).then((data: any) => {
@@ -35,9 +36,9 @@ export function LocationForm({nextStep}: LocationFormProps) {
                 setCities(cityList);
             })
 
-            
-            
-         
+            if (containerRef.current) {
+                containerRef.current.focus();
+            }
         }, []);
 
         useEffect(() => {
@@ -57,7 +58,7 @@ export function LocationForm({nextStep}: LocationFormProps) {
         }, [city]);
 
     return (
-        <Container classCss={styles.container}>
+        <Container classCss={styles.container} ref={containerRef}>
             <FormDescription titleText="Insira sua cidade e bairro" paragraphText="Mostraremos apenas o seu bairro para facilitar a localização de campanhas e doações na sua região"/>
             <form>
                 <Select label="Cidade" 
@@ -96,8 +97,10 @@ export function LocationForm({nextStep}: LocationFormProps) {
                     ))}
                 </Select>
                 <Button className={`${styles.btn} ${(!city || !neighborhood) ? styles.btnDesactive : ''}`}
+                type="submit"
                 isDisabled={!city || !neighborhood}
-                onClick={() => {
+                onClick={(event: FormEvent) => {
+                    event.preventDefault();
                     const newUser = user;
                     newUser.location.city = city;
                     newUser.location.neighborhood = neighborhoods.find((previousNeighborhood) => previousNeighborhood.id === neighborhood) || {id: "", label: ""};

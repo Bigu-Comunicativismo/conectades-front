@@ -8,6 +8,8 @@
 
 .image{
     object-fit: cover;
+    max-width: 29rem;
+    max-height: 29rem;
 }
 
 .title{

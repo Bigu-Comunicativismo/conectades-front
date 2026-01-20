@@ -18,7 +18,7 @@ export function PasswordVerification({inputPasswordValue, setInputPasswordValue,
     return (
             <Container classCss={styles.inputContainer}>
                 <Container classCss={styles.inputContainer}>
-                    <PasswordInput inputLabel="Nova senha" inputPlaceholder="Senha" inputValue={inputPasswordValue} setInputValue={setInputPasswordValue}/>
+                    <PasswordInput inputLabel="Nova senha" inputPlaceholder="Senha" inputValue={inputPasswordValue} setInputValue={setInputPasswordValue} />
                     <SpanText text="• No mínimo 8 caracteres" 
                     classCss={`${styles.spanText} ${passwordHasMinChar && styles.passwordSuccess}`}/>
                     <SpanText text="• Ao menos uma letra maiúscula" 

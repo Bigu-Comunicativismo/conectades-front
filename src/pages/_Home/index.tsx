@@ -22,6 +22,6 @@ export function Home() {
   if (loggedUser?.user?.tipo_usuario === 6) return <DonaHome />;
   if (loggedUser?.user?.tipo_usuario === 5) return <BeneHome />;
   return (
-      <UnLoggedHome />
+    <UnLoggedHome />
   )
 }

@@ -20,10 +20,12 @@ export function ActionType({action, categories, setShowModal}: {action: string, 
                 <Paragraph text={`Tipo de ${action}`} size="lg" weight="semibold"  />
                 <Container classCss={multiSelectStyles.filtersContainer}>
                     {categories.map((category) => (
+                        
                        <Button key={category.id} 
                        onClick={() => {
                         if (markedCategories.includes(category)) {
                             setMarkedCategories((previous) => previous.filter((listedCategory) => listedCategory.id !== category.id));
+                            
                         } else{
                         setMarkedCategories((previous) => [...previous, category])
                     }

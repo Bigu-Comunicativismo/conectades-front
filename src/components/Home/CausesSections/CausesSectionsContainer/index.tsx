@@ -18,7 +18,7 @@ export function CausesSectionsContainer({ causeContainerAriaName, causeTitle, ca
         <Container classCss='' ariaLabel={causeContainerAriaName}>
             <CausesContainer>
                 <Container classCss={styles.causesTitleContainer}>
-                    <Title.Level3 text={causeTitle} />
+                    <Title.Level2 text={causeTitle} classCss={styles.causesTitle} />
                     <Paragraph text={causeCallMessage} size="sm" weight='regular' variant='secondary' />
                 </Container>
                 <SeeAllLink href={causeUrl} />

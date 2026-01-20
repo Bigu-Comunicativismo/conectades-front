@@ -260,7 +260,7 @@ export const Input = ({
                         }}
                     />
 
-                    {hint && <HintText isInvalid={isInvalid}>{hint}</HintText>}
+                    {hint && <HintText isInvalid={isInvalid} role="alert">{hint}</HintText>}
                 </>
             )}
         </TextField>

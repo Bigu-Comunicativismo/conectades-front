@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Container } from "@/components/structuralComponents/Container";
 import { FormDescription } from "../FormDescription";
 import { Button } from "@/components/base/buttons/button";
@@ -46,8 +46,15 @@ export function PersonalForm({nextStep}: LocationFormProps) {
     }
   };
 
+  const containerRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.focus();
+    }
+  }, []);
+    
   return (
-    <Container classCss="">
+    <Container classCss="" ref={containerRef}>
       <FormDescription titleText="Personalize seu perfil" paragraphText="Dê ao seu perfil a sua cara!" />
 
       <form  className="space-y-6">

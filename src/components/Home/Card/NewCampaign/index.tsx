@@ -30,7 +30,7 @@ interface CardProps {
 export function NewCampaignCard({cardList, classCss = ''}: {cardList: CardProps[], classCss?: string}) {
   
     return (
-        <div className={`${styles.cardContainer} ${classCss}`}>
+        <div className={`${styles.cardContainer} ${classCss}`} tabIndex={0}>
           {cardList.length > 0 ? (cardList.map(card => (
             <Link to={`/campaigns/$id`} key={card.cardId} params={{ id: String(card.cardId) }} className="lg:size-fit">
               <Card.Root key={card.cardId}>

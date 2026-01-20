@@ -2,11 +2,20 @@ import styles from './Footer.module.css';
 import { FooterLarge01 as UntitledFooter } from '../marketing/footers/footer-large-01';
 import { Logo } from '../structuralComponents/Logo';
 import { Button } from '../base/buttons/button';
-import { Link } from '@tanstack/react-router';
+import { Link, useNavigate } from '@tanstack/react-router';
 import { useLoggedUserContext } from '@/contexts/loggedUserContext';
 import { useEffect, useState } from 'react';
+import { useFilterContext } from '@/contexts/filterContext';
 
-const footerNavList = [
+
+
+export function Footer({ref}: {ref?: React.RefObject<HTMLDivElement | null>}) {
+    const { loggedUser } = useLoggedUserContext();
+    const [userType, setUserType] = useState<number | undefined>(undefined);
+    const { setSelectedItems } = useFilterContext();
+    const navigate = useNavigate();
+
+    const footerNavList = [
     {
         label: "Quem Somos",
         items: [
@@ -34,18 +43,34 @@ const footerNavList = [
             {
                 label: "Saúde e Bem-estar",
                 href: "/donations",
+                action: () => {
+                    setSelectedItems([{id: '2', label: 'Saúde'}]);
+                    navigate({ to: '/donations' });
+                }
             },
             {
                 label: "Jurídico e Direitos",
                 href: "/donations",
+                action: () => {
+                    setSelectedItems([{id: '3', label: 'Jurídico e Direitos'}]);
+                    navigate({ to: '/donations' });
+                }
             },
             {
                 label: "Educação e Capacitação",
                 href: "/donations",
+                action: () => {
+                    setSelectedItems([{id: '4', label: 'Educação'}]);
+                    navigate({ to: '/donations' });
+                }
             },
             {
                 label: "Outros",
                 href: "/donations",
+                action: () => {
+                    setSelectedItems([{id: '22', label: 'Outros'}]);
+                    navigate({ to: '/donations' });
+                }
             },
         ],
     },
@@ -55,26 +80,50 @@ const footerNavList = [
             {
                 label: "Saúde e Bem-estar",
                 href: "/campaigns",
+                action: () => {
+                    setSelectedItems([{id: '16', label: 'Saúde'}]);
+                    navigate({ to: '/campaigns' });
+                }
             },
             {
                 label: "Gênero e Sexualidade",
                 href: "/campaigns",
+                action: () => {
+                    setSelectedItems([{id: '17', label: 'Jurídico e Direitos'}]);
+                    navigate({ to: '/campaigns' });
+                }
             },
             {
                 label: "Cultura e Comunidade",
                 href: "/campaigns",
+                action: () => {
+                    setSelectedItems([{id: '21', label: 'Cultura e Lazer'}]);
+                    navigate({ to: '/campaigns' });
+                }
             },
             {
                 label: "Necessidades Básicas",
                 href: "/campaigns",
+                action: () => {
+                    setSelectedItems([{id: '14', label: 'Higiene e Cuidados Pessoais'}]);
+                    navigate({ to: '/campaigns' });
+                }
             },
             {
                 label: "Trabalho",
                 href: "/campaigns",
+                action: () => {
+                    setSelectedItems([{id: '20', label: 'Trabalho e Emprego'}]);
+                    navigate({ to: '/campaigns' });
+                }
             },
             {
                 label: "Outros",
                 href: "/campaigns",
+                action: () => {
+                    setSelectedItems([{id: '22', label: 'Outros'}]);
+                    navigate({ to: '/campaigns' });
+                }
             },
         ],
     },
@@ -121,26 +170,50 @@ const footerDonatariesNavList = [
             {
                 label: "Saúde e Bem-estar",
                 href: "/campaigns",
+                action: () => {
+                    setSelectedItems([{id: '16', label: 'Saúde'}]);
+                    navigate({ to: '/campaigns' });
+                }
             },
             {
                 label: "Gênero e Sexualidade",
                 href: "/campaigns",
+                action: () => {
+                    setSelectedItems([{id: '17', label: 'Jurídico e Direitos'}]);
+                    navigate({ to: '/campaigns' });
+                }
             },
             {
                 label: "Cultura e Comunidade",
                 href: "/campaigns",
+                action: () => {
+                    setSelectedItems([{id: '21', label: 'Cultura e Lazer'}]);
+                    navigate({ to: '/campaigns' });
+                }
             },
             {
                 label: "Necessidades Básicas",
                 href: "/campaigns",
+                action: () => {
+                    setSelectedItems([{id: '14', label: 'Higiene e Cuidados Pessoais'}]);
+                    navigate({ to: '/campaigns' });
+                }
             },
             {
                 label: "Trabalho",
                 href: "/campaigns",
+                action: () => {
+                    setSelectedItems([{id: '20', label: 'Trabalho e Emprego'}]);
+                    navigate({ to: '/campaigns' });
+                }
             },
             {
                 label: "Outros",
                 href: "/campaigns",
+                action: () => {
+                    setSelectedItems([{id: '22', label: 'Outros'}]);
+                    navigate({ to: '/campaigns' });
+                }
             },
         ],
     }
@@ -174,26 +247,38 @@ const footerBeneficiariesNavList = [
             {
                 label: "Saúde e Bem-estar",
                 href: "/donations",
+                action: () => {
+                    setSelectedItems([{id: '2', label: 'Saúde'}]);
+                    navigate({ to: '/donations' });
+                }
             },
             {
                 label: "Jurídico e Direitos",
                 href: "/donations",
+                action: () => {
+                    setSelectedItems([{id: '3', label: 'Jurídico e Direitos'}]);
+                    navigate({ to: '/donations' });
+                }
             },
             {
                 label: "Educação e Capacitação",
                 href: "/donations",
+                action: () => {
+                    setSelectedItems([{id: '4', label: 'Educação'}]);
+                    navigate({ to: '/donations' });
+                }
             },
             {
                 label: "Outros",
                 href: "/donations",
+                action: () => {
+                    setSelectedItems([{id: '22', label: 'Outros'}]);
+                    navigate({ to: '/donations' });
+                }
             },
         ],
     }
 ];
-
-export function Footer({ref}: {ref?: React.RefObject<HTMLDivElement | null>}) {
-    const { loggedUser } = useLoggedUserContext();
-    const [userType, setUserType] = useState<number | undefined>(undefined);
 
     useEffect(() => {
         if (loggedUser?.user) setUserType(loggedUser.user.tipo_usuario);
